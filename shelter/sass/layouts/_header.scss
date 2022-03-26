@@ -1,0 +1,22 @@
+.header {
+    background: $START_SCREEN_GRAD_BG;
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+
+.logo {
+    &__title {
+        line-height: 90%;
+        margin-bottom: 18px;
+    }
+    &__subtitle {
+        @include font("Arial", 13px, normal, $TEXT_COLOR);
+        line-height: 0%;
+        letter-spacing: 1.4px;
+    }
+}

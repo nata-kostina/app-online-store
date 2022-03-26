@@ -1,0 +1,30 @@
+.nav {
+    ul {
+        display: flex;
+        li {
+            list-style-type: none;
+            margin-left: 35px;
+            a.nav__link {
+                position: relative;
+                @include font("Arial", 1rem, normal, $color-dark-s);
+                text-decoration: none;
+                &_active {
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        bottom: -5px;
+                        display: block;
+                        height: 3px;
+                        width: 100%;
+                        background-color: $color-primary;
+                    }
+                }
+            }
+            &:first-child {
+                margin-left: 0px;
+            }
+            line-height: 100%;
+            letter-spacing: -0.4px;
+        }
+    }
+}

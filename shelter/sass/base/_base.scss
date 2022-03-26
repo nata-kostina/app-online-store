@@ -1,3 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 15px;
+}
+
 h1 {
-    color: $RED;
+    @include font("Georgia", 2.13rem, normal, $color-primary);
+    letter-spacing: 0.5px;
 }
