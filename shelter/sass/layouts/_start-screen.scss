@@ -1,0 +1,20 @@
+.start-screen {
+    @include bg-image("../../assets/images/bg-gradient.png", $START_SCREEN_GRAD_BG);
+    background-position: center -180px;
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+    }
+    & .content {
+        width: 38.3%;
+        margin-right: 42px;
+        padding-top: 163px;
+        &__heading {
+            width: 70%;
+            padding-bottom: 40px;
+        }
+        &__subheading {
+            margin-bottom: 42px;
+        }
+    }
+}

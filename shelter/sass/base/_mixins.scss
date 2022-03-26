@@ -4,3 +4,10 @@
     font-weight: $weight;
     color: $color;
 }
+
+@mixin bg-image ($url, $color: $START_SCREEN_GRAD_BG) {
+    background-image: url($url), $START_SCREEN_GRAD_BG;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

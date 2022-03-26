@@ -10,3 +10,31 @@ h1 {
     @include font("Georgia", 2.13rem, normal, $color-primary);
     letter-spacing: 0.5px;
 }
+
+h2 {
+    @include font("Georgia", 44px, normal, $color-dark-l);
+    line-height: 130%;
+}
+
+h3 {
+    @include font("Georgia", 35px, normal, $color-dark-l);
+    line-height: 130%;
+    letter-spacing: 0.06em;
+}
+
+h4 {
+    @include font("Georgia", 20px, normal, $color-dark-l);
+    line-height: 115%;
+    letter-spacing: 0.06em;
+}
+
+h5 {
+    @include font("Georgia", 15px, normal, $color-dark-l);
+    line-height: 110%;
+    letter-spacing: 0.06em;
+}
+
+p {
+    @include font("Arial", 12px, normal, $color-dark-l);
+    line-height: 110%;
+}

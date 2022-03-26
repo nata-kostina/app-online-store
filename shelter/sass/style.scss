@@ -1,11 +1,13 @@
 @import "base/normalize";
 @import "abstract/colors";
 @import "base/mixins";
-
-
-
 @import "base/base";
-
+//components
 @import "components/navigation";
+@import "components/buttons";
+//layout
+@import "layouts/content";
 @import "layouts/container";
+@import "layouts/main";
 @import "layouts/header";
+@import "layouts/start-screen";

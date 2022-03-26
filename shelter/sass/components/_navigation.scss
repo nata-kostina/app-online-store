@@ -6,7 +6,8 @@
             margin-left: 35px;
             a.nav__link {
                 position: relative;
-                @include font("Arial", 1rem, normal, $color-dark-s);
+                @include font("Arial", 15px, normal, $color-dark-s);
+                letter-spacing: 0.1px;
                 text-decoration: none;
                 &_active {
                     &::after {

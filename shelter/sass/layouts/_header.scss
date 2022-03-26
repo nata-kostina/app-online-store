@@ -1,5 +1,7 @@
 .header {
-    background: $START_SCREEN_GRAD_BG;
+    @include bg-image("../../assets/images/bg-gradient.png", $START_SCREEN_GRAD_BG);
+    background-position: center 0;
+    position: relative;
     &__inner {
         display: flex;
         justify-content: space-between;
@@ -12,11 +14,10 @@
 .logo {
     &__title {
         line-height: 90%;
-        margin-bottom: 18px;
     }
     &__subtitle {
         @include font("Arial", 13px, normal, $TEXT_COLOR);
-        line-height: 0%;
         letter-spacing: 1.4px;
+        padding-top: 15px;
     }
 }

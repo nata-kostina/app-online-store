@@ -1,0 +1,11 @@
+button {
+    border: none;
+    width: 207px;
+    height: 52px;
+    padding: 15px 45px;
+    border-radius: 100px;
+    background-color: $color-primary;
+    @include font("Geaorgia", 17px, normal, $color-dark-3xl);
+    line-height: 130%;
+    letter-spacing: 1.6px;
+}
