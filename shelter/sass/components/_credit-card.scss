@@ -1,0 +1,11 @@
+.credit-card {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: $color-primary;
+    border-radius: 9px;
+    padding: 10px 15px;
+    & img {
+        margin-right: 15px;
+    }
+}

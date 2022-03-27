@@ -534,6 +534,18 @@ p {
   align-items: center;
 }
 
+.credit-card {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  background-color: #f1cdb3;
+  border-radius: 9px;
+  padding: 10px 15px;
+}
+.credit-card img {
+  margin-right: 15px;
+}
+
 .wrapper {
   display: flex;
   height: 100vh;
@@ -704,6 +716,32 @@ main {
 }
 .help__inner ul li h4 {
   padding-top: 30px;
+}
+
+.donation {
+  background-color: #f6f6f6;
+}
+.donation__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+.donation .content {
+  flex-basis: 32%;
+  margin-left: 30px;
+}
+.donation .content h3 {
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+.donation .content h5 {
+  margin-bottom: 20px;
+}
+.donation .content .paragraph-s {
+  margin-top: 20px;
+  font-style: italic;
 }
 
 /*# sourceMappingURL=style.css.map */
