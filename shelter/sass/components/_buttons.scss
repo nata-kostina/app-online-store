@@ -1,11 +1,41 @@
-button {
+.button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: none;
-    width: 207px;
-    height: 52px;
+    background-color: $color-light-xl;
     padding: 15px 45px;
     border-radius: 100px;
-    background-color: $color-primary;
-    @include font("Geaorgia", 17px, normal, $color-dark-3xl);
-    line-height: 130%;
-    letter-spacing: 1.6px;
+    @include font("Georgia", 17px, 400, $color-dark-3xl);
+    line-height: 1.06;
+    letter-spacing: 0.06em;
+    &_primary {
+        background-color: $color-primary;
+        line-height: 1.2;
+    }
+    &_secondary {
+        border: 2px solid $color-primary;
+        line-height: 1.06;
+    }
+    &_arrow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 23px 19px;
+        width: 52px;
+        height: 52px;
+        border: 2px solid #f1cdb3;
+        border-radius: 100px;
+        &_left {
+            background-image: url("../../assets/images/slider/arrow.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        &_right {
+            background-image: url("../../assets/images/slider/arrow.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            transform: rotate(180deg);
+        }
+    }
 }

@@ -5,9 +5,13 @@
 //components
 @import "components/navigation";
 @import "components/buttons";
-//layout
+@import "components/cards";
+@import "components/slider";
+//layouts
 @import "layouts/content";
 @import "layouts/container";
 @import "layouts/main";
 @import "layouts/header";
 @import "layouts/start-screen";
+@import "layouts/about";
+@import "layouts/pets";

@@ -1,0 +1,25 @@
+.about {
+    background-color: #fff;
+    &__inner {
+        display: flex;
+        justify-content: center;
+        padding-top: 80px;
+        padding-bottom: 100px;
+        & .content {
+            width: 36%;
+            margin-left: 123px;
+        }
+        h3 {
+            padding-top: 14px;
+            padding-right: 60px;
+            padding-bottom: 25px;
+        }
+        .paragraph-l {
+            margin-bottom: 25px;
+        }
+        .paragraph-l:last-child {
+            margin-bottom: 0px;
+        }
+    }
+    &__img {}
+}

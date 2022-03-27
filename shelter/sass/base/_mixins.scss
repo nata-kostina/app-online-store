@@ -1,4 +1,4 @@
-@mixin font ($family: "Georgia", $size, $weight: normal, $color: #FFFFFF) {
+@mixin font ($family: "Georgia", $size, $weight: 400, $color: #FFFFFF) {
     font-family: $family;
     font-size: $size;
     font-weight: $weight;

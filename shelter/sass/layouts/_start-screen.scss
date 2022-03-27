@@ -4,17 +4,26 @@
     &__inner {
         display: flex;
         justify-content: space-between;
-    }
-    & .content {
-        width: 38.3%;
-        margin-right: 42px;
-        padding-top: 163px;
-        &__heading {
-            width: 70%;
-            padding-bottom: 40px;
-        }
-        &__subheading {
+        h2 {
+            max-width: 310px;
             margin-bottom: 42px;
+            color: $color-light-xl;
+        }
+        .paragraph-l {
+            margin-bottom: 42px;
+            color: $color-dark-s;
+        }
+        & .content {
+            width: 38.3%;
+            margin-right: 42px;
+            padding-top: 163px;
+            &__heading {
+                width: 70%;
+                padding-bottom: 40px;
+            }
+            &__subheading {
+                margin-bottom: 42px;
+            }
         }
     }
 }
