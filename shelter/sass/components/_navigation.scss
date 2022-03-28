@@ -4,6 +4,11 @@
         li {
             list-style-type: none;
             margin-left: 35px;
+            line-height: 100%;
+            letter-spacing: -0.4px;
+            &:first-child {
+                margin-left: 0px;
+            }
             a.nav__link {
                 position: relative;
                 @include font("Arial", 15px, 400, $color-dark-s);
@@ -29,11 +34,17 @@
                     }
                 }
             }
-            &:first-child {
-                margin-left: 0px;
+        }
+    }
+    &_light-theme {
+        ul li a.nav__link {
+            color: $color-dark-l;
+            &:hover {
+                color: $color-dark-3xl;
             }
-            line-height: 100%;
-            letter-spacing: -0.4px;
+            &_active {
+                color: $color-dark-3xl;
+            }
         }
     }
 }

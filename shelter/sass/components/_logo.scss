@@ -4,8 +4,19 @@
         line-height: 90%;
     }
     &__subtitle {
-        @include font("Arial", 13px, normal, $TEXT_COLOR);
+        @include font("Arial", 13px, 400, $color-light-xl);
         letter-spacing: 1.4px;
         padding-top: 15px;
+    }
+    &_light-theme {
+        .logo__title {
+            color: $color-dark-l;
+        }
+        .logo__subtitle {
+            @include font("Arial", 13px, 400, $color-dark-3xl);
+            line-height: 15px;
+            letter-spacing: 1.4px;
+            padding-top: 15px;
+        }
     }
 }

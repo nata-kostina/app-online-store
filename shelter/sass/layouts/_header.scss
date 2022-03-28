@@ -9,4 +9,13 @@
         padding-top: 60px;
         padding-bottom: 60px;
     }
+    &_light-theme {
+        background-color: $color-light-xl;
+        background-image: none;
+    }
+    &_pets-page {
+        .header__inner {
+            padding: 30px 0;
+        }
+    }
 }

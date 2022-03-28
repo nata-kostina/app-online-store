@@ -432,8 +432,20 @@ p {
 .logo__subtitle {
   font-family: "Arial";
   font-size: 13px;
-  font-weight: normal;
+  font-weight: 400;
   color: #ffffff;
+  letter-spacing: 1.4px;
+  padding-top: 15px;
+}
+.logo_light-theme .logo__title {
+  color: #545454;
+}
+.logo_light-theme .logo__subtitle {
+  font-family: "Arial";
+  font-size: 13px;
+  font-weight: 400;
+  color: #292929;
+  line-height: 15px;
   letter-spacing: 1.4px;
   padding-top: 15px;
 }
@@ -446,6 +458,9 @@ p {
   margin-left: 35px;
   line-height: 100%;
   letter-spacing: -0.4px;
+}
+.nav ul li:first-child {
+  margin-left: 0px;
 }
 .nav ul li a.nav__link {
   position: relative;
@@ -475,8 +490,14 @@ p {
   width: 100%;
   background-color: #f1cdb3;
 }
-.nav ul li:first-child {
-  margin-left: 0px;
+.nav_light-theme ul li a.nav__link {
+  color: #545454;
+}
+.nav_light-theme ul li a.nav__link:hover {
+  color: #292929;
+}
+.nav_light-theme ul li a.nav__link_active {
+  color: #292929;
 }
 
 .button {
@@ -635,6 +656,13 @@ main {
   align-items: center;
   padding-top: 60px;
   padding-bottom: 60px;
+}
+.header_light-theme {
+  background-color: #ffffff;
+  background-image: none;
+}
+.header_pets-page .header__inner {
+  padding: 30px 0;
 }
 
 .start-screen {
