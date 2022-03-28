@@ -5,11 +5,170 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Our pets</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>This is Pet page</h1>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="header__inner">
+                    <a href="#" class="logo">
+                        <h1 class="logo__title">Cozy House</h1>
+                        <p class="logo__subtitle">Shelter for pets in Boston</p>
+                    </a>
+                    <nav class="nav">
+                        <ul>
+                            <li>
+                                <a href="../main/index.html" class="nav__link">About the shelter</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav__link nav__link_active">Our pets</a>
+                            </li>
+                            <li>
+                                <a href="#help" class="nav__link">Help the shelter</a>
+                            </li>
+                            <li>
+                                <a href="#footer" class="nav__link">Contacts</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- /.header__inner -->
+            </div>
+            <!-- /.container -->
+        </header>
+        <!-- /.header -->
+        <main class="main">
+            <section class="pets">
+                <div class="container">
+                    <div class="pets__inner">
+                        <h3>Our friends who are looking for a house</h3>
+                        <div class="card-container">
+                            <div class="card__item">
+                                <div class="img-container">
+                                    <img src="../../assets/images/our-pets/pets-katrine.png" alt="dog Katrine">
+                                </div>
+                                <h4>Katrine</h4>
+                                <button class="button button_secondary">Learn more</button>
+                            </div>
+                            <div class="card__item">
+                                <div class="img-container">
+                                    <img src="../../assets/images/our-pets/pets-jennifer.png" alt="dog Jennifer">
+                                </div>
+                                <h4>Jennifer</h4>
+                                <button class="button button_secondary">Learn more</button>
+                            </div>
+                            <div class="card__item">
+                                <div class="img-container">
+                                    <img src="../../assets/images/our-pets/pets-woody.png" alt="dog Woody">
+                                </div>
+                                <h4>Woody</h4>
+                                <button class="button button_secondary">Learn more</button>
+                            </div>
+                            <div class="card__item">
+                                <div class="img-container">
+                                    <img src="../../assets/images/our-pets/pets-sophia.png" alt="dog Sophia">
+                                </div>
+                                <h4>Sophia</h4>
+                                <button class="button button_secondary">Learn more</button>
+                            </div>
+                            <div class="card__item">
+                                <div class="img-container">
+                                    <img src="../../assets/images/our-pets/pets-timmy.png" alt="dog Timmy">
+                                </div>
+                                <h4>Timmy</h4>
+                                <button class="button button_secondary">Learn more</button>
+                            </div>
+                            <div class="card__item">
+                                <div class="img-container">
+                                    <img src="../../assets/images/our-pets/pets-charly.png" alt="dog Charly">
+                                </div>
+                                <h4>Charly</h4>
+                                <button class="button button_secondary">Learn more</button>
+                            </div>
+                            <div class="card__item">
+                                <div class="img-container">
+                                    <img src="../../assets/images/our-pets/pets-scarlet.png" alt="dog Scarlett">
+                                </div>
+                                <h4>Scarlett</h4>
+                                <button class="button button_secondary">Learn more</button>
+                            </div>
+                            <div class="card__item">
+                                <div class="img-container">
+                                    <img src="../../assets/images/our-pets/pets-freddie.png" alt="dog Freddie">
+                                </div>
+                                <h4>Freddie</h4>
+                                <button class="button button_secondary">Learn more</button>
+                            </div>
+                        </div>
+                        <nav class="pagination">
+                            <button class="button button-paginator button-paginator_inactive">&lt;&lt;</button>
+                            <button class="button button-paginator button-paginator_inactive">&lt;</button>
+                            <button class="button button-paginator button-paginator_active">1</button>
+                            <button class="button button-paginator">&gt;</button>
+                            <button class="button button-paginator">&gt;&gt;</button>
+                        </nav>
+                    </div>
+                    <!-- /.pets__inner -->
+                </div>
+                <!-- /.container -->
+            </section>
+            <!-- /.pets -->
+        </main>
+        <!-- /.main -->
+        <footer id="footer" class="footer">
+            <div class="container">
+                <div class="footer__inner">
+                    <div class="content">
+                        <div class="contacts">
+                            <h3>For questions and suggestions</h3>
+                            <ul>
+                                <li>
+                                    <a href="mailto:email@shelter.com">
+                                        <img src="../../assets/images/footer/icon-email.svg" alt="">
+                                        <h4>email@shelter.com</h4>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="tel:+136745677554">
+                                        <img src="../../assets/images/footer/icon-phone.svg" alt="">
+                                        <h4>+13 674 567 75 54</h4>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="locations">
+                            <h3>We are waiting for your visit</h3>
+                            <ul>
+                                <li>
+                                    <a href="https://goo.gl/maps/8rGewFYPC2fT7HTU7">
+                                        <img src="../../assets/images/footer/icon-marker.svg" alt="">
+                                        <h4>1 Central Street, Boston (entrance from the store)</h4>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://goo.gl/maps/cFjkCzGJQ8fRR8vj6">
+                                        <img src="../../assets/images/footer/icon-marker.svg" alt="">
+                                        <h4>18 South Park, London </h4>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="img-container">
+                        <img src="../../assets/images/footer-puppy.png" alt="funny puppy">
+                    </div>
+                </div>
+                <!-- /.footer__inner -->
+            </div>
+            <!-- /.footer__container -->
+        </footer>
+        <!-- /.footer -->
+    </div>
+    <!-- /.wrapper -->
 </body>
 
 </html>
