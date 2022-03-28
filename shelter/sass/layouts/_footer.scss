@@ -35,14 +35,20 @@
                     align-items: center;
                     margin-bottom: 40px;
                     padding-top: 35px;
-                    img {
-                        margin-right: 20px;
-                    }
+                    transition: all 0.4s ease-in-out;
                     a {
+                        display: flex;
                         text-decoration: none;
-                    }
-                    h4 {
-                        color: $color-primary;
+                        img {
+                            margin-right: 20px;
+                        }
+                        h4 {
+                            color: $color-primary;
+                            transition: all 0.4s ease-in-out;
+                            &:hover {
+                                color: $color-light-s;
+                            }
+                        }
                     }
                     &:last-child {
                         margin-bottom: 0px;

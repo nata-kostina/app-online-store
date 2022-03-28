@@ -1,21 +1,33 @@
 .button {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
     border: none;
+    outline: none;
+    text-decoration: none;
     background-color: $color-light-xl;
     padding: 15px 45px;
     border-radius: 100px;
     @include font("Georgia", 17px, 400, $color-dark-3xl);
     line-height: 1.06;
     letter-spacing: 0.06em;
+    transition: all 0.4s ease-in-out;
+    &:hover {
+        cursor: pointer;
+    }
     &_primary {
         background-color: $color-primary;
         line-height: 1.2;
+        &:hover {
+            background-color: $color-primary-light;
+        }
     }
     &_secondary {
         border: 2px solid $color-primary;
         line-height: 1.06;
+        &:hover {
+            background-color: $color-primary-light;
+        }
     }
     &_arrow {
         display: flex;
@@ -26,6 +38,9 @@
         height: 52px;
         border: 2px solid #f1cdb3;
         border-radius: 100px;
+        &:hover {
+            background-color: $color-primary-light;
+        }
         &_left {
             background-image: url("../../assets/images/slider/arrow.png");
             background-repeat: no-repeat;

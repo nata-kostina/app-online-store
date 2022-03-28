@@ -1,0 +1,11 @@
+.logo {
+    text-decoration: none;
+    &__title {
+        line-height: 90%;
+    }
+    &__subtitle {
+        @include font("Arial", 13px, normal, $TEXT_COLOR);
+        letter-spacing: 1.4px;
+        padding-top: 15px;
+    }
+}
