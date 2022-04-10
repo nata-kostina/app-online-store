@@ -1,21 +1,30 @@
 .header {
-    @include bg-image("../../assets/images/bg-gradient.png", $START_SCREEN_GRAD_BG);
-    background-position: center 0;
-    position: relative;
-    &__inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 60px;
-        padding-bottom: 60px;
-    }
-    &_light-theme {
-        background-color: $color-light-xl;
-        background-image: none;
-    }
-    &_pets-page {
-        .header__inner {
-            padding: 30px 0;
-        }
-    }
+	background-color: $color-dark-3xl;
+	@include bg-image("../../assets/images/general/bg-gradient.png", $START_SCREEN_GRAD_BG);
+	background-position: center 0;
+	
+	
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+	&_light-theme {
+		background-color: $color-light-xl;
+		background-image: none;
+		min-height: 120px;
+	}
+	&_sticky {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		z-index: 10;
+		background-color: $color-light-xl;
+		.header__inner {
+			padding: 30px 0;
+		}
+	}
 }

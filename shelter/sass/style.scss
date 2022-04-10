@@ -9,8 +9,8 @@
 @import "components/cards";
 @import "components/slider";
 @import "components/credit-card";
+@import "components/pagination";
 //layouts
-@import "layouts/content";
 @import "layouts/container";
 @import "layouts/main";
 @import "layouts/header";
@@ -20,3 +20,4 @@
 @import "layouts/help";
 @import "layouts/donation";
 @import "layouts/footer";
+@import "layouts/columns"

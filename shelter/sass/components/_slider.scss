@@ -4,5 +4,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+		  & .col-3-layout {
+			width: 100%;
+			justify-content: space-evenly;
+
+			& .card__item {
+				margin-bottom: 0;
+			}
+		  }
     }
 }

@@ -1,7 +1,6 @@
 .footer {
-    @include bg-image("../../assets/images/bg-footer.png");
-    &__inner {
-        // overflow: hidden;
+    @include bg-image("../../assets/images/footer/bg-footer.png", $START_SCREEN_GRAD_BG);
+    &__inner {       
         display: flex;
         justify-content: space-between;
         padding-top: 40px;
@@ -15,6 +14,9 @@
                 margin-right: 140px;
                 display: flex;
                 flex-direction: column;
+					 & ul {
+					
+					 }
             }
             .locations {
                 position: relative;
@@ -23,18 +25,20 @@
             }
             h3 {
                 color: $color-light-xl;
-                //  margin-bottom: 40px;
+                
             }
             ul {
                 margin: 0;
                 padding: 0;
                 position: relative;
+					 padding-top: 20px;
+			
                 li {
                     list-style: none;
                     display: flex;
                     align-items: center;
-                    margin-bottom: 40px;
-                    padding-top: 35px;
+						  height: 75px;                  
+                
                     transition: all 0.4s ease-in-out;
                     a {
                         display: flex;

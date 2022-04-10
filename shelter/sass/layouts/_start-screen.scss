@@ -1,5 +1,6 @@
 .start-screen {
-    @include bg-image("../../assets/images/bg-gradient.png", $START_SCREEN_GRAD_BG);
+	background-color: $color-dark-3xl;
+    @include bg-image("../../assets/images/general/bg-gradient.png", $START_SCREEN_GRAD_BG);
     background-position: center -180px;
     &__inner {
         display: flex;
