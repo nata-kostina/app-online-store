@@ -1,0 +1,16 @@
+.credit-card {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: $color-primary;
+    border-radius: 9px;
+    padding: 10px 15px;
+    transition: all 0.4s ease-in-out;
+    & img {
+        margin-right: 15px;
+    }
+    &:hover {
+        cursor: pointer;
+        background-color: $color-primary-light;
+    }
+}
