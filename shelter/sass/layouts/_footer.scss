@@ -11,7 +11,7 @@
                 position: relative;
                 flex-basis: 33%;
                 padding-top: 16px;
-                margin-right: 140px;
+                margin-right: 142px;
                 display: flex;
                 flex-direction: column;
 					 & ul {
@@ -37,11 +37,12 @@
                     list-style: none;
                     display: flex;
                     align-items: center;
-						  height: 75px;                  
+						  height: 71px;                  
                 
                     transition: all 0.4s ease-in-out;
                     a {
                         display: flex;
+								align-items: center;
                         text-decoration: none;
                         img {
                             margin-right: 20px;

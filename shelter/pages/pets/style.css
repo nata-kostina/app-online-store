@@ -359,10 +359,10 @@ body {
 
 h1 {
   font-family: "Georgia";
-  font-size: 2.13rem;
+  font-size: 32px;
   font-weight: 400;
   color: #F1CDB3;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.06em;
 }
 
 h2 {
@@ -425,18 +425,21 @@ p {
 }
 
 .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
 }
 .logo__title {
-  line-height: 90%;
+  line-height: 110%;
 }
 .logo__subtitle {
   font-family: "Arial";
   font-size: 13px;
   font-weight: 400;
   color: #ffffff;
-  letter-spacing: 1.4px;
-  padding-top: 15px;
+  padding-top: 10px;
+  letter-spacing: 0.1em;
 }
 .logo_light-theme .logo__title {
   color: #545454;
@@ -448,7 +451,9 @@ p {
   color: #292929;
   line-height: 15px;
   letter-spacing: 1.4px;
-  padding-top: 15px;
+  letter-spacing: 0.1em;
+  padding-top: 10px;
+  padding-left: 4px;
 }
 
 .nav ul {
@@ -643,7 +648,7 @@ p {
   align-items: center;
 }
 .slider__inner .col-3-layout {
-  width: 100%;
+  width: 91.2%;
   justify-content: space-evenly;
 }
 .slider__inner .col-3-layout .card__item {
@@ -728,7 +733,8 @@ main {
   background-color: #ffffff;
 }
 .header_sticky .header__inner {
-  padding: 30px 0;
+  padding-top: 30px;
+  padding-bottom: 0px;
 }
 
 .start-screen {
@@ -879,7 +885,7 @@ main {
 .donation .content .paragraph-s {
   margin-top: 20px;
   font-style: italic;
-  letter-spacing: 0.007em;
+  letter-spacing: 0em;
 }
 
 .footer {
@@ -901,7 +907,7 @@ main {
   position: relative;
   flex-basis: 33%;
   padding-top: 16px;
-  margin-right: 140px;
+  margin-right: 142px;
   display: flex;
   flex-direction: column;
 }
@@ -923,11 +929,12 @@ main {
   list-style: none;
   display: flex;
   align-items: center;
-  height: 75px;
+  height: 71px;
   transition: all 0.4s ease-in-out;
 }
 .footer__inner .content ul li a {
   display: flex;
+  align-items: center;
   text-decoration: none;
 }
 .footer__inner .content ul li a img {
