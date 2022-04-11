@@ -75,7 +75,7 @@
 		border: 2px solid $color-primary;		
 		border-radius: 100px;
 		
-		&:not([disabled], [active]):hover {
+		&:not([disabled], .button_paginator_active):hover {
 			background: $color-primary-light;
 		}	
 
