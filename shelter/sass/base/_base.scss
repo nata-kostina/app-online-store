@@ -8,8 +8,8 @@ body {
 }
 
 h1 {
-	@include font("Georgia", 2.13rem, 400, $color-primary);
-	letter-spacing: 0.5px;
+	@include font("Georgia", 32px, 400, $color-primary);
+	letter-spacing: 0.06em;
 }
 
 h2 {
