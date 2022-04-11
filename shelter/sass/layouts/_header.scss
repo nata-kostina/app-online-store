@@ -23,8 +23,9 @@
 		z-index: 10;
 		background-color: $color-light-xl;
 		.header__inner {
+			max-height: 120px;
 			padding-top: 30px;
-			padding-bottom: 0px;
+			padding-bottom: 30px;
 		}
 	}
 }

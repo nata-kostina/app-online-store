@@ -733,8 +733,9 @@ main {
   background-color: #ffffff;
 }
 .header_sticky .header__inner {
+  max-height: 120px;
   padding-top: 30px;
-  padding-bottom: 0px;
+  padding-bottom: 30px;
 }
 
 .start-screen {
