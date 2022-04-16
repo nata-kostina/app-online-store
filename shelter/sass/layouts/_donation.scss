@@ -1,26 +1,92 @@
 .donation {
-    background-color: $color-light-l;
-    &__inner {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 80px;
-        padding-bottom: 100px;
-    }
-    & .content {
-        flex-basis: 31%;
-        margin-left: 24px;
-        & h3 {
-            max-width: 300px;
-            margin-bottom: 20px;
-        }
-        & h5 {
-            margin-bottom: 20px;
-        }
-        & .paragraph-s {
-            margin-top: 20px;
-            font-style: italic;
+	background-color: $color-light-l;
+	&__inner {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-top: 80px;
+		padding-bottom: 100px;
+		& .content {
+			flex-basis: 31%;
+			margin-left: 24px;
+			& h3 {
+				max-width: 300px;
+				margin-bottom: 20px;
+			}
+			& h5 {
+				margin-bottom: 20px;
+			}
+			& .paragraph-s {
+				margin-top: 20px;
+				font-style: italic;
 				letter-spacing: 0em;
-        }
-    }
+			}
+		}
+		@media screen and (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet) {
+			flex-direction: column;
+			.content {
+				order: 1;
+				margin: 0px auto;
+				width: 54%;
+			}
+
+			.img__container {
+				order: 2;
+				margin-top: 60px;
+			}
+		}
+
+		@media screen and (max-width: $breakpoint-tablet)  {
+			flex-wrap: wrap;
+			padding: 42px 0;
+			padding-bottom: 38px;
+			& .content {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				order: 1;
+				flex-basis: 100%;
+				margin: 0;
+				padding: 0;
+				& h3 {
+					padding: 0 45px;
+					text-align: center;    
+					margin: 0 auto 20px;
+				}
+
+				& h5 {
+					margin-bottom: 20px;
+					text-align: center;
+					line-height: 160%;
+				}
+				& .credit-card {
+					padding: 10px 15px;
+					margin-left: 10px;
+					margin-right: 10px;
+					img {
+						margin-right: 14px;
+					}
+					h4 {
+						font-size: 15px;
+						letter-spacing: 0.06em;
+					}
+				}
+				& .paragraph-s {
+					font-style: italic;
+					margin-bottom: 42px;
+					text-align: justify;
+					padding: 0 10px;
+				}
+			}
+
+			& .img__container {
+				order: 2;
+				width: 100%;
+				text-align: center;
+				img {
+					width: 87%;
+				}
+			}
+		}
+	}
 }

@@ -9,7 +9,7 @@ body {
 
 h1 {
 	@include font("Georgia", 32px, 400, $color-primary);
-	letter-spacing: 0.06em;
+	letter-spacing: 0.0555em;
 }
 
 h2 {
@@ -21,18 +21,31 @@ h3 {
 	@include font("Georgia", 35px, 400, $color-dark-l);
 	line-height: 130%;
 	letter-spacing: 0.06em;
+	@media screen and (max-width: $breakpoint-tablet) and (min-width: $breakpoint-mobile) {
+		@include font("Georgia", 25px, 400, $color-dark-l);
+	}
 }
 
 h4 {
 	@include font("Georgia", 20px, 400, $color-dark-l);
 	line-height: 115%;
 	letter-spacing: 0.06em;
+	// @media screen and (max-width: $breakpoint-tablet) and (min-width: $breakpoint-mobile) {
+	// 	@include font("Georgia", 15px, 400, $color-dark-l);
+	// 	line-height: 110%;
+	// }
 }
 
 h5 {
 	@include font("Georgia", 15px, 400, $color-dark-l);
 	line-height: 110%;
 	letter-spacing: 0.06em;
+	@media screen and (max-width: $breakpoint-tablet) and (min-width: $breakpoint-mobile) {
+		@include font("Georgia", 15px, 400, $color-dark-l);
+		line-height: 160%;
+		letter-spacing: 0.006em;
+	}
+	
 }
 
 p {
@@ -43,6 +56,10 @@ p {
 .paragraph-s {
 	@include font("Arial", 12px, 400, $color-dark-m);
 	line-height: 150%;
+	@media screen and (max-width: $breakpoint-tablet) and (min-width: $breakpoint-mobile) {
+		@include font("Arial", 12px, 400, $color-dark-m);
+		line-height: 18px;
+	}
 }
 
 .paragraph-l {

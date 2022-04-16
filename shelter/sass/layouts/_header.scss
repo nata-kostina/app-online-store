@@ -1,14 +1,23 @@
 .header {
 	background-color: $color-dark-3xl;
 	@include bg-image("../../assets/images/general/bg-gradient.png", $START_SCREEN_GRAD_BG);
-	background-position: center 0;	
-	
+	background-position: center 0;
+
 	&__inner {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		padding-top: 60px;
 		padding-bottom: 60px;
+
+		@media screen and (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
+		@media screen and (max-width: $breakpoint-tablet) {
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
 	}
 	&_light-theme {
 		background-color: $color-light-xl;
@@ -28,4 +37,26 @@
 			padding-bottom: 30px;
 		}
 	}
+	& .logo {
+		margin-right: 81px;
+	}
+
+	@media screen and (max-width: $breakpoint-tablet)  {
+		&__inner {
+			nav {
+				display: none;
+				
+			}
+			.logo {
+				margin-right: 0;
+			}
+			.menu-burger {
+				display: block;
+				margin-right: 40px;
+				
+			}
+		}
+	}
+
+
 }

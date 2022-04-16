@@ -1,45 +1,103 @@
 .help {
-    &__inner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding-top: 80px;
-        padding-bottom: 45px;
-        & h3 {
-            max-width: 315px;
-            padding-bottom: 60px;
-        }
-        ul {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            width: 100%;
-            margin: 0px;
-            padding: 0px 87px;
-            li {
-                margin: 0px;
-                padding: 0px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                list-style-type: none;
-                margin-right: 119px;
-                margin-bottom: 55px;
-                & .img-container {
-                    width: 60px;
-                    height: 60px;
-                }
-                &:nth-child(5) {
-                    margin-right: 0px;
-                }
-                &:last-child {
-                    margin-right: 0px;
-                }
-                h4 {
-                    padding-top: 30px;
-                }
-            }
-        }
-    }
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding-top: 80px;
+		padding-bottom: 45px;
+		& h3 {
+			max-width: 315px;
+			padding-bottom: 60px;
+		}
+		ul {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			width: 100%;
+			margin: 0px;
+			padding: 0px 87px;
+			li {
+				margin: 0px;
+				padding: 0px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				list-style-type: none;
+				margin-right: 119px;
+				margin-bottom: 55px;
+				& .img-container {
+					width: 60px;
+					height: 60px;
+				}
+				&:nth-child(5) {
+					margin-right: 0px;
+				}
+				&:last-child {
+					margin-right: 0px;
+				}
+				h4 {
+					padding-top: 30px;
+				}
+			}
+		}
+		@media screen and (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet) {
+			ul {
+				display: grid;
+				justify-content: space-between;
+				grid-template-areas:
+					"i-1 i-2 i-3"
+					"i-4 i-5 i-6"
+					"i-7 i-8 i-9";
+
+				width: 100%;
+				margin: 0px;
+				padding: 0px;
+				padding: 0 50px;
+				li {
+					@for $i from 1 through 9 {
+						&:nth-child(#{$i}) {
+							grid-area: i-#{$i};
+						}
+					}
+					margin: 0px;
+					margin-bottom: 55px;
+					padding: 0px;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					list-style-type: none;
+				}
+			}
+		}
+
+		@media screen and (max-width: $breakpoint-tablet) {
+			padding: 42px 0 12px 0;
+
+			& h3 {
+				padding: 0px 39px 42px;
+			}
+
+			ul {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				padding: 0;
+
+				li {
+					margin-right: 0;
+					margin-bottom: 30px;
+
+					& .img-container {
+						width: 50px;
+						height: 50px;
+					}
+
+					h4 {
+						font-size: 15px;
+						padding-top: 20px;
+					}
+				}
+			}
+		}
+	}
 }

@@ -3,20 +3,38 @@
 }
 
 .pets {
-    background-color: $color-light-l;
-	 
-    &__inner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding-top: 80px;
-        padding-bottom: 100px;
-    }
-    h3 {       
-        padding-bottom: 60px;
-    }
-    .button_primary {
-        margin-top: 60px;
-    }
+	background-color: $color-light-l;
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding-top: 80px;
+		padding-bottom: 100px;
+	}
+	h3 {
+		padding-bottom: 60px;
+	}
+	.button_primary {
+		margin-top: 60px;
+	}
+
+	@media screen and (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet) {
+		.button_primary {
+			margin-top: 60px;
+		}
+	}
+
+	@media screen and (max-width: $breakpoint-tablet)  {
+		&__inner {
+			padding: 42px 0;
+			h3 {
+				padding-bottom: 42px;
+			}
+			.button_primary {
+				margin-top: 42px;
+			}
+		}
+	}
 }

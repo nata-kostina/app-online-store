@@ -1,50 +1,52 @@
 .nav {
-    ul {
-        display: flex;
-        li {
-            list-style-type: none;
-            margin-left: 35px;
-            line-height: 100%;
-            letter-spacing: -0.4px;
-            &:first-child {
-                margin-left: 0px;
-            }
-            a.nav__link {
-                position: relative;
-                @include font("Arial", 15px, 400, $color-dark-s);
-                letter-spacing: 0.1px;
-                text-decoration: none;
-                transition: all 0.2s ease-in-out;
-                &:hover {
-                    color: $color-light-s;
-                }
-                &:active {
-                    color: $color-light-s;
-                }
-                &_active {
-                    color: $color-light-s;
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        bottom: -5px;
-                        display: block;
-                        height: 3px;
-                        width: 100%;
-                        background-color: $color-primary;
-                    }
-                }
-            }
-        }
-    }
-    &_light-theme {
-        ul li a.nav__link {
-            color: $color-dark-l;
-            &:hover {
-                color: $color-dark-3xl;
-            }
-            &_active {
-                color: $color-dark-3xl;
-            }
-        }
-    }
+	ul {
+		display: flex;
+		margin: 0;
+		padding: 0;
+		li {
+			list-style-type: none;
+			margin-left: 35px;
+			line-height: 100%;
+			
+			&:first-child {
+				margin-left: 0px;
+			}
+			a.nav__link {
+				position: relative;
+				@include font("Arial", 15px, 400, $color-dark-s);
+				letter-spacing: 0.0035em;
+				text-decoration: none;
+				transition: all 0.2s ease-in-out;
+				&:hover {
+					color: $color-light-s;
+				}
+				&:active {
+					color: $color-light-s;
+				}
+				&_active {
+					color: $color-light-s;
+					&::after {
+						content: "";
+						position: absolute;
+						bottom: -5px;
+						display: block;
+						height: 3px;
+						width: 100%;
+						background-color: $color-primary;
+					}
+				}
+			}
+		}
+	}
+	&_light-theme {
+		ul li a.nav__link {
+			color: $color-dark-l;
+			&:hover {
+				color: $color-dark-3xl;
+			}
+			&_active {
+				color: $color-dark-3xl;
+			}
+		}
+	}
 }
