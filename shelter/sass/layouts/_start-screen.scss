@@ -33,12 +33,12 @@
 
 			& .button {
 				margin-right: auto;
-				@media screen and (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet) {
+				@media screen and (max-width:calc($breakpoint-desktop - 0.5px)) and (min-width: $breakpoint-tablet) {
 					margin: 0 auto;
 				}
 			}
 
-			@media screen and (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet) {
+			@media screen and (max-width: calc($breakpoint-desktop - 0.5px)) and (min-width: $breakpoint-tablet) {
 				width: 64.97%;
 				padding-top: 30px;
 				padding-bottom: 100px;
@@ -49,18 +49,18 @@
 			width: 58.2%;
 			align-self: flex-end;
 
-			@media screen and (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet) {
+			@media screen and (max-width: calc($breakpoint-desktop - 0.5px)) and (min-width: $breakpoint-tablet) {
 				width: 81.3%;
 				margin-left: 139px;
 			}
 		}
 
-		@media screen and (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet) {
+		@media screen and (max-width: calc($breakpoint-desktop - 0.5px)) and (min-width: $breakpoint-tablet) {
 			flex-wrap: wrap;
 			justify-content: center;
 		}
 
-		@media screen and (max-width: $breakpoint-tablet) {
+		@media screen and (max-width: calc($breakpoint-tablet - 0.5px)) {
 			flex-wrap: wrap;
 			& .content {
 				width: 100%;

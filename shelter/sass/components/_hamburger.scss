@@ -33,7 +33,14 @@
 	&:last-child {
 		margin-bottom: 0px;
 	}
+
+	
 }
+
+.menu-burger[data-theme="light"] #menu-toggle span {
+	background: $color-black;
+}
+
 
 .burger-container {
 	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
@@ -123,10 +130,8 @@
 	transform: none;
 }
 
-@media screen and (max-width: $breakpoint-mobile) {
-	 
-		a.nav__link {
-			font-size: 15px;
-		}
-	
+@media screen and (max-width: calc($breakpoint-mobile - 0.5px)) {
+	a.nav__link {
+		font-size: 15px;
+	}
 }

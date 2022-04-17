@@ -10,11 +10,11 @@
 		padding-top: 60px;
 		padding-bottom: 60px;
 
-		@media screen and (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+		@media screen and (min-width: $breakpoint-tablet) and (max-width: calc($breakpoint-desktop - 0.5px)) {
 			padding-top: 30px;
 			padding-bottom: 30px;
 		}
-		@media screen and (max-width: $breakpoint-tablet) {
+		@media screen and (max-width: calc($breakpoint-tablet - 0.5px)) {
 			padding-top: 30px;
 			padding-bottom: 30px;
 		}
@@ -41,7 +41,7 @@
 		margin-right: 81px;
 	}
 
-	@media screen and (max-width: $breakpoint-tablet)  {
+	@media screen and (max-width: calc($breakpoint-tablet - 0.5px))  {
 		&__inner {
 			nav {
 				display: none;

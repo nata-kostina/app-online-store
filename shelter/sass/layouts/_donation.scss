@@ -22,7 +22,7 @@
 				letter-spacing: 0em;
 			}
 		}
-		@media screen and (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet) {
+		@media screen and (max-width: calc($breakpoint-desktop - 0.5px)) and (min-width: $breakpoint-tablet) {
 			flex-direction: column;
 			.content {
 				order: 1;
@@ -36,7 +36,7 @@
 			}
 		}
 
-		@media screen and (max-width: $breakpoint-tablet)  {
+		@media screen and (max-width: calc($breakpoint-tablet - 0.5px))  {
 			flex-wrap: wrap;
 			padding: 42px 0;
 			padding-bottom: 38px;
