@@ -6,9 +6,11 @@
 		align-items: center;
 		padding-top: 80px;
 		padding-bottom: 100px;
+		padding-right: 142px;
+		padding-left: 143px;
 		& .content {
-			flex-basis: 31%;
-			margin-left: 24px;
+			flex-basis: 75%;
+			margin-left: 30px;
 			& h3 {
 				max-width: 300px;
 				margin-bottom: 20px;
@@ -22,24 +24,32 @@
 				letter-spacing: 0em;
 			}
 		}
+
+		
+
 		@media screen and (max-width: calc($breakpoint-desktop - 0.5px)) and (min-width: $breakpoint-tablet) {
 			flex-direction: column;
+			padding-right: 0px;
+			padding-left: 0px;
 			.content {
 				order: 1;
 				margin: 0px auto;
 				width: 54%;
 			}
 
-			.img__container {
+			.img-container {
 				order: 2;
 				margin-top: 60px;
+				& img {
+					margin: 0 auto;
+					width: 71%;
+				}
 			}
 		}
 
-		@media screen and (max-width: calc($breakpoint-tablet - 0.5px))  {
+		@media screen and (max-width: calc($breakpoint-tablet - 0.5px)) {
 			flex-wrap: wrap;
 			padding: 42px 0;
-			padding-bottom: 38px;
 			& .content {
 				display: flex;
 				flex-direction: column;
@@ -50,7 +60,7 @@
 				padding: 0;
 				& h3 {
 					padding: 0 45px;
-					text-align: center;    
+					text-align: center;
 					margin: 0 auto 20px;
 				}
 
@@ -67,7 +77,7 @@
 						margin-right: 14px;
 					}
 					h4 {
-						font-size: 15px;
+						font-size: 14px;
 						letter-spacing: 0.06em;
 					}
 				}
@@ -79,11 +89,12 @@
 				}
 			}
 
-			& .img__container {
+			& .img-container {
 				order: 2;
 				width: 100%;
 				text-align: center;
-				img {
+				& img {
+					margin: 0 auto;
 					width: 87%;
 				}
 			}
