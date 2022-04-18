@@ -1,14 +1,24 @@
 .header {
 	background-color: $color-dark-3xl;
-	@include bg-image("../../assets/images/general/bg-gradient.png", $START_SCREEN_GRAD_BG);
-	background-position: center 0;	
 	
+	@include bg-image("../../assets/images/general/bg-gradient.png", $START_SCREEN_GRAD_BG);
+	background-position: center 0;
+
 	&__inner {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		padding-top: 60px;
 		padding-bottom: 60px;
+
+		@media screen and (min-width: $breakpoint-tablet) and (max-width: calc($breakpoint-desktop - 0.5px)) {
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
+		@media screen and (max-width: calc($breakpoint-tablet - 0.5px)) {
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
 	}
 	&_light-theme {
 		background-color: $color-light-xl;
@@ -28,4 +38,31 @@
 			padding-bottom: 30px;
 		}
 	}
+	& .logo {
+		margin-right: 81px;
+	}
+	@media screen and (max-width: calc($breakpoint-desktop - 0.5px)) {
+		background-color: $color-black;
+		@include bg-image("../../assets/images/general/bg-main-768.png", $START_SCREEN_GRAD_BG);
+		background-position: center 0;
+	}
+	@media screen and (max-width: calc($breakpoint-tablet - 0.5px))  {
+		background-color: $color-black;
+		@include bg-image("../../assets/images/general/bg-main-320.png", $START_SCREEN_GRAD_BG);
+		background-position: center 0;
+		&__inner {
+			nav {
+				display: none;
+				
+			}
+			.logo {
+				margin-right: 0;
+			}
+			#menu-burger {
+				display: block;				
+			}
+		}
+	}
+
+
 }

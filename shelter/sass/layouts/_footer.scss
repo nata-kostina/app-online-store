@@ -1,69 +1,150 @@
 .footer {
-    @include bg-image("../../assets/images/footer/bg-footer.png", $START_SCREEN_GRAD_BG);
-    &__inner {       
-        display: flex;
-        justify-content: space-between;
-        padding-top: 40px;
-        .content {
-            display: flex;
-            flex-direction: row;
-            .contacts {
-                position: relative;
-                flex-basis: 33%;
-                padding-top: 16px;
-                margin-right: 142px;
-                display: flex;
-                flex-direction: column;
-					 & ul {
-					
-					 }
-            }
-            .locations {
-                position: relative;
-                flex-basis: 35%;
-                padding-top: 16px;
-            }
-            h3 {
-                color: $color-light-xl;
-                
-            }
-            ul {
-                margin: 0;
-                padding: 0;
-                position: relative;
-					 padding-top: 20px;
-			
-                li {
-                    list-style: none;
-                    display: flex;
-                    align-items: center;
-						  height: 71px;                  
-                
-                    transition: all 0.4s ease-in-out;
-                    a {
-                        display: flex;
-								align-items: center;
-                        text-decoration: none;
-                        img {
-                            margin-right: 20px;
-                        }
-                        h4 {
-                            color: $color-primary;
-                            transition: all 0.4s ease-in-out;
-                            &:hover {
-                                color: $color-light-s;
-                            }
-                        }
-                    }
-                    &:last-child {
-                        margin-bottom: 0px;
-                        padding-top: 0px;
-                    }
-                }
-            }
-        }
-        .img-container {
-            flex-basis: 34%;
-        }
-    }
+	@include bg-image("../../assets/images/footer/bg-footer.png", $START_SCREEN_GRAD_BG);
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		padding-top: 40px;
+		.content {
+			display: flex;
+			flex-direction: row;
+			.contacts {
+				position: relative;
+				flex-basis: 33%;
+				padding-top: 16px;
+				margin-right: 142px;
+				display: flex;
+				flex-direction: column;
+				& ul {
+				}
+			}
+			.locations {
+				position: relative;
+				flex-basis: 35%;
+				padding-top: 16px;
+			}
+			h3 {
+				color: $color-light-xl;
+			}
+			ul {
+				margin: 0;
+				padding: 0;
+				position: relative;
+				padding-top: 20px;
+
+				li {
+					list-style: none;
+					display: flex;
+					align-items: center;
+					height: 71px;
+
+					transition: all 0.4s ease-in-out;
+					a {
+						display: flex;
+						align-items: center;
+						text-decoration: none;
+						img {
+							margin-right: 20px;
+						}
+						h4 {
+							color: $color-primary;
+							transition: all 0.4s ease-in-out;
+							&:hover {
+								color: $color-light-s;
+							}
+						}
+					}
+					&:last-child {
+						margin-bottom: 0px;
+						padding-top: 0px;
+					}
+				}
+			}
+		}
+		.img-container {
+			flex-basis: 34%;
+		}
+
+		@media screen and (max-width: calc($breakpoint-desktop - 0.5px)) and (min-width: $breakpoint-tablet) {
+			padding-top: 30px;
+			flex-direction: column;
+			.content {
+				justify-content: space-between;
+				padding: 0 34px;
+				gap: 5%;
+			}
+			.content .contacts {
+				padding-top: 0px;
+				margin-right: 0;
+				flex-basis: 50%;
+			}
+
+			.content .locations {
+				padding-top: 0px;
+				flex-basis: 50%;
+			}
+			.img-container {
+				padding-top: 40px;
+				margin: 0 auto;
+				width: 43%;
+			}
+		}
+
+		@media screen and (max-width: calc($breakpoint-tablet - 0.5px)) {
+			padding-top: 28px;
+			flex-direction: column;
+			flex-wrap: wrap;
+			.content {
+				display: flex;
+				flex-direction: column;
+				text-align: center;
+				.contacts {
+					margin: 0;
+					padding: 0;
+
+					ul {
+						li {
+							justify-content: center;
+						}
+					}
+				}
+				.locations {
+					margin: 0;
+					padding: 0;
+
+					max-width: 400px;
+					margin: 0 auto;
+
+					h3 {
+						padding: 20px;
+					}
+					ul {
+						padding-top: 7px;
+						li {
+							justify-content: left;
+						}
+					}
+				}
+
+				ul {
+					li {
+						h4 {
+							@include font("Georgia", 20px, 400, $color-dark-l);
+						}
+					}
+				}
+			}
+
+			.img-container {
+				width: 88%;
+				margin: 0 auto;
+				margin-top: 28px;
+			}
+		}
+	}
+	@media screen and (max-width: calc($breakpoint-desktop - 0.5px)) and (min-width: $breakpoint-tablet) {
+		@include bg-image("../../assets/images/footer/bg-footer-main-768.png", $START_SCREEN_GRAD_BG);
+	}
+	@media screen and (max-width: calc($breakpoint-tablet - 0.5px)) {
+		@include bg-image("../../assets/images/footer/bg-footer-main-320.png", $START_SCREEN_GRAD_BG);
+	}
 }

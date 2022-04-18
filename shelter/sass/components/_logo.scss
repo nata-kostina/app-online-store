@@ -24,4 +24,8 @@
 			padding-left: 4px;
 		}
 	}
+
+	@media screen and (max-width: calc($breakpoint-desktop - 0.5px)) and (min-width: $breakpoint-tablet) {
+		margin-right: 81px;
+	}
 }
