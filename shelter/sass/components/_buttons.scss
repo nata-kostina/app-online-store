@@ -50,9 +50,13 @@
 		&:hover {
 			background-color: $color-primary-light;
 		}
-		&:focus {
-			background-color: $color-primary-light;
-		}
+		// &:focus {
+		// 	background-color: $color-primary-light;
+		// }
+		// &:active {
+		// 	background-color: $color-primary-light;
+		// }
+
 		&_left {
 			background-image: url("../../assets/images/slider/arrow.png");
 			background-repeat: no-repeat;

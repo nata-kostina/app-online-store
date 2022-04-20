@@ -1,8 +1,7 @@
 .wrapper {
-
 	display: flex;
-	 height: 100vh;
-	flex-direction: column;	
+	height: 100vh;
+	flex-direction: column;
 }
 
 .container {
@@ -18,8 +17,6 @@
 	@media screen and (max-width: calc($breakpoint-tablet - 0.5px)) {
 		padding: 0px 10px;
 	}
-
-
 }
 
 .img-container {
@@ -29,4 +26,14 @@
 		width: 100%;
 		height: auto;
 	}
+}
+
+.overlay {
+	display: none;
+	position: fixed;
+	background-color: rgba(41, 41, 41, 0.6);
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100vh;
 }
