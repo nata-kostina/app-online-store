@@ -67,3 +67,8 @@ p {
 	@include font("Arial", 15px, 400, $color-dark-xl);
 	line-height: 160%;
 }
+
+
+.scroll-hidden {
+	overflow: hidden;
+}
