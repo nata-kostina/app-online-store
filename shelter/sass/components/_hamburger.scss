@@ -1,13 +1,22 @@
-#menu-burger {
-	display: none;				
-}
+button.button_burger {
+	display: block;
 
+	border: none;
+	outline: none;
+	text-decoration: none;
+	background-color: transparent;
+	padding: 0;
+	border-radius: 0;
+
+
+}
 .burger-container {
 	position: absolute;
 	top: 48px;
-    right: 55px;
-    z-index: 10;
+	right: 55px;
+	z-index: 150;
 	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+	transform: none;
 
 	span {
 		display: block;
@@ -23,12 +32,19 @@
 			margin-bottom: 0px;
 		}
 	}
+	&:hover {
+		cursor: pointer;
+	}
+
+	&[data-sticky="true"] {
+		position: fixed;
+	}
 }
-#menu-burger[data-theme="light"] span {
+button.button_burger[data-theme="light"] span {
 	background: $color-black;
 }
 
-#menu-burger[data-theme="light"].open span {
+button.button_burger[data-theme="light"].open span {
 	background: $color-primary;
 }
 
@@ -58,7 +74,7 @@
 
 	transform: translate(101%, 0);
 
-	z-index: 1;
+	z-index: 100;
 	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), visibility 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 
 	&.open {
@@ -100,6 +116,9 @@
 				&:active {
 					color: $color-light-s;
 				}
+				&:focus {
+					color: $color-light-s;
+				}
 
 				&_active {
 					color: $color-light-s;
@@ -121,8 +140,40 @@
 	}
 }
 
-@media screen and (max-width: calc($breakpoint-mobile - 0.5px)) {
-	a.nav__link {
-		font-size: 15px;
+.menu[data-theme="light"] {
+	background-color: $color-light-xl;
+	ul li a.nav__link {
+		color: $color-dark-l;
+		&:hover {
+			color: $color-dark-3xl;
+		}
+		&:active {
+			color: $color-dark-3xl;
+		}
+
+		&:focus {
+			border: 1px solid $color-dark-3xl;
+			color: $color-dark-3xl;
+		}
+
+		&_active {
+			color: $color-dark-3xl;
+		}
+	}
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+	#menu-burger,
+	.menu {
+		display: none;
+	}
+}
+
+
+button.button_burger[data-theme="light"]{
+	&:focus {
+		span{
+			background-color: $color-primary;
+		}
 	}
 }

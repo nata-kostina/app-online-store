@@ -6,16 +6,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Our pets</title>
+	<link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
 	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 	<div class="wrapper">
-		<header class="header header_light-theme">
+		<header class="header" data-theme="light">
 			<div class="header_sticky">
 				<div class="container">
 					<div class="header__inner">
-						<a href="../main/index.html" class="logo logo_light-theme">
+						<a href="../main/index.html" class="logo" data-theme="light">
 							<h1 class="logo__title">Cozy House</h1>
 							<p class="logo__subtitle">Shelter for pets in Boston</p>
 						</a>
@@ -35,43 +36,6 @@
 								</li>
 							</ul>
 						</nav>
-						<div id="menu-burger" data-theme="light" class="burger-container">
-							<span></span>
-							<span></span>
-							<span></span>
-						</div>
-
-						<div id="menu" class="menu">
-							<div class="menu__header">
-								<a href="#" class="logo">
-									<h1 class="logo__title">Cozy House</h1>
-									<p class="logo__subtitle">Shelter for pets in Boston</p>
-								</a>
-							</div>
-
-							<ul id="">
-								<li>
-									<a href="../main/index.html" class="nav__link">
-										About the shelter
-									</a>
-								</li>
-								<li>
-									<a href="#" class="nav__link nav__link_active">
-										Our pets
-									</a>
-								</li>
-								<li>
-									<a href="../main/index.html#help" class="nav__link">
-										Help the shelter
-									</a>
-								</li>
-								<li>
-									<a href="#footer" class="nav__link">
-										Contacts
-									</a>
-								</li>
-							</ul>
-						</div>
 					</div>
 					<!-- /.header__inner -->
 				</div>
@@ -80,79 +44,59 @@
 			<!-- header_sticky -->
 		</header>
 		<!-- /.header -->
+		<button id="menu-burger" data-theme="light" data-sticky="true" class="button button_burger burger-container">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+		<!-- /.menu-burger -->
+		<div id="menu" data-theme="light" class="menu">
+
+			<div class="menu__header">
+				<a href="#" class="logo" data-theme="light">
+					<h1 class="logo__title">Cozy House</h1>
+					<p class="logo__subtitle">Shelter for pets in Boston</p>
+				</a>
+			</div>
+		
+			<ul id="">
+				<li>
+					<a href="../main/index.html" class="nav__link">
+						About the shelter
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav__link nav__link_active">
+						Our pets
+					</a>
+				</li>
+				<li>
+					<a href="../main/index.html#help" class="nav__link">
+						Help the shelter
+					</a>
+				</li>
+				<li>
+					<a href="#footer" class="nav__link">
+						Contacts
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- /.menu -->
+
 		<main class="main page-pets">
 			<section id="pets" class="pets">
 				<div class="container">
 					<div class="pets__inner">
 						<h3>Our friends who<br>are looking for a house</h3>
 						<div class="card-container">
-							<!-- <div class="col-4-layout"> -->
-							<div class="card__item">
-								<div class="img-container">
-									<img src="../../assets/images/our-pets/pets-katrine.png" alt="dog Katrine">
-								</div>
-								<h4>Katrine</h4>
-								<button class="button button_secondary">Learn more</button>
-							</div>
-							<div class="card__item">
-								<div class="img-container">
-									<img src="../../assets/images/our-pets/pets-jennifer.png" alt="dog Jennifer">
-								</div>
-								<h4>Jennifer</h4>
-								<button class="button button_secondary">Learn more</button>
-							</div>
-							<div class="card__item">
-								<div class="img-container">
-									<img src="../../assets/images/our-pets/pets-woody.png" alt="dog Woody">
-								</div>
-								<h4>Woody</h4>
-								<button class="button button_secondary">Learn more</button>
-							</div>
-							<div class="card__item">
-								<div class="img-container">
-									<img src="../../assets/images/our-pets/pets-sophia.png" alt="dog Sophia">
-								</div>
-								<h4>Sophia</h4>
-								<button class="button button_secondary">Learn more</button>
-							</div>
-							<!-- </div>
-							<div class="col-4-layout"> -->
-							<div class="card__item">
-								<div class="img-container">
-									<img src="../../assets/images/our-pets/pets-timmy.png" alt="dog Timmy">
-								</div>
-								<h4>Timmy</h4>
-								<button class="button button_secondary">Learn more</button>
-							</div>
-							<div class="card__item">
-								<div class="img-container">
-									<img src="../../assets/images/our-pets/pets-charly.png" alt="dog Charly">
-								</div>
-								<h4>Charly</h4>
-								<button class="button button_secondary">Learn more</button>
-							</div>
-							<div class="card__item">
-								<div class="img-container">
-									<img src="../../assets/images/our-pets/pets-scarlet.png" alt="dog Scarlett">
-								</div>
-								<h4>Scarlett</h4>
-								<button class="button button_secondary">Learn more</button>
-							</div>
-							<div class="card__item">
-								<div class="img-container">
-									<img src="../../assets/images/our-pets/pets-freddie.png" alt="dog Freddie">
-								</div>
-								<h4>Freddie</h4>
-								<button class="button button_secondary">Learn more</button>
-							</div>
-							<!-- </div> -->
 						</div>
 						<div class="pagination">
-							<button class="button button_paginator button_paginator_inactive" disabled>&lt;&lt;</button>
-							<button class="button button_paginator button_paginator_inactive" disabled>&lt;</button>
-							<button class="button button_paginator button_paginator_active">1</button>
-							<button class="button button_paginator">&gt;</button>
-							<button class="button button_paginator">&gt;&gt;</button>
+							<button class="button button_paginator first button_paginator_inactive" disabled>&lt;&lt;</button>
+							<button class="button button_paginator previous button_paginator_inactive" disabled>&lt;</button>
+							<button class="button button_paginator active button_paginator_active" tabindex="-1"></button>
+							<button class="button button_paginator next">&gt;</button>
+							<button class="button button_paginator last">&gt;&gt;</button>
 						</div>
 					</div>
 					<!-- /.pets__inner -->
@@ -213,7 +157,8 @@
 		<!-- /.footer -->
 	</div>
 	<!-- /.wrapper -->
-	<script src="index.js"></script>
+	<!-- <div class="overlay"></div> -->
+	<script src="index.js" type="module"></script>
 </body>
 
 </html>
