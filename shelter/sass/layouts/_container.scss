@@ -29,11 +29,12 @@
 }
 
 .overlay {
-	display: none;
+	// display: none;
 	position: fixed;
 	background-color: rgba(41, 41, 41, 0.6);
 	top: 0;
 	left: 0;
 	right: 0;
 	height: 100vh;
+	z-index: 20;
 }

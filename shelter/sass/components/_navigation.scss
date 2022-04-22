@@ -14,8 +14,8 @@
 			a.nav__link {
 				position: relative;
 				@include font("Arial", 15px, 400, $color-dark-s);
-				
 				letter-spacing: 0.002em;
+				
 				text-decoration: none;
 				transition: all 0.2s ease-in-out;
 				&:hover {
