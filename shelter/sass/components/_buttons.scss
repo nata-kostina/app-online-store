@@ -53,6 +53,7 @@
 		&:focus {
 			background-color: $color-primary-light;
 		}
+
 		&_left {
 			background-image: url("../../assets/images/slider/arrow.png");
 			background-repeat: no-repeat;
@@ -72,27 +73,32 @@
 		padding: 0px;
 		justify-content: center;
 		@include font("Georgia", 20px, 400, $color-dark-3xl);
-		border: 2px solid $color-primary;		
+		border: 2px solid $color-primary;
 		border-radius: 100px;
-		
+
 		&:not([disabled], .button_paginator_active):hover {
 			background: $color-primary-light;
-		}	
+		}
 
 		&:focus {
-			background: $color-primary;
+
 		}
 
 		&_active {
 			background: $color-primary;
+
+			&:hover {
+				cursor: default;
+			}
 		}
 
 		&_inactive {
 			color: $color-dark-s;
 			border: 2px solid $color-dark-s;
-			&:hover {				
+			&:hover {
 				cursor: default;
 			}
 		}
 	}
+
 }
