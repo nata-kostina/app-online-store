@@ -4,7 +4,8 @@
 	left: 50%;
 
 	width: 900px;
-	height: 500px;
+	height: auto;
+	
 
 	background-color: $color-light-s;
 
@@ -21,15 +22,20 @@
 		height: 100%;
 		display: flex;
 
-		padding-right: 20px;
+		padding-right: 20px;		
+
+		border-radius: 9px;
+		align-items: center;
 
 		overflow: hidden;
-		border-radius: 9px;
 
 		& .modal__img {
 			flex-basis: 50%;
 			width: 500px;
 			height: auto;
+		
+			align-self: stretch;
+		
 
 			.img-container {
 				height: 100%;
@@ -47,7 +53,10 @@
 			flex-direction: column;
 			flex-basis: 50%;
 			padding-top: 50px;
+			padding-bottom: 50px;
 			padding-left: 30px;
+			height: inherit;
+		
 			h3 {
 				margin-bottom: 10px;
 				color: $color-black;
@@ -119,12 +128,13 @@
 @media screen and (max-width: calc($breakpoint-desktop - 0.5px)) and (min-width: $breakpoint-tablet) {
 	.modal {
 		width: 630px;
-		height: 350px;
 		&__inner {
 			padding-right: 9px;
 			& .modal__img {
 				width: 350px;
 				height: 350px;
+				height: auto;
+
 			}
 			& .modal__content {
 				padding-top: 10px;
@@ -155,7 +165,7 @@
 @media screen and (max-width: calc($breakpoint-tablet - 0.5px)) {
 	.modal {
 		width: 240px;
-		height: auto;
+
 		&__inner {	
 			padding: 10px;
 			& .modal__img {
@@ -192,4 +202,15 @@
 			}
 		}
 	}
+}
+
+@media screen and (max-height: "600px") {
+	.modal{
+		height: 65%;
+		max-height: 450px;
+		& .modal__content{
+			overflow-y: scroll;
+		}
+	}
+
 }

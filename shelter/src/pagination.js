@@ -5,6 +5,7 @@ import { Modal } from './pop-up.js';
 /*==========================================
 Handle Pagination
 ============================================*/
+const randomNums = generateNumbersForPagination();
 
 const pageStatus = { last: 'last', only: 'only', current: 'current', first: 'first' }
 
@@ -37,14 +38,6 @@ cardsContainer.addEventListener('click', (e) => {
 
 function getLastPageNum() {
 	return Math.ceil(totalCardsNum / cardsPerPage);
-}
-
-export function initializePagination() {
-	const width = document.documentElement.clientWidth;
-	if (width < 768) { cardsPerPage = 3; }
-	if (width >= 768 && width < 1280) { cardsPerPage = 6; }
-	if (width >= 1280) { cardsPerPage = 8; }
-	generatePage();
 }
 
 function breakpointMobileCheck() {
@@ -222,7 +215,6 @@ function handleControlDisplay() {
 	}
 }
 
-const randomNums = generateNumbersForPagination();
 
 function updateActivePageNum() {
 	activePageNum = Math.floor(currentStartIndex / cardsPerPage) + 1;
@@ -241,15 +233,14 @@ export function generatePage() {
 	updateActivePageNum();
 	updateCurrentStartIndex();
 	let cards = [];
+	
+	cardsContainer.dataset.cards =cardsPerPage;
 
 	for (let i = 0; i < cardsPerPage; i++) {
 		let index = (currentStartIndex + i);
 		if (index == totalCardsNum) {
 			break;
 		}
-		// const card = `
-		// <div>${randomNums[(currentStartIndex + i) % randomNums.length]}<span>-</span></div>
-		// `;
 
 		index = randomNums[(currentStartIndex + i) % randomNums.length];
 
@@ -272,8 +263,17 @@ function generateNumbersForPagination() {
 	const times = 6;
 	const nums = [];
 	for (let i = 0; i < times; i++) {
-		nums.push(...generateRandomNumbers(petsNumber));
+		nums.push(...generateRandomNumbers(petsNumber, petsNumber));
 	}
-	console.log(nums)
+
 	return nums;
+}
+export function initializePagination() {
+	const width = document.documentElement.clientWidth;
+	if (width < 768) { cardsPerPage = 3; }
+	if (width >= 768 && width < 1280) { cardsPerPage = 6; }
+	if (width >= 1280) { cardsPerPage = 8; }
+	cardsContainer.setAttribute('data-cards', cardsPerPage);
+
+	generatePage();
 }

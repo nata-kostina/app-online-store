@@ -2,7 +2,6 @@
 	background-color: $color-black;
 	@include bg-image("../../assets/images/general/bg-gradient.png", $START_SCREEN_GRAD_BG);
 	background-position: center -180px;
-	// background-size: auto calc(100% + 180px);
 	&__inner {
 		display: flex;
 		justify-content: space-between;
@@ -96,13 +95,12 @@
 
 	@media screen and (max-width: calc($breakpoint-desktop - 0.5px)) {
 		@include bg-image("../../assets/images/general/bg-main-768.png", $START_SCREEN_GRAD_BG);
-		// background-position: center -180px;
-	// background-size: auto calc(100% + 180px);
+
 	}
 
 	@media screen and (max-width: calc($breakpoint-tablet - 0.5Px))  {
 		background-color: $color-black;
 		@include bg-image("../../assets/images/general/bg-main-320.png", $START_SCREEN_GRAD_BG);
-		// background-position: center 0;
+
 	}
 }

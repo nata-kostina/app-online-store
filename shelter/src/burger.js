@@ -10,7 +10,6 @@ const menu = document.querySelector('#menu');
 const body = document.querySelector('body');
 
 btnBurger.addEventListener('click', () => {
-	//State.prevActiveElement = State.getActiveElement();
 	if (menu.classList.contains('open')) { closeMenu(); }
 	else { 
 		openMenu(); 

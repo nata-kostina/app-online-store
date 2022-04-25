@@ -31,10 +31,6 @@ h4 {
 	@include font("Georgia", 20px, 400, $color-dark-l);
 	line-height: 115%;
 	letter-spacing: 0.06em;
-	// @media screen and (max-width: $breakpoint-tablet) and (min-width: $breakpoint-mobile) {
-	// 	@include font("Georgia", 15px, 400, $color-dark-l);
-	// 	line-height: 110%;
-	// }
 }
 
 h5 {

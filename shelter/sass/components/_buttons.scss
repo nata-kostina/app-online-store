@@ -53,9 +53,6 @@
 		&:focus {
 			background-color: $color-primary-light;
 		}
-		// &:active {
-		// 	background-color: $color-primary-light;
-		// }
 
 		&_left {
 			background-image: url("../../assets/images/slider/arrow.png");
@@ -84,7 +81,7 @@
 		}
 
 		&:focus {
-			background: $color-primary;
+
 		}
 
 		&_active {
@@ -104,27 +101,4 @@
 		}
 	}
 
-	// &_burger {
-	// 	display: block;
-
-	// 	border: none;
-	// 	outline: none;
-	// 	text-decoration: none;
-	// 	background-color: transparent;
-	// 	padding: 0;
-	// 	border-radius: 0;
-
-	// 	position: absolute;
-	// 	top: 48px;
-	// 	right: 55px;
-	// 	z-index: 150;
-	// 	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
-	// 	transform: none;
-
-	// 	&:focus {
-	// 		span {
-	// 			background: $color-primary;
-	// 		}
-	// 	}
-	// }
 }
