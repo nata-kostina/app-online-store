@@ -1,5 +1,5 @@
 import { petsArray } from './data.js';
-import { addOverlayListener, createOverlay, deleteOverlay,trapFocus } from './tools.js';
+import { addOverlayListener, createOverlay, deleteOverlay, trapFocus, addOverlayMouseEnterListener,addOverlayListener1 } from './tools.js';
 /*==========================================
 Handle Pop UP
 ============================================*/
@@ -49,11 +49,15 @@ export class Modal {
 		if (!body.classList.contains('scroll-hidden')) {
 			body.classList.add('scroll-hidden');
 		}
+
 		const overlay = createOverlay();
-		addOverlayListener(overlay, this.deleteModal);	
+
+		addOverlayListener1('click', overlay, this.deleteModal);
+		addOverlayListener1('mouseenter', overlay, this.hoverBtnClose);
+		addOverlayListener1('mouseout', overlay, this.unhoverBtnClose);
 
 		const btnClose = document.querySelector('.button_modal');
-		btnClose.addEventListener('click', this.deleteModal);		
+		btnClose.addEventListener('click', this.deleteModal);
 		trapFocus(modal);
 	}
 
@@ -63,6 +67,17 @@ export class Modal {
 		body.removeChild(modal);
 		if (body.classList.contains('scroll-hidden')) {
 			body.classList.remove('scroll-hidden');
-		}	
+		}
+	}
+
+	hoverBtnClose() {
+		
+		const btnClose = document.querySelector('.button_modal');
+		if (!btnClose.classList.contains('active')) { btnClose.classList.add('active'); }
+	}
+
+	unhoverBtnClose() {		
+		const btnClose = document.querySelector('.button_modal');
+		if (btnClose.classList.contains('active')) { btnClose.classList.remove('active'); }
 	}
 }

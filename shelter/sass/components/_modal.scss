@@ -120,6 +120,10 @@
 		background-color: $color-primary-light;
 	}
 
+	&.active{
+		background-color: $color-primary-light;
+	}
+
 	@media screen and (max-width: calc($breakpoint-tablet - 0.5px)) {
 		right: -30px;
 	}
