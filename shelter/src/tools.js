@@ -27,6 +27,15 @@ export function addOverlayListener(overlay, callback) {
 	overlay.addEventListener('click', callback);
 }
 
+export function addOverlayMouseEnterListener(overlay, callback) {
+	overlay.addEventListener('mouseover', (e) => callback(e));
+}
+
+export function addOverlayListener1(event,overlay, callback) {
+	console.log('hi')
+	overlay.addEventListener(event, callback);
+}
+
 
 
 export const trapFocus = (element) => {

@@ -1157,6 +1157,9 @@ button.button_burger[data-theme=light]:focus span {
 .button_modal:focus {
   background-color: #FDDCC4;
 }
+.button_modal.active {
+  background-color: #FDDCC4;
+}
 @media screen and (max-width: 767.5px) {
   .button_modal {
     right: -30px;
@@ -1281,9 +1284,6 @@ button.button_burger[data-theme=light]:focus span {
   right: 0;
   height: 100vh;
   z-index: 20;
-}
-.overlay:hover {
-  cursor: pointer;
 }
 
 main {
