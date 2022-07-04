@@ -1,0 +1,15 @@
+.pagination {
+	width: 340px;
+	display: flex;
+	justify-content: space-between;
+	padding-top: 30px;
+
+	@media screen and (max-width: calc($breakpoint-desktop - 0.5px)) and (min-width: $breakpoint-tablet) {
+		padding-top: 9px;
+	}
+
+	@media screen and (max-width: calc($breakpoint-tablet - 0.5px)) {
+		width: 300px;
+		padding-top: 10px;
+	}
+}

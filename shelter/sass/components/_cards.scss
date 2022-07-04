@@ -1,0 +1,95 @@
+.card-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	&[data-cards="6"] {
+		max-width: 768px;
+		justify-content: space-evenly;
+	}
+
+	&[data-cards="3"] {
+		max-width: 320px;
+		justify-content: space-evenly;
+
+	}
+}
+
+.card__item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 270px;
+	height: 435px;
+	margin-right: 40px;
+	margin-bottom: 30px;
+	background-color: $color-light-s;
+	border-radius: 9px;
+	transition: all 0.4s ease-in-out;
+
+	.card-container[data-cards="8"] & {
+		width: 24%;
+		&:nth-child(4n) {
+			margin-right: 0px;
+		}
+	}
+
+	.card-container[data-cards="3"] & {
+		width: 32%;
+		&:nth-child(3n) {
+			margin-right: 0px;
+		}
+	}
+
+	.card-container[data-cards="6"] & {
+		width: 49%;
+		&:nth-child(2n) {
+			margin-right: 0px;
+		}
+	}
+
+	.card-container[data-cards="3"] & {
+		width: 100%;
+		margin-right: 0px;
+	}
+	&:last-child {
+		margin-right: 0px;
+	}
+	& .img-container {
+		width: 270px;
+		height: 270px;
+		overflow: hidden;
+		border-radius: 9px 9px 0px 0px;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	h4 {
+		padding: 30px 0;
+	}
+	&:hover {
+		background-color: $color-light-xl;
+		-webkit-box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+		-moz-box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+		box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+		cursor: pointer;
+		.button_secondary {
+			background-color: $color-primary-light;
+		}
+	}
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+
+}
+
+@media screen and (max-width: calc($breakpoint-desktop - 0.5px)) and (min-width: $breakpoint-tablet) {
+
+}
+
+@media screen and (max-width: calc($breakpoint-tablet - 0.5px)) {
+
+}

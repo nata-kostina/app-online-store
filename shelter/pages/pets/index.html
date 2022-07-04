@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Our pets</title>
+	<link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-theme="light">
+			<div class="header_sticky">
+				<div class="container">
+					<div class="header__inner">
+						<a href="../main/index.html" class="logo" data-theme="light">
+							<h1 class="logo__title">Cozy House</h1>
+							<p class="logo__subtitle">Shelter for pets in Boston</p>
+						</a>
+						<nav class="nav nav_light-theme">
+							<ul>
+								<li>
+									<a href="../main/index.html" class="nav__link">About the shelter</a>
+								</li>
+								<li>
+									<a href="#" class="nav__link nav__link_active">Our pets</a>
+								</li>
+								<li>
+									<a href="../main/index.html#help" class="nav__link">Help the shelter</a>
+								</li>
+								<li>
+									<a href="#footer" class="nav__link">Contacts</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<!-- /.header__inner -->
+				</div>
+				<!-- /.container -->
+			</div>
+			<!-- header_sticky -->
+		</header>
+		<!-- /.header -->
+		<button id="menu-burger" data-theme="light" data-sticky="true" class="button button_burger burger-container">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+		<!-- /.menu-burger -->
+		<div id="menu" data-theme="light" class="menu">
+
+			<div class="menu__header">
+				<a href="#" class="logo" data-theme="light">
+					<h1 class="logo__title">Cozy House</h1>
+					<p class="logo__subtitle">Shelter for pets in Boston</p>
+				</a>
+			</div>
+		
+			<ul id="">
+				<li>
+					<a href="../main/index.html" class="nav__link">
+						About the shelter
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav__link nav__link_active">
+						Our pets
+					</a>
+				</li>
+				<li>
+					<a href="../main/index.html#help" class="nav__link">
+						Help the shelter
+					</a>
+				</li>
+				<li>
+					<a href="#footer" class="nav__link">
+						Contacts
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- /.menu -->
+
+		<main class="main page-pets">
+			<section id="pets" class="pets">
+				<div class="container">
+					<div class="pets__inner">
+						<h3>Our friends who<br>are looking for a house</h3>
+						<div class="card-container">
+						</div>
+						<div class="pagination">
+							<button class="button button_paginator first button_paginator_inactive" disabled>&lt;&lt;</button>
+							<button class="button button_paginator previous button_paginator_inactive" disabled>&lt;</button>
+							<button class="button button_paginator active button_paginator_active" tabindex="-1"></button>
+							<button class="button button_paginator next">&gt;</button>
+							<button class="button button_paginator last">&gt;&gt;</button>
+						</div>
+					</div>
+					<!-- /.pets__inner -->
+				</div>
+				<!-- /.container -->
+			</section>
+			<!-- /.pets -->
+		</main>
+		<!-- /.main -->
+		<footer id="footer" class="footer">
+			<div class="container">
+				<div class="footer__inner">
+					<div class="content">
+						<div class="contacts">
+							<h3>For questions and suggestions</h3>
+							<ul>
+								<li>
+									<a href="mailto:email@shelter.com">
+										<img src="../../assets/images/footer/icon-email.svg" alt="email">
+										<h4>email@shelter.com</h4>
+									</a>
+								</li>
+								<li>
+									<a href="tel:+136745677554">
+										<img src="../../assets/images/footer/icon-phone.svg" alt="telegit gtphone">
+										<h4>+13 674 567 75 54</h4>
+									</a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="locations">
+							<h3>We are waiting for your visit</h3>
+							<ul>
+								<li>
+									<a href="https://goo.gl/maps/8rGewFYPC2fT7HTU7">
+										<img src="../../assets/images/footer/icon-marker.svg" alt="location">
+										<h4>1 Central Street, Boston (entrance from the store)</h4>
+									</a>
+								</li>
+								<li>
+									<a href="https://goo.gl/maps/cFjkCzGJQ8fRR8vj6">
+										<img src="../../assets/images/footer/icon-marker.svg" alt="location">
+										<h4>18 South Park, London </h4>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="img-container">
+						<img src="../../assets/images/footer/footer-puppy.png" alt="funny puppy">
+					</div>
+				</div>
+				<!-- /.footer__inner -->
+			</div>
+			<!-- /.footer__container -->
+		</footer>
+		<!-- /.footer -->
+	</div>
+	<!-- /.wrapper -->
+	<!-- <div class="overlay"></div> -->
+	<script src="index.js" type="module"></script>
+</body>
+
+</html>

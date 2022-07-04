@@ -1,0 +1,42 @@
+.wrapper {
+	display: flex;
+	height: 100vh;
+	flex-direction: column;
+}
+
+.container {
+	width: 100%;
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 0 40px;
+
+	@media screen and (max-width: calc($breakpoint-desktop - 0.5px)) and (min-width: $breakpoint-tablet) {
+		padding: 0px 30px;
+	}
+
+	@media screen and (max-width: calc($breakpoint-tablet - 0.5px)) {
+		padding: 0px 10px;
+	}
+}
+
+.img-container {
+	width: 100%;
+	& img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}
+
+.overlay {
+	position: fixed;
+	background-color: rgba(41, 41, 41, 0.6);
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100vh;
+	z-index: 20;
+	// &:hover {
+	// 	cursor: pointer;
+	// }
+}

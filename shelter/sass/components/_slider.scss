@@ -1,0 +1,156 @@
+.slider {
+	width: 100%;
+
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: nowrap;
+		overflow: hidden;
+		width: 100%;
+
+		& .slide-container {
+			display: flex;
+
+			width: 100%;
+			height: 435px;
+			overflow: hidden;
+			margin: 0 53px;
+
+			& .slide {
+				display: none;
+
+				justify-content: space-between;
+				margin: 0;
+				padding: 0;
+				flex-grow: 1;
+				min-width: 100%;
+				&.displayed {
+					display: flex;
+				}
+				&.layout-3-col {
+					display: flex;
+					min-width: 100%;
+					justify-content: space-between;
+					& .card__item {
+						width: 33.2%;
+					}
+				}
+				&.layout-2-col {
+					display: flex;
+					min-width: 100%;
+					justify-content: space-evenly;
+					& .card__item {
+						width: 49%;
+					}
+				}
+				&.layout-1-col {
+					display: flex;
+					min-width: 100%;
+					justify-content: center;
+					& .card__item {
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		& .card__item {
+			display: flex;
+			margin-bottom: 0;
+			width: 270px;
+			height: 435px;
+		}
+		@media screen and (min-width: $breakpoint-desktop) {
+		}
+		@media screen and (max-width: calc($breakpoint-desktop - 1px)) and (min-width: $breakpoint-tablet) {
+			& .slide-container {
+				margin: 0 12px;
+			}
+		}
+
+		@media screen and (max-width: calc($breakpoint-tablet - 0.5px)) {
+			flex-wrap: wrap;
+			justify-content: center;
+			.slide-container {
+				margin: 0;
+				margin-bottom: 20px;
+			}
+			& .slide .card__item {
+				margin-bottom: 20px;
+			}
+			& .button_arrow_left {
+				order: 2;
+				margin-right: 80px;
+			}
+
+			& .button_arrow_right {
+				order: 3;
+			}
+		}
+	}
+}
+
+.move-to-left {
+	position: relative;
+	animation-name: move_to_left;
+	animation-duration: 1.5s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: 1;
+	
+}
+
+.move-to-right {
+	position: relative;
+	animation-name: move_to_right;
+	animation-duration: 1.5s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: 1;
+}
+
+@keyframes move_to_left {
+	from {
+		left: 0%;
+	}
+	to {
+		left: -109%;
+	}
+}
+
+@keyframes move_to_right {
+	from {
+		left: 0%;
+	}
+	to {
+		left: calc(100% + 90px);
+	}
+}
+
+
+
+
+
+.slide-moving-box{
+	display: flex;
+    justify-content: space-between;
+    width: 100%;
+	 position: relative;
+}
+
+.gap-40 {
+	flex-shrink: 0;
+	width: 9%;
+	height: 100%;
+}
+
+.slide.prev {
+	position: absolute;
+	left: -100%;
+	margin-right: 90px!important;
+	left: calc(-100% - 90px);
+}
+
+.slide.active.to-right {
+	position: relative;
+	left: calc(-100% - 90px);
+}
