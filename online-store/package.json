@@ -1,0 +1,11 @@
+{
+  "name": "online-store",
+  "version": "1.0.0",
+  "description": "Online-store of sports products with possibility to sort, filter, search products and add them to cart",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Natallia Kostsina",
+  "license": "ISC"
+}
