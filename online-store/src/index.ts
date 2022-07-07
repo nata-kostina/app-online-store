@@ -1,10 +1,5 @@
 import "./style.scss"
-class App {
-  title: string;
-  constructor() {
-    this.title = 'Online-store';
-  }
-}
+import AppController from './controllers/AppController';
 
-const app = new App();
-console.log(app.title);
+const app = new AppController();
+app.start();
