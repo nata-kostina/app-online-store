@@ -1,25 +1,20 @@
-import { Action } from "../types/types";
+import { EventHandler, Product } from "../types/types";
+import ProductsCollectionView from './ProductsCollectionView';
 
 class AppView {
-  handleUserActions: (action: Action) => void;
+  handleUserActions: EventHandler;
   main: HTMLElement;
   updateBtn: HTMLButtonElement;
 
-  constructor(handler: (action: Action) => void) {
+  constructor(handler: EventHandler) {
     this.handleUserActions = handler;
     this.main = document.querySelector('main') as HTMLElement;
     this.updateBtn = this.main.querySelector('.btn-update') as HTMLButtonElement;
-    this.updateBtn.addEventListener('click',  (e) => this.handleUserActions({type: 'test', data: "to update"}));
+    this.updateBtn.addEventListener('click',  (e) => this.handleUserActions(e, 'test'));
   }
-  render(action: {type: string, data: string}) {
-    switch (action.type){
-      case 'init':
-        this.main.insertAdjacentHTML('beforeend',action.data);
-        break;
-      case 'show-data':
-        this.main.insertAdjacentText('beforeend', action.data);
-        break;
-    }
+
+  drawCollection(data: Product[]): void {    
+    ProductsCollectionView.render(data);
   }
 }
 
