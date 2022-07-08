@@ -1,0 +1,22 @@
+.btn {
+  margin: 0 auto;
+  position: relative;
+  height: 45px;
+  line-height: 45px;
+  padding: 0 40px;
+  background: #000;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  border: 0;
+  cursor: pointer;
+}

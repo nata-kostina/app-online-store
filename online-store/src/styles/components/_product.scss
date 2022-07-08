@@ -1,0 +1,17 @@
+.item {
+ 
+}
+
+.item__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.item__img {
+  cursor: pointer;
+}
+
+.item__content {
+  display: flex;
+  flex-direction: column;
+}
