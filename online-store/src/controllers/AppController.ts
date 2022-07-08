@@ -37,8 +37,11 @@ class AppController {
   onModelUpdated(type: string): void {
     switch (type) {
       case "init":
-        this.view.drawCollection(this.model.getCollection());
+        this.view.renderCollection(this.model.getCollection());
         break;
+        case "TOGGLE-PRODUCT-IN-CART":
+          this.view.renderCart(this.model.getQuantityInCart());
+          break;
       default:
         break;
     }
@@ -47,7 +50,8 @@ class AppController {
   toggleProductInCart(e: Event): void{
     const target = e.target as HTMLButtonElement;
     const product = target.closest('.item') as HTMLDivElement;
-    const productId = product.dataset.id as string;   
+    const productId = product.dataset.id as string;
+    this.model.toggleProductInCart(productId);
   }
 }
 

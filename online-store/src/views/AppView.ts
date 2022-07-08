@@ -1,22 +1,24 @@
-import { EventHandler, Product } from "../types/types";
+import { EventHandler, IProduct } from "../types/types";
 import ProductsCollectionView from './ProductsCollectionView';
+import CartView from './CartView';
 
 class AppView {
-  handleUserActions: EventHandler;
-  collectionView: ProductsCollectionView;
-  //main: HTMLElement;
-  //updateBtn: HTMLButtonElement;
+  private handleUserActions: EventHandler;
+  private collectionView: ProductsCollectionView;
+  private cartView: CartView;
 
   constructor(handler: EventHandler) {
     this.handleUserActions = handler;
     this.collectionView = new ProductsCollectionView(handler);
-    //this.main = document.querySelector('main') as HTMLElement;
-    //this.updateBtn = this.main.querySelector('.btn-update') as HTMLButtonElement;
-    //this.updateBtn.addEventListener('click',  (e) => this.handleUserActions(e, 'test'));
+    this.cartView = new CartView(handler);
   }
 
-  drawCollection(data: Product[]): void {    
+  renderCollection(data: IProduct[]): void {
     this.collectionView.render(data);
+  }
+
+  renderCart(quantity: number): void {
+    this.cartView.render(quantity);
   }
 }
 

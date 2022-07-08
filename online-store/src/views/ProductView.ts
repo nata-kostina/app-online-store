@@ -1,14 +1,14 @@
-import { EventHandler, Product } from "../types/types";
+import { EventHandler, IProduct } from "../types/types";
 
 class ProductView {
-  collection: HTMLDivElement;
-  handleToggleInCartClick: EventHandler;
+  private collection: HTMLDivElement;
+  private handleToggleInCartClick: EventHandler;
   constructor(handler: EventHandler) {
     this.collection = document.querySelector('collection') as HTMLDivElement;
     this.handleToggleInCartClick = handler;
   }
 
-  render(data: Product) {
+  render(data: IProduct) {
     const item = document.createElement('div');
     item.classList.add('item');
     item.dataset.id = data.id;

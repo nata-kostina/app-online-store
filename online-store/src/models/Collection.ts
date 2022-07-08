@@ -1,6 +1,6 @@
 import Product from './Product';
 class Collection {
-  collection: Product[];
+  private collection: Product[];
   constructor() {
     this.collection = [];
   }

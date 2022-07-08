@@ -1,7 +1,7 @@
 
 export type CallbackVoid<T> = (data: T) => void;
 
-export interface Product {
+export interface IProduct {
   id: string;
   title: string;
   shortDescription: string;
@@ -21,3 +21,9 @@ export interface StoreItem {
 
 export type Handler = (type: string) => void;
 export type EventHandler = (e: Event, type: string) => void;
+
+export interface ICartProduct {
+  id: string;
+  title: string;
+  quantity: number;
+}
