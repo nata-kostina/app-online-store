@@ -1,10 +1,17 @@
-import { Product } from "../types/types";
+import { EventHandler, Product } from "../types/types";
 
 class ProductView {
+  collection: HTMLDivElement;
+  handleToggleInCartClick: EventHandler;
+  constructor(handler: EventHandler) {
+    this.collection = document.querySelector('collection') as HTMLDivElement;
+    this.handleToggleInCartClick = handler;
+  }
 
-  static render(data: Product) {
+  render(data: Product) {
     const item = document.createElement('div');
     item.classList.add('item');
+    item.dataset.id = data.id;
 
     const inner = document.createElement('div');
     inner.classList.add('item__inner');
@@ -41,6 +48,8 @@ class ProductView {
     btnToggleInCart.classList.add('btn', 'btn-cart');
     btnToggleInCart.innerHTML = "Cart picture";
 
+    btnToggleInCart.addEventListener('click', (event) => this.handleToggleInCartClick(event, "TOGGLE-PRODUCT-IN-CART"))
+    
     content.insertAdjacentElement('beforeend', title);
     content.insertAdjacentElement('beforeend', price);
     content.insertAdjacentElement('beforeend', year);

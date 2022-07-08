@@ -23,6 +23,10 @@ class AppController {
     switch (type) {
       case "test":
         this.handleBtnClick();
+        break;
+      case "TOGGLE-PRODUCT-IN-CART":        
+        this.toggleProductInCart(e);
+        break;
     }
   }
 
@@ -38,6 +42,12 @@ class AppController {
       default:
         break;
     }
+  }
+
+  toggleProductInCart(e: Event): void{
+    const target = e.target as HTMLButtonElement;
+    const product = target.closest('.item') as HTMLDivElement;
+    const productId = product.dataset.id as string;   
   }
 }
 
