@@ -1,7 +1,8 @@
-import { Handler } from "../types/types";
+import { Actions, Handler } from "../types/types";
 import { IProduct } from './../types/types';
 import Collection from './Collection';
 import Cart from './Cart';
+import Modal from './Modal';
 
 class AppModel {
   private onModelUpdated: Handler;
@@ -11,7 +12,7 @@ class AppModel {
   constructor(handler: Handler) {
     this.onModelUpdated = handler;
     this.collection = new Collection();
-    this.cart = new Cart(handler);
+    this.cart = new Cart(handler);    
   }
 
   async getProducts(url: string): Promise<IProduct[]> {
@@ -19,18 +20,8 @@ class AppModel {
       .then(res => res.json())
       .then((data: IProduct[]) => data);
     this.collection.setCollection(data);
-    this.onModelUpdated('init');
+    this.onModelUpdated(Actions.INIT);
     return data;
-  }
-
-  private updateModel(type: string): void {
-    switch (type) {
-      case 'init':
-        this.onModelUpdated('init');
-        break;
-      default:
-        break;
-    }
   }
 
   getCollection(): IProduct[] {

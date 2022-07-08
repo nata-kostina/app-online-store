@@ -1,3 +1,4 @@
+import { Actions } from '../types/types';
 import AppView from '../views/AppView';
 import AppModel from './../models/AppModel';
 
@@ -19,35 +20,34 @@ class AppController {
     this.model.getProducts(this.dataURL);
   }
 
-  handleUserActions(e: Event, type: string) {
-    switch (type) {
-      case "test":
-        this.handleBtnClick();
-        break;
-      case "TOGGLE-PRODUCT-IN-CART":        
+  handleUserActions(e: Event, action: Actions) {
+    switch (action) {
+      case Actions.TOGGLE_PRODUCT_IN_CART:
         this.toggleProductInCart(e);
+        break;
+      case Actions.CLOSE_MODAL:
+        this.view.closeModal();
         break;
     }
   }
 
-  handleBtnClick(): void {
-    console.log('Test');
-  }
-
-  onModelUpdated(type: string): void {
-    switch (type) {
-      case "init":
+  onModelUpdated(action: Actions, options?: string): void {
+    switch (action) {
+      case Actions.INIT:
         this.view.renderCollection(this.model.getCollection());
         break;
-        case "TOGGLE-PRODUCT-IN-CART":
-          this.view.renderCart(this.model.getQuantityInCart());
-          break;
+      case Actions.TOGGLE_PRODUCT_IN_CART:
+        this.view.renderCart(this.model.getQuantityInCart());
+        break;
+      case Actions.SHOW_MODAL:
+        this.view.showModal(options as string);
+        break;
       default:
         break;
     }
   }
 
-  toggleProductInCart(e: Event): void{
+  toggleProductInCart(e: Event): void {
     const target = e.target as HTMLButtonElement;
     const product = target.closest('.item') as HTMLDivElement;
     const productId = product.dataset.id as string;

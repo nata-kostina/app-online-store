@@ -1,4 +1,4 @@
-import { EventHandler, IProduct } from "../types/types";
+import { Actions, EventHandler, IProduct } from "../types/types";
 
 class ProductView {
   private collection: HTMLDivElement;
@@ -48,7 +48,7 @@ class ProductView {
     btnToggleInCart.classList.add('btn', 'btn-cart');
     btnToggleInCart.innerHTML = "Cart picture";
 
-    btnToggleInCart.addEventListener('click', (event) => this.handleToggleInCartClick(event, "TOGGLE-PRODUCT-IN-CART"))
+    btnToggleInCart.addEventListener('click', (event) => this.handleToggleInCartClick(event, Actions.TOGGLE_PRODUCT_IN_CART))
     
     content.insertAdjacentElement('beforeend', title);
     content.insertAdjacentElement('beforeend', price);

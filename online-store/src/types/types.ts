@@ -19,11 +19,18 @@ export interface StoreItem {
   quantity: number;
 }
 
-export type Handler = (type: string) => void;
-export type EventHandler = (e: Event, type: string) => void;
+export type Handler = (action: Actions, options?: string) => void;
+export type EventHandler = (e: Event, action: Actions) => void;
 
 export interface ICartProduct {
   id: string;
   title: string;
   quantity: number;
+}
+
+export enum Actions {
+  INIT = "INIT",
+  TOGGLE_PRODUCT_IN_CART = "TOGGLE_PRODUCT_IN_CART",
+  SHOW_MODAL = "SHOW_MODAL",
+  CLOSE_MODAL = "CLOSE_MODAL",
 }
