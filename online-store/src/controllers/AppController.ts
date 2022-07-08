@@ -1,4 +1,4 @@
-import { Actions } from '../types/types';
+import { Actions, SortOption, SortOptions } from '../types/types';
 import AppView from '../views/AppView';
 import AppModel from './../models/AppModel';
 
@@ -28,6 +28,9 @@ class AppController {
       case Actions.CLOSE_MODAL:
         this.view.closeModal();
         break;
+      case Actions.SORT:
+        this.sortProducts(e);
+        break;
     }
   }
 
@@ -42,6 +45,9 @@ class AppController {
       case Actions.SHOW_MODAL:
         this.view.showModal(options as string);
         break;
+      case Actions.UPDATE_COLLECTION:
+          this.view.renderCollection(this.model.getCollection());
+          break;
       default:
         break;
     }
@@ -52,6 +58,14 @@ class AppController {
     const product = target.closest('.item') as HTMLDivElement;
     const productId = product.dataset.id as string;
     this.model.toggleProductInCart(productId);
+  }
+
+  sortProducts(e: Event): void {
+    const target = e.target as HTMLOptionElement;
+    const value = target.value;
+    console.log(value);
+    const [option, order] = value.split('-');   
+    const sortedCollection = this.model.sortProducts(option, order);
   }
 }
 

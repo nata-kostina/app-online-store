@@ -13,6 +13,10 @@ class ProductsCollectionView {
     data.forEach( p => this.productView.render(p))
   }
 
+  clear () {
+    this.collection.innerHTML = "";
+  }
+
 }
 
 export default ProductsCollectionView;

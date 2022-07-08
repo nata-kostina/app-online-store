@@ -33,4 +33,18 @@ export enum Actions {
   TOGGLE_PRODUCT_IN_CART = "TOGGLE_PRODUCT_IN_CART",
   SHOW_MODAL = "SHOW_MODAL",
   CLOSE_MODAL = "CLOSE_MODAL",
+  SORT = "SORT",
+  UPDATE_COLLECTION = "UPDATE_COLLECTION",
+}
+export enum SortOption {
+  TITLE = "title",
+  YEAR = "year",  
+}
+export enum SortOrder {
+  ASC = "ascending",
+  DESC = "descending",
+}
+export interface SortOptions {
+  option: SortOption;
+  order: SortOrder;
 }
