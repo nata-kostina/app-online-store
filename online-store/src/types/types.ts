@@ -34,9 +34,11 @@ export enum Actions {
   SHOW_MODAL = "SHOW_MODAL",
   CLOSE_MODAL = "CLOSE_MODAL",
   SORT = "SORT",
+  FILTER = "FILTER",
   UPDATE_COLLECTION = "UPDATE_COLLECTION",
 }
 export enum SortOption {
+  DEFAULT = "default",
   TITLE = "title",
   YEAR = "year",  
 }
@@ -47,4 +49,22 @@ export enum SortOrder {
 export interface SortOptions {
   option: SortOption;
   order: SortOrder;
+}
+export enum FilterName {
+  CATEGORY = "category",
+  COLOR = "color",
+}
+
+export interface FilterOptions {
+  filter: FilterName;
+  value: string;
+}
+export enum Mode {
+  ON = "on",
+  OFF = 'off'
+}
+export interface FilterItem {
+  name: string;
+  value: string;
+  mode: string;
 }

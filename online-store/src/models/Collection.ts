@@ -1,14 +1,14 @@
-import Product from './Product';
+import { IProduct } from '../types/types';
 class Collection {
-  private collection: Product[];
+  private collection: IProduct[];
   constructor() {
     this.collection = [];
   }
-  setCollection(products: Product[]): void{
+  setCollection(products: IProduct[]): void{
     this.collection = products;
   }
 
-  getCollection(): Product[] {
+  getCollection(): IProduct[] {
     return this.collection;
   }
 }

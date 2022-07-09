@@ -3,6 +3,7 @@ import ProductsCollectionView from './ProductsCollectionView';
 import CartView from './CartView';
 import ModalView from './ModalView';
 import SortView from './SortView';
+import FilterView from './FilterView';
 
 class AppView {
   private handleUserActions: EventHandler;
@@ -10,6 +11,7 @@ class AppView {
   private cartView: CartView;
   private modalView: ModalView;
   private sortView: SortView;
+  private filterView: FilterView;
 
   constructor(handler: EventHandler) {
     this.handleUserActions = handler;
@@ -17,6 +19,7 @@ class AppView {
     this.cartView = new CartView(handler);
     this.modalView = new ModalView(handler);
     this.sortView = new SortView(handler);
+    this.filterView = new FilterView(handler);
   }
 
   renderCollection(data: IProduct[]): void {

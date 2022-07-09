@@ -1,34 +1,47 @@
-import { Actions, Handler, SortOption, SortOptions } from "../types/types";
+import { Actions, FilterItem, FilterOptions, Handler, SortOption, SortOptions } from "../types/types";
 import { IProduct } from './../types/types';
 import Collection from './Collection';
 import Cart from './Cart';
-import Modal from './Modal';
-import Sort from './Sort';
+import Sort from '../controllers/Sort';
+import Filter from "../controllers/Filter";
 
 class AppModel {
   private onModelUpdated: Handler;
-  private collection: Collection;
+  private readonly defaultCollection: Collection;
+  private currentCollection: Collection;
+  private sortedFilteredCollection: Collection;
   private cart: Cart;
-  private sort: Sort;
 
   constructor(handler: Handler) {
     this.onModelUpdated = handler;
-    this.collection = new Collection();
-    this.cart = new Cart(handler);    
-    this.sort = new Sort(handler);    
+    this.defaultCollection = new Collection();
+    this.currentCollection = new Collection();
+    this.sortedFilteredCollection = new Collection();
+
+    this.cart = new Cart(handler);
   }
 
   async getProducts(url: string): Promise<IProduct[]> {
     const data = await fetch(url)
       .then(res => res.json())
       .then((data: IProduct[]) => data);
-    this.collection.setCollection(data);
+    this.defaultCollection.setCollection(data);
+    this.currentCollection.setCollection(data);
+    this.sortedFilteredCollection.setCollection(data);
     this.onModelUpdated(Actions.INIT);
     return data;
   }
 
-  getCollection(): IProduct[] {
-    return this.collection.getCollection() as IProduct[];
+  getDefaultCollection(): IProduct[] {
+    return this.defaultCollection.getCollection() as IProduct[];
+  }
+
+  getCurrentCollection(): IProduct[] {
+    return this.currentCollection.getCollection() as IProduct[];
+  }
+
+  setCurrentCollection(value: IProduct[]): void {
+    this.currentCollection.setCollection(value);
   }
 
   toggleProductInCart(id: string): void {
@@ -38,11 +51,19 @@ class AppModel {
   getQuantityInCart(): number {
     return this.cart.getQuantity();
   }
-
-  sortProducts(option: string, order: string): void {
-    const sortedCollection  = this.sort.sortProducts(option, order, this.getCollection());
-    this.collection.setCollection(sortedCollection);
+  filterAndSortProducts(): void {
+    this.filterProducts();
+    this.sortProducts();
     this.onModelUpdated(Actions.UPDATE_COLLECTION);
+  }
+  sortProducts(): void {
+    const sortedCollection = Sort.sortProducts(this.currentCollection.getCollection());
+    this.currentCollection.setCollection(sortedCollection);
+  }
+
+  filterProducts(): void {
+    const filteredCollection = Filter.filterProducts(this.defaultCollection.getCollection());
+    this.currentCollection.setCollection(filteredCollection);
   }
 }
 
