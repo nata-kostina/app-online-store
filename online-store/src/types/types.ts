@@ -40,7 +40,7 @@ export enum Actions {
 export enum SortOption {
   DEFAULT = "default",
   TITLE = "title",
-  YEAR = "year",  
+  YEAR = "year",
 }
 export enum SortOrder {
   ASC = "ascending",
@@ -68,3 +68,12 @@ export interface FilterItem {
   value: string;
   mode: string;
 }
+
+export type FilterGroup = {
+  [key: string]: string[];
+}
+const  filter: FilterGroup = {
+  'category':  ['football', 'baseball'],  
+  'color':  ['black', 'red']
+}
+filter['category'].push('cycling');

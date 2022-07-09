@@ -1,42 +1,62 @@
 import { FilterItem, FilterName, IProduct, Mode } from "../types/types";
+import { FilterGroup } from './../types/types';
 
 class Filter {
 
-  static filters: FilterItem[] = [];
+  static filterGroups: FilterGroup = {};
 
-  static toggleFilter(filter: FilterItem) {
+  static toggleFilter(filter: FilterItem): void {
     if (filter.mode === Mode.ON) {
-      this.filters.push(filter);
+      if (this.filterGroups[filter.name]) {
+        this.filterGroups[filter.name].push(filter.value);
+      }
+      else {
+        this.filterGroups[filter.name] = [filter.value];
+      }
     }
     else if (filter.mode === Mode.OFF) {
-      this.filters = this.filters.filter(f => f.name != filter.name && f.value != f.value);
+      if (this.filterGroups[filter.name]) {
+        this.filterGroups[filter.name] = this.filterGroups[filter.name].filter(v => v != filter.value);
+      }
     }
   }
 
   static filterProducts(collection: IProduct[]): IProduct[] {
-    if(this.filters.length === 0) return collection;
+
+    const groupsValues = Object.values(this.filterGroups);
+    if (groupsValues.every(arr => arr.length === 0)) return collection;
+
+    const groupsEntries = Object.entries(this.filterGroups);
+
     let filteredCollection: IProduct[] = collection;
-    this.filters.forEach(filter => {
-      filteredCollection = this.applySeparateFilter(filter, filteredCollection);
+
+    groupsEntries.forEach(group => {
+      if (group[1].length > 0)
+        filteredCollection = this.applySameGroupFilters(group[0], group[1], filteredCollection);
     });
+
     return filteredCollection;
   }
 
-  private static applySeparateFilter(filter: FilterItem, collection: IProduct[]): IProduct[] {
-    switch (filter.name) {
+  private static applySameGroupFilters(name: string, values: string[], collection: IProduct[]): IProduct[] {
+    switch (name) {
       case FilterName.CATEGORY:
-        return this.filterByCategory(filter.value, collection);
+        return this.filterByCategory(values, collection);
+      case FilterName.COLOR:
+        return this.filterByColor(values, collection);
       default:
         break;
-
     }
     return collection;
   }
 
-  static filterByCategory(category: string, collection: IProduct[]): IProduct[] {
-    return collection.filter(p => p.category.toLowerCase() === category.toLowerCase());
+  private static filterByCategory(values: string[], collection: IProduct[]): IProduct[] {
+    return collection.filter(p => values.includes(p.category.toLowerCase()));
   }
 
+  private static filterByColor(values: string[], collection: IProduct[]): IProduct[] {
+    return collection.filter(p => values.includes(p.color.toLowerCase()));
+  }
 }
 
 export default Filter;

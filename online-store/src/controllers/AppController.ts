@@ -35,7 +35,7 @@ class AppController {
         break;
       case Actions.SORT:
       case Actions.FILTER:
-        debugger
+        //debugger
         this.filterAndSortProducts(e, action);
         break;
     }
