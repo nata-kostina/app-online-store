@@ -55,6 +55,9 @@ class AppModel {
     this.filterProducts();
     this.sortProducts();
     this.onModelUpdated(Actions.UPDATE_COLLECTION);
+    
+    if (this.currentCollection.getCollection().length === 0)
+      this.onModelUpdated(Actions.SHOW_MODAL, "Ooops! No products with such filters.");
   }
   sortProducts(): void {
     const sortedCollection = Sort.sortProducts(this.currentCollection.getCollection());

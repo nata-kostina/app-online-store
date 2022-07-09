@@ -15,6 +15,7 @@ class Filter {
       }
     }
     else if (filter.mode === Mode.OFF) {
+
       if (this.filterGroups[filter.name]) {
         this.filterGroups[filter.name] = this.filterGroups[filter.name].filter(v => v != filter.value);
       }
