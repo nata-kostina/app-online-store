@@ -16,6 +16,10 @@ class ProductView {
     const inner = document.createElement('div');
     inner.classList.add('item__inner');
 
+    const id = document.createElement('h2');
+    id.classList.add('item__id');
+    id.innerHTML = data.id;
+
     const title = document.createElement('h3');
     title.classList.add('item__title');
     title.innerHTML = data.title;
@@ -50,6 +54,7 @@ class ProductView {
 
     btnToggleInCart.addEventListener('click', (event) => this.handleToggleInCartClick(event, Actions.TOGGLE_PRODUCT_IN_CART))
     
+    content.insertAdjacentElement('beforeend', id);
     content.insertAdjacentElement('beforeend', title);
     content.insertAdjacentElement('beforeend', price);
     content.insertAdjacentElement('beforeend', year);
