@@ -9,17 +9,26 @@ class SortView {
     const select = document.createElement('select');
     select.classList.add('select', 'select-sort');
 
+    const optgroupTitle  = document.createElement('optgroup');
+    optgroupTitle.label = "Sort by title:";
+    optgroupTitle.classList.add('optgroup');
+
+    const optgroupYear  = document.createElement('optgroup');
+    optgroupYear.label = "Sort by year:";
+    optgroupYear.classList.add('optgroup');
+
     const opt = document.createElement('option');
     opt.classList.add('select-option');
     opt.value = 'default';
     opt.innerHTML = 'Default Sorting';
 
     select.insertAdjacentElement('beforeend', opt);
-    select.insertAdjacentElement('beforeend', this.createOption({ option: SortOption.TITLE, order: SortOrder.ASC }, 'Sort by title: A-Z'));
-    select.insertAdjacentElement('beforeend', this.createOption({ option: SortOption.TITLE, order: SortOrder.DESC }, 'Sort by title: Z-A'));
-    select.insertAdjacentElement('beforeend', this.createOption({ option: SortOption.YEAR, order: SortOrder.ASC }, 'Sort by year: Old to New'));
-    select.insertAdjacentElement('beforeend', this.createOption({ option: SortOption.YEAR, order: SortOrder.DESC }, 'Sort by year: New to Old'));
-
+    optgroupTitle.insertAdjacentElement('beforeend', this.createOption({ option: SortOption.TITLE, order: SortOrder.ASC }, 'A-Z'));
+    optgroupTitle.insertAdjacentElement('beforeend', this.createOption({ option: SortOption.TITLE, order: SortOrder.DESC }, 'Z-A'));
+    optgroupYear.insertAdjacentElement('beforeend', this.createOption({ option: SortOption.YEAR, order: SortOrder.ASC }, 'Old to New'));
+    optgroupYear.insertAdjacentElement('beforeend', this.createOption({ option: SortOption.YEAR, order: SortOrder.DESC }, 'New to Old'));
+    select.insertAdjacentElement('beforeend', optgroupTitle);
+    select.insertAdjacentElement('beforeend', optgroupYear);
     select.addEventListener('change', (e) => handler(e, Actions.SORT));
 
     (document.querySelector('.sort') as HTMLDivElement).insertAdjacentElement('beforeend', select);

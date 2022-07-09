@@ -19,7 +19,6 @@ class Sort {
   }
 
   sortByTitle(order: string, collection: IProduct[]): IProduct[] {
-    console.log('Hey-hey');
     if (order === SortOrder.ASC) {
       return collection.sort((a, b) => {
         return a.title.localeCompare(b.title, undefined, { ignorePunctuation: true});
