@@ -13,7 +13,7 @@ class Sort {
       return this.sortByTitle(order, collection);
     }
     else if (option === SortOption.YEAR) {
-      return this.sortByTitle(order, collection);
+      return this.sortByYear(order, collection);
     }
     return collection;
   }
@@ -27,6 +27,15 @@ class Sort {
       return collection.sort((a, b) => {
         return b.title.localeCompare(a.title, undefined, { ignorePunctuation: true});
       });
+    }
+    return collection;
+  }
+
+  sortByYear(order: string, collection: IProduct[]): IProduct[]{
+    if (order === SortOrder.ASC) {
+      return collection.sort((a, b) => Number.parseInt(a.year) - Number.parseInt(b.year));
+    } else if (order === SortOrder.DESC) {
+      return collection.sort((a, b) => Number.parseInt(b.year) - Number.parseInt(a.year));
     }
     return collection;
   }

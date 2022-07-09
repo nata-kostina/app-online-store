@@ -65,7 +65,7 @@ class AppController {
     const value = target.value;
     console.log(value);
     const [option, order] = value.split('-');   
-    const sortedCollection = this.model.sortProducts(option, order);
+     this.model.sortProducts(option, order);
   }
 }
 
