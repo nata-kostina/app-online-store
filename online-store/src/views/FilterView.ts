@@ -1,27 +1,35 @@
-import { Actions, EventHandler, SortOption, SortOptions, SortOrder } from "../types/types";
+import { Actions, EventHandler,  } from "../types/types";
 import SliderView from './SliderView';
 
 class FilterView {
   onModelChanged: EventHandler;
+  filter: HTMLDivElement;
+  sliderYear: SliderView;
+  sliderPrice: SliderView;
+
 
   constructor(handler: EventHandler) {
     this.onModelChanged = handler;
 
-    const filter = document.createElement('div');
-    filter.classList.add('filter');
-    filter.addEventListener('change', (e) => handler(e, Actions.FILTER));
+    this.filter = document.createElement('div');;
+    this.filter.classList.add('filter');
+
+    this.filter.addEventListener('change', (e) => {
+      console.log(e);
+      handler(e, Actions.FILTER);
+    });
 
     const fieldsetCategory = createFieldset('By category:', ['fieldset'], 3, 'category', ['Football', 'Baseball', 'Cycling']);
     const fieldsetColor = createFieldset('By color:', ['fieldset'], 3, 'color', ['Black', 'White', 'Grey', 'Red', 'Blue', 'Brown']);
     const fieldsetSize = createFieldset('By size:', ['fieldset'], 6, 'size', ['XS', 'S', 'M', 'L', 'XL', 'XXL']);
     const fieldsetBestsellers = createFieldset('Bestsellers:', ['fieldset'], 1, 'bestseller', ['Bestseller']);
-    
-    
+
+
     const sliderYearContainer = document.createElement('div');
-    sliderYearContainer.classList.add('range','range-year');
-    sliderYearContainer.id = 'range-year';    
-    
-    const sliderYear = new SliderView(handler, sliderYearContainer, {
+    sliderYearContainer.classList.add('range', 'range-year');
+    sliderYearContainer.id = 'range-year';
+
+    this.sliderYear = new SliderView(handler, sliderYearContainer, {
       start: [2015, 2022],
       connect: true,
       step: 1,
@@ -32,12 +40,11 @@ class FilterView {
       },
     });
 
-
     const sliderPriceContainer = document.createElement('div');
-    sliderYearContainer.classList.add('range','range-price');
-    sliderYearContainer.id = 'range-price';    
-    
-    const sliderPrice = new SliderView(handler, sliderPriceContainer, {
+    sliderYearContainer.classList.add('range', 'range-price');
+    sliderYearContainer.id = 'range-price';
+
+    this.sliderPrice = new SliderView(handler, sliderPriceContainer, {
       start: [50, 150],
       connect: true,
       step: 1,
@@ -47,9 +54,21 @@ class FilterView {
         'max': 150
       },
     });
-        
-    filter.append(fieldsetCategory, fieldsetColor, fieldsetSize, fieldsetBestsellers, sliderYearContainer, sliderPriceContainer);
-    document.querySelector('main')?.insertAdjacentElement('beforeend',filter);
+
+    const btnReset = document.createElement('button');
+    btnReset.classList.add('btn', 'btn-reset');
+    btnReset.innerHTML = 'Reset';
+    btnReset.addEventListener('click', (e) => handler(e, Actions.RESET_FILTERS));
+
+    this.filter.append(fieldsetCategory, fieldsetColor, fieldsetSize, fieldsetBestsellers, sliderYearContainer, btnReset);
+    document.querySelector('main')?.insertAdjacentElement('beforeend', this.filter);
+  }
+
+  reset(): void {
+      const checkboxes: NodeListOf<HTMLInputElement> = this.filter.querySelectorAll('.filter-checkbox');
+      checkboxes.forEach(ch => ch.checked = false);
+      this.sliderYear.reset();
+      this.sliderPrice.reset();
   }
 }
 
@@ -59,7 +78,7 @@ function createFieldset(text: string, classes: string[], num: number, name: stri
   fieldset.innerHTML = text;
 
   for (let i = 0; i < num; i++) {
-    const [ch, l] = createCheckbox(['filter-value'], name, values[i], `${name}_${i+1}`);
+    const [ch, l] = createCheckbox(['filter-value'], name, values[i], `${name}_${i + 1}`);
     fieldset.append(ch, l);
   }
 
@@ -67,7 +86,7 @@ function createFieldset(text: string, classes: string[], num: number, name: stri
 }
 function createCheckbox(classes: string[], name: string, value: string, id: string): [HTMLInputElement, HTMLLabelElement] {
   const checkbox = document.createElement('input');
-  checkbox.classList.add(...classes);
+  checkbox.classList.add(...classes, 'filter-checkbox');
   checkbox.type = 'checkbox';
   checkbox.name = name;
   checkbox.value = value;

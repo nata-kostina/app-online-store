@@ -1,8 +1,8 @@
-import { Actions, FilterItem, SortOption, SortOptions } from '../types/types';
+import { Actions, FilterGroups, FilterItem, SortOption, SortOptions } from '../types/types';
 import AppView from '../views/AppView';
 import AppModel from './../models/AppModel';
-import Filter from './Filter';
-import Sort from './Sort';
+import Filter from '../models/Filter';
+import Sort from '../models/Sort';
 
 class AppController {
   view: AppView;
@@ -35,6 +35,9 @@ class AppController {
       case Actions.UPDATE_RANGE:
         this.filterAndSortProducts(e, action);
         break;
+      case Actions.RESET_FILTERS:
+        this.model.resetFilters();
+        break;
       default:
         break;
     }
@@ -53,6 +56,9 @@ class AppController {
         break;
       case Actions.UPDATE_COLLECTION:
         this.view.renderCollection(this.model.getCurrentCollection());
+        break;
+      case Actions.UPDATE_FILTERS:
+        this.view.renderFilters(this.model.getFilters());     
         break;
       default:
         break;
@@ -98,6 +104,7 @@ class AppController {
     const { name, values, handle } = (e as CustomEvent).detail;
     Filter.setRangeFilter({ name, values, handle });
   }
+
 }
 
 export default AppController;

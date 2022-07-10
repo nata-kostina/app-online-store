@@ -37,6 +37,8 @@ export enum Actions {
   FILTER = "FILTER",
   UPDATE_COLLECTION = "UPDATE_COLLECTION",
   UPDATE_RANGE = "UPDATE_RANGE",
+  RESET_FILTERS = "RESET_FILTERS",
+  UPDATE_FILTERS = "UPDATE_FILTERS",
 }
 export enum SortOption {
   DEFAULT = "default",
@@ -71,7 +73,7 @@ export interface FilterItem {
   mode: string;
 }
 
-export type FilterGroup = {
+export type FilterGroups = {
   [key: string]: string[];
 }
 

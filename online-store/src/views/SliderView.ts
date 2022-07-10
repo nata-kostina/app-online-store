@@ -3,10 +3,10 @@ import * as noUiSlider from 'nouislider'
 
 class SliderView {
   handleUserActions: EventHandler;
+  dragSlider: noUiSlider.target;
   constructor(handler: EventHandler, container: HTMLDivElement, options: SliderOptions) {
     this.handleUserActions = handler;
-
-    const dragSlider: noUiSlider.target = container;
+    this.dragSlider = container;
     const mergedOptions = {
       ...options, format: {
         from: function (formattedValue: string) {
@@ -17,17 +17,18 @@ class SliderView {
         }
       },
     }
-    noUiSlider.create(dragSlider, mergedOptions);
+    noUiSlider.create(this.dragSlider, mergedOptions);
 
-    dragSlider.noUiSlider?.on('slide', (values, handle) => {
+    (this.dragSlider.noUiSlider as noUiSlider.API).on('slide', (values, handle) => {
       //debugger;
-      const event = new CustomEvent('update', { detail: { name: 'year', values, handle } });
+      const event = new CustomEvent('change', { detail: { name: 'year', values, handle } });
       this.handleUserActions(event, Actions.UPDATE_RANGE);
     });
+   
   }
 
-  render(): void {
-    return
+  reset(): void {
+    (this.dragSlider.noUiSlider as noUiSlider.API).reset();
   }
 
 }

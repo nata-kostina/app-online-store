@@ -1,4 +1,4 @@
-import { EventHandler, IProduct } from "../types/types";
+import { EventHandler, FilterGroups, IProduct } from "../types/types";
 import ProductsCollectionView from './ProductsCollectionView';
 import CartView from './CartView';
 import ModalView from './ModalView';
@@ -40,6 +40,10 @@ class AppView {
 
   closeModal():void {
     this.modalView.clear();
+  }
+
+  renderFilters(filters: FilterGroups): void {
+    this.filterView.reset();
   }
 }
 

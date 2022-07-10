@@ -1,9 +1,9 @@
-import { Actions, FilterItem, FilterOptions, Handler, SortOption, SortOptions } from "../types/types";
+import { Actions, FilterGroups, FilterItem, FilterOptions, Handler, SortOption, SortOptions } from "../types/types";
 import { IProduct } from './../types/types';
 import Collection from './Collection';
 import Cart from './Cart';
-import Sort from '../controllers/Sort';
-import Filter from "../controllers/Filter";
+import Sort from './Sort';
+import Filter from "./Filter";
 
 class AppModel {
   private onModelUpdated: Handler;
@@ -67,6 +67,14 @@ class AppModel {
   filterProducts(): void {
     const filteredCollection = Filter.filterProducts(this.defaultCollection.getCollection());
     this.currentCollection.setCollection(filteredCollection);
+  }
+  getFilters(): FilterGroups {
+    return Filter.getFilters();
+  }
+  resetFilters():void {
+    Filter.resetFilters();
+    this.filterAndSortProducts();
+    this.onModelUpdated(Actions.UPDATE_FILTERS);
   }
 }
 
