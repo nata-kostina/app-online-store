@@ -5,6 +5,7 @@ import ModalView from './ModalView';
 import SortView from './SortView';
 import FilterView from './FilterView';
 import SliderView from './SliderView';
+import Search from './Search';
 
 class AppView {
   private handleUserActions: EventHandler;
@@ -13,7 +14,7 @@ class AppView {
   private modalView: ModalView;
   private sortView: SortView;
   private filterView: FilterView;
-  //private SliderView: SliderView;
+  private search: Search;
 
   constructor(handler: EventHandler) {
     this.handleUserActions = handler;
@@ -22,6 +23,7 @@ class AppView {
     this.modalView = new ModalView(handler);
     this.sortView = new SortView(handler);
     this.filterView = new FilterView(handler);
+    this.search = new Search(handler);
    // this.SliderView = new SliderView(handler);
   }
 
@@ -32,14 +34,6 @@ class AppView {
 
   renderCart(quantity: number): void {
     this.cartView.render(quantity);
-  }
-
-  showModal(message: string):void {
-    this.modalView.render(message);
-  }
-
-  closeModal():void {
-    this.modalView.clear();
   }
 
   renderFilters(filters: FilterGroups): void {

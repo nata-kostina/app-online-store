@@ -1,8 +1,10 @@
-import { Actions, FilterGroups, FilterItem, SortOption, SortOptions } from '../types/types';
+/* eslint-disable no-case-declarations */
+import { Actions, FilterGroups, FilterItem, IProduct, Messages, SortOption, SortOptions } from '../types/types';
 import AppView from '../views/AppView';
 import AppModel from './../models/AppModel';
 import Filter from '../models/Filter';
 import Sort from '../models/Sort';
+import Modal from './../models/Modal';
 
 class AppController {
   view: AppView;
@@ -27,9 +29,6 @@ class AppController {
       case Actions.TOGGLE_PRODUCT_IN_CART:
         this.toggleProductInCart(e);
         break;
-      case Actions.CLOSE_MODAL:
-        this.view.closeModal();
-        break;
       case Actions.SORT:
       case Actions.FILTER:
       case Actions.UPDATE_RANGE:
@@ -37,6 +36,9 @@ class AppController {
         break;
       case Actions.RESET_FILTERS:
         this.model.resetFilters();
+        break;
+      case Actions.SEARCH:
+        this.search(e);
         break;
       default:
         break;
@@ -52,13 +54,17 @@ class AppController {
         this.view.renderCart(this.model.getQuantityInCart());
         break;
       case Actions.SHOW_MODAL:
-        this.view.showModal(options as string);
+        this.showModal(options as Messages);
         break;
       case Actions.UPDATE_COLLECTION:
-        this.view.renderCollection(this.model.getCurrentCollection());
+        const collection = this.model.getCurrentCollection();
+        if (this.isCollectionEmpty(collection)) {
+          this.showModal(Messages.EMPTY_COLLECTION);
+        }
+        else this.view.renderCollection(collection);
         break;
       case Actions.UPDATE_FILTERS:
-        this.view.renderFilters(this.model.getFilters());     
+        this.view.renderFilters(this.model.getFilters());
         break;
       default:
         break;
@@ -104,6 +110,21 @@ class AppController {
     const { name, values, handle } = (e as CustomEvent).detail;
     Filter.setRangeFilter({ name, values, handle });
   }
+
+  search(e: Event): void {
+    const target = e.target as HTMLInputElement;
+    const value = target.value;
+    this.model.searchProducts(value);
+  }
+
+  isCollectionEmpty(collection: IProduct[]): boolean {
+    return collection.length > 0;
+  }
+
+  showModal(message: Messages): void {
+   Modal.showModal(message);
+  }
+
 
 }
 

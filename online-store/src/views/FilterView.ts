@@ -11,7 +11,7 @@ class FilterView {
   constructor(handler: EventHandler) {
     this.onModelChanged = handler;
 
-    this.filter = document.createElement('div');;
+    this.filter = document.createElement('div');
     this.filter.classList.add('filter');
 
     this.filter.addEventListener('change', (e) => {

@@ -1,9 +1,10 @@
-import { Actions, FilterGroups, FilterItem, FilterOptions, Handler, SortOption, SortOptions } from "../types/types";
+import { Actions, FilterGroups, FilterItem, FilterOptions, Handler, Messages, SortOption, SortOptions } from "../types/types";
 import { IProduct } from './../types/types';
 import Collection from './Collection';
 import Cart from './Cart';
 import Sort from './Sort';
 import Filter from "./Filter";
+
 
 class AppModel {
   private onModelUpdated: Handler;
@@ -44,6 +45,14 @@ class AppModel {
     this.currentCollection.setCollection(value);
   }
 
+  getSortedFilteredCollection(): IProduct[]  {
+    return this.sortedFilteredCollection.getCollection();
+  }
+
+  setSortedFilteredCollection(value: IProduct[]): void {
+    this.sortedFilteredCollection.setCollection(value);
+  }
+
   toggleProductInCart(id: string): void {
     this.cart.toggleProduct(id);
   }
@@ -51,14 +60,17 @@ class AppModel {
   getQuantityInCart(): number {
     return this.cart.getQuantity();
   }
+
   filterAndSortProducts(): void {
     this.filterProducts();
     this.sortProducts();
+    this.sortedFilteredCollection.setCollection(this.getCurrentCollection());
     this.onModelUpdated(Actions.UPDATE_COLLECTION);
     
     if (this.currentCollection.getCollection().length === 0)
-      this.onModelUpdated(Actions.SHOW_MODAL, "Ooops! No products with such filters.");
+      this.onModelUpdated(Actions.SHOW_MODAL, Messages.EMPTY_COLLECTION);
   }
+
   sortProducts(): void {
     const sortedCollection = Sort.sortProducts(this.currentCollection.getCollection());
     this.currentCollection.setCollection(sortedCollection);
@@ -68,13 +80,24 @@ class AppModel {
     const filteredCollection = Filter.filterProducts(this.defaultCollection.getCollection());
     this.currentCollection.setCollection(filteredCollection);
   }
+
   getFilters(): FilterGroups {
     return Filter.getFilters();
   }
+
   resetFilters():void {
     Filter.resetFilters();
     this.filterAndSortProducts();
     this.onModelUpdated(Actions.UPDATE_FILTERS);
+  }
+  searchProducts(value: string): void {
+    //debugger
+    const collection = this.getSortedFilteredCollection();
+    const matched = collection.filter(product => {
+      return product.title.toLowerCase().includes(value.toLowerCase());
+    });
+    this.setCurrentCollection(matched);
+    this.onModelUpdated(Actions.UPDATE_COLLECTION);
   }
 }
 

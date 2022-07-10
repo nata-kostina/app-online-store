@@ -1,4 +1,4 @@
-import { Actions, Handler, ICartProduct } from '../types/types';
+import { Actions, Handler, ICartProduct, Messages } from '../types/types';
 import Modal from './Modal';
 class Cart {
   private onModelUpdated: Handler;
@@ -23,9 +23,8 @@ class Cart {
   }
 
   private addToCart(product: ICartProduct): void {
-    if (this.cart.length >= 2) {
-      const modal = new Modal(this.onModelUpdated, 'Cart is full');
-      modal.showModal();      
+    if (this.cart.length >= 2) {    
+      Modal.showModal(Messages.FULL_CART);      
     }
     else{
       this.cart.push(product);

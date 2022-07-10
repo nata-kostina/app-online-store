@@ -39,6 +39,8 @@ export enum Actions {
   UPDATE_RANGE = "UPDATE_RANGE",
   RESET_FILTERS = "RESET_FILTERS",
   UPDATE_FILTERS = "UPDATE_FILTERS",
+  CLEAR_SEARCH = "CLEAR_SEARCH",
+  SEARCH = "SEARCH",
 }
 export enum SortOption {
   DEFAULT = "default",
@@ -92,4 +94,9 @@ export type SliderOptions = {
     'min': number;
     'max': number
   }
+}
+
+export enum Messages {
+  EMPTY_COLLECTION = "Ooops! No products are found.",
+  FULL_CART = "Ooops! Cart is full.",
 }

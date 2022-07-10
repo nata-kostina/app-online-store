@@ -24,7 +24,7 @@ class ModalView {
     inner.insertAdjacentElement('beforeend', btnClose);
     modal.insertAdjacentElement('beforeend', inner);
 
-    btnClose.addEventListener('click', (event) => this.handleClick(event, Actions.CLOSE_MODAL));
+    btnClose.addEventListener('click', (event) => this.clear());
 
     (document.querySelector('body') as HTMLBodyElement).insertAdjacentElement('beforeend', modal);
 
