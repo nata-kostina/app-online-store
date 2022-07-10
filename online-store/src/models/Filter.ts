@@ -8,15 +8,15 @@ class Filter {
   static toggleFilter(filter: FilterItem): void {
     if (filter.mode === Mode.ON) {
       if (this.FilterGroups[filter.name]) {
-        this.FilterGroups[filter.name].push(filter.value);
+        this.FilterGroups[filter.name].push(filter.value.toLowerCase());
       }
       else {
-        this.FilterGroups[filter.name] = [filter.value];
+        this.FilterGroups[filter.name] = [filter.value.toLowerCase()];
       }
     }
     else if (filter.mode === Mode.OFF) {
       if (this.FilterGroups[filter.name]) {
-        this.FilterGroups[filter.name] = this.FilterGroups[filter.name].filter(v => v != filter.value);
+        this.FilterGroups[filter.name] = this.FilterGroups[filter.name].filter(v => v != filter.value.toLowerCase());
       }
     }
   }
