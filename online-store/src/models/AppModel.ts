@@ -4,6 +4,7 @@ import Collection from './Collection';
 import Cart from './Cart';
 import Sort from './Sort';
 import Filter from "./Filter";
+import LocalStorage from './../controllers/LocalStorage';
 
 
 class AppModel {
@@ -65,6 +66,8 @@ class AppModel {
     this.filterProducts();
     this.sortProducts();
     this.sortedFilteredCollection.setCollection(this.getCurrentCollection());
+    LocalStorage.setItem<FilterGroups>( 'filter', Filter.getFilters());
+    LocalStorage.setItem<SortOptions>( 'sort', Sort.getSort()); 
     this.onModelUpdated(Actions.UPDATE_COLLECTION);
     
     if (this.currentCollection.getCollection().length === 0)

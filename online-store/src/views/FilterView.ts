@@ -1,16 +1,13 @@
 import { Actions, EventHandler,  } from "../types/types";
-import SliderView from './SliderView';
+import Slider from './Slider';
 
 class FilterView {
   onModelChanged: EventHandler;
   filter: HTMLDivElement;
-  sliderYear: SliderView;
-  sliderPrice: SliderView;
-
-
+  sliderYear: Slider;
+  sliderPrice: Slider;
   constructor(handler: EventHandler) {
     this.onModelChanged = handler;
-
     this.filter = document.createElement('div');
     this.filter.classList.add('filter');
 
@@ -29,7 +26,7 @@ class FilterView {
     sliderYearContainer.classList.add('range', 'range-year');
     sliderYearContainer.id = 'range-year';
 
-    this.sliderYear = new SliderView(handler, sliderYearContainer, {
+    this.sliderYear = new Slider(handler, sliderYearContainer, {
       start: [2015, 2022],
       connect: true,
       step: 1,
@@ -44,7 +41,7 @@ class FilterView {
     sliderYearContainer.classList.add('range', 'range-price');
     sliderYearContainer.id = 'range-price';
 
-    this.sliderPrice = new SliderView(handler, sliderPriceContainer, {
+    this.sliderPrice = new Slider(handler, sliderPriceContainer, {
       start: [50, 150],
       connect: true,
       step: 1,
@@ -63,13 +60,16 @@ class FilterView {
     this.filter.append(fieldsetCategory, fieldsetColor, fieldsetSize, fieldsetBestsellers, sliderYearContainer, btnReset);
     document.querySelector('main')?.insertAdjacentElement('beforeend', this.filter);
   }
-
+  render(): void {
+return
+  }
   reset(): void {
       const checkboxes: NodeListOf<HTMLInputElement> = this.filter.querySelectorAll('.filter-checkbox');
       checkboxes.forEach(ch => ch.checked = false);
       this.sliderYear.reset();
       this.sliderPrice.reset();
   }
+  
 }
 
 function createFieldset(text: string, classes: string[], num: number, name: string, values: string[]): HTMLFieldSetElement {

@@ -1,9 +1,6 @@
-import { EventHandler, IProduct } from "../types/types";
-import ProductView from './ProductView';
-
 class CartView {
   private quantity: HTMLSpanElement;
-  constructor(handler: EventHandler) {
+  constructor() {
        this.quantity = document.querySelector('.cart__quantity') as HTMLSpanElement;
   }
   

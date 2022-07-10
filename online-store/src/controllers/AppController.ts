@@ -1,10 +1,11 @@
 /* eslint-disable no-case-declarations */
-import { Actions, FilterGroups, FilterItem, IProduct, Messages, SortOption, SortOptions } from '../types/types';
+import { Actions, FilterGroups, FilterItem, IProduct, LocalStorageKeys, Messages, SortOption, SortOptions } from '../types/types';
 import AppView from '../views/AppView';
 import AppModel from './../models/AppModel';
 import Filter from '../models/Filter';
 import Sort from '../models/Sort';
 import Modal from './../models/Modal';
+import LocalStorage from './LocalStorage';
 
 class AppController {
   view: AppView;
@@ -21,6 +22,13 @@ class AppController {
   }
 
   start(): void {
+    for (let i = 0; i <LocalStorage.getLength();  i++){
+      const key = LocalStorage.getKey(i);
+      if (key===LocalStorageKeys.FILTER) console.log(LocalStorage.getItem(key));
+      //Filter.setFilters(LocalStorage.getItem(key));
+      else if  (key===LocalStorageKeys.SORT)console.log(LocalStorage.getItem(key));
+      // Sort.setSort(LocalStorage.getItem(key));
+    }
     this.model.getProducts(this.dataURL);
   }
 

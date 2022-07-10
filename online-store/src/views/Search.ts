@@ -1,5 +1,4 @@
-import { Actions, EventHandler, Handler, IProduct } from "../types/types";
-import ProductView from './ProductView';
+import { Actions, EventHandler } from "../types/types";
 
 class Search {
   private handler: EventHandler;

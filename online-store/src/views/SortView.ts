@@ -4,7 +4,7 @@ class SortView {
   onModelChanged: EventHandler;
 
   constructor(handler: EventHandler) {
-    this.onModelChanged = handler;
+    this.onModelChanged = handler;  
 
     const select = document.createElement('select');
     select.classList.add('select', 'select-sort');

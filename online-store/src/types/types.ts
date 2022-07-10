@@ -100,3 +100,8 @@ export enum Messages {
   EMPTY_COLLECTION = "Ooops! No products are found.",
   FULL_CART = "Ooops! Cart is full.",
 }
+
+export enum LocalStorageKeys {
+  FILTER = 'filter',
+  SORT = 'sort',
+}

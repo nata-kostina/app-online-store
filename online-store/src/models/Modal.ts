@@ -1,7 +1,6 @@
-import { Actions, Handler, Messages } from "../types/types";
+import { Messages } from "../types/types";
 
 class Modal {
-
 
   static showModal(message: Messages): void {
     const modal = document.createElement('div');
@@ -26,6 +25,7 @@ class Modal {
     (document.querySelector('body') as HTMLBodyElement).insertAdjacentElement('beforeend', modal);
 
   }
+  
   static closeModal(): void {
     const modal = document.querySelector('.modal') as HTMLDivElement;
     (document.querySelector('body') as HTMLBodyElement).removeChild(modal);

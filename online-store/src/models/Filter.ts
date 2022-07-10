@@ -36,7 +36,6 @@ class Filter {
     let filteredCollection: IProduct[] = collection;
 
     groupsEntries.forEach(group => {
-      //console.log(group);
       if (group[1].length > 0)
         filteredCollection = this.applySameGroupFilters(group[0], group[1], filteredCollection);
     });

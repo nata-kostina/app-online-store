@@ -1,7 +1,7 @@
 import { Actions, EventHandler, SliderOptions } from "../types/types";
 import * as noUiSlider from 'nouislider'
 
-class SliderView {
+class Slider {
   handleUserActions: EventHandler;
   dragSlider: noUiSlider.target;
   constructor(handler: EventHandler, container: HTMLDivElement, options: SliderOptions) {
@@ -20,7 +20,6 @@ class SliderView {
     noUiSlider.create(this.dragSlider, mergedOptions);
 
     (this.dragSlider.noUiSlider as noUiSlider.API).on('slide', (values, handle) => {
-      //debugger;
       const event = new CustomEvent('change', { detail: { name: 'year', values, handle } });
       this.handleUserActions(event, Actions.UPDATE_RANGE);
     });
@@ -33,4 +32,4 @@ class SliderView {
 
 }
 
-export default SliderView;
+export default Slider;

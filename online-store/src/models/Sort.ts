@@ -1,7 +1,10 @@
 import { IProduct, SortOption, SortOptions, SortOrder } from "../types/types";
 
 class Sort {
-  static sort: SortOptions = { option: SortOption.DEFAULT, order: SortOrder.ASC };
+  private static sort: SortOptions = { option: SortOption.DEFAULT, order: SortOrder.ASC };
+  static getSort (): SortOptions {
+    return this.sort;
+  }
   static sortProducts(collection: IProduct[]): IProduct[] {   
     if (this.sort.option === SortOption.TITLE) {
       return this.sortByTitle(collection);
