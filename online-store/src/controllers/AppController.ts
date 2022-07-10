@@ -61,7 +61,7 @@ class AppController {
         if (this.isCollectionEmpty(collection)) {
           this.showModal(Messages.EMPTY_COLLECTION);
         }
-        else this.view.renderCollection(collection);
+        this.view.renderCollection(collection);
         break;
       case Actions.UPDATE_FILTERS:
         this.view.renderFilters(this.model.getFilters());
@@ -118,7 +118,7 @@ class AppController {
   }
 
   isCollectionEmpty(collection: IProduct[]): boolean {
-    return collection.length > 0;
+    return collection.length <= 0;
   }
 
   showModal(message: Messages): void {
