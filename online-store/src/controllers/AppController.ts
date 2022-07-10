@@ -16,20 +16,14 @@ class AppController {
   constructor() {
     this.model = new AppModel(this.onModelUpdated.bind(this));
     this.view = new AppView(this.handleUserActions.bind(this));
-
     this.dataURL = "./data/data.json";
     this.storeURL = "./data/store.json";
   }
 
   start(): void {
-    for (let i = 0; i <LocalStorage.getLength();  i++){
-      const key = LocalStorage.getKey(i);
-      if (key===LocalStorageKeys.FILTER) console.log(LocalStorage.getItem(key));
-      //Filter.setFilters(LocalStorage.getItem(key));
-      else if  (key===LocalStorageKeys.SORT)console.log(LocalStorage.getItem(key));
-      // Sort.setSort(LocalStorage.getItem(key));
-    }
-    this.model.getProducts(this.dataURL);
+
+    this.applyStoredFilters();
+    // this.model.getProducts(this.dataURL);
   }
 
   handleUserActions(e: Event, action: Actions) {
@@ -71,8 +65,8 @@ class AppController {
         }
         this.view.renderCollection(collection);
         break;
-      case Actions.UPDATE_FILTERS:
-        this.view.renderFilters(this.model.getFilters());
+      case Actions.RESET_FILTERS:
+        this.view.resetFilters();
         break;
       default:
         break;
@@ -130,10 +124,23 @@ class AppController {
   }
 
   showModal(message: Messages): void {
-   Modal.showModal(message);
+    Modal.showModal(message);
   }
 
-
+  applyStoredFilters(): void {
+    for (let i = 0; i < LocalStorage.getLength(); i++) {
+      const key = LocalStorage.getKey(i);
+      if (key === LocalStorageKeys.FILTER) {
+        console.log(LocalStorage.getItem(key));
+      }
+      //Filter.setFilters(LocalStorage.getItem(key));
+      else if (key === LocalStorageKeys.SORT) {
+        this.view.renderSort(LocalStorage.getItem(key) as SortOptions);
+       // console.log(LocalStorage.getItem(key))
+      }
+      // Sort.setSort(LocalStorage.getItem(key));
+    }
+  }
 }
 
 export default AppController;

@@ -1,4 +1,4 @@
-import { EventHandler, FilterGroups, IProduct } from "../types/types";
+import { EventHandler, FilterGroups, IProduct, SortOptions } from "../types/types";
 import ProductsCollectionView from './ProductsCollectionView';
 import CartView from './CartView';
 import SortView from './SortView';
@@ -32,8 +32,12 @@ class AppView {
     this.cartView.render(quantity);
   }
 
-  renderFilters(filters: FilterGroups): void {
+  resetFilters(): void {
     this.filterView.reset();
+  }
+
+  renderSort(sort: SortOptions): void {
+    this.sortView.render(sort);
   }
 }
 

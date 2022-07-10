@@ -91,7 +91,7 @@ class AppModel {
   resetFilters():void {
     Filter.resetFilters();
     this.filterAndSortProducts();
-    this.onModelUpdated(Actions.UPDATE_FILTERS);
+    this.onModelUpdated(Actions.RESET_FILTERS);
   }
   searchProducts(value: string): void {
     //debugger
