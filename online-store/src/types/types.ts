@@ -36,6 +36,7 @@ export enum Actions {
   SORT = "SORT",
   FILTER = "FILTER",
   UPDATE_COLLECTION = "UPDATE_COLLECTION",
+  UPDATE_RANGE = "UPDATE_RANGE",
 }
 export enum SortOption {
   DEFAULT = "default",
@@ -53,6 +54,7 @@ export interface SortOptions {
 export enum FilterName {
   CATEGORY = "category",
   COLOR = "color",
+  YEAR = "year"
 }
 
 export interface FilterOptions {
@@ -72,8 +74,20 @@ export interface FilterItem {
 export type FilterGroup = {
   [key: string]: string[];
 }
-const  filter: FilterGroup = {
-  'category':  ['football', 'baseball'],  
-  'color':  ['black', 'red']
+
+export type FilterRange = {
+  name: string,
+  values: string[],
+  handle: number
 }
-filter['category'].push('cycling');
+
+export type SliderOptions = {
+  start: string[] | number [];
+  step: number;
+  tooltips: boolean;
+  connect: boolean;
+  range: {
+    'min': number;
+    'max': number
+  }
+}

@@ -9,16 +9,13 @@ class AppController {
   model: AppModel;
   dataURL: string;
   storeURL: string;
-  filter: Filter;
 
   constructor() {
-    this.view = new AppView(this.handleUserActions.bind(this));
     this.model = new AppModel(this.onModelUpdated.bind(this));
+    this.view = new AppView(this.handleUserActions.bind(this));
 
     this.dataURL = "./data/data.json";
     this.storeURL = "./data/store.json";
-
-    this.filter = new Filter();
   }
 
   start(): void {
@@ -35,8 +32,10 @@ class AppController {
         break;
       case Actions.SORT:
       case Actions.FILTER:
-        //debugger
+      case Actions.UPDATE_RANGE:
         this.filterAndSortProducts(e, action);
+        break;
+      default:
         break;
     }
   }
@@ -67,12 +66,15 @@ class AppController {
     this.model.toggleProductInCart(productId);
   }
 
-  filterAndSortProducts(e: Event, action: Actions): void {
-    if (action === Actions.FILTER){
+  filterAndSortProducts(e: Event | CustomEvent, action: Actions): void {
+    if (action === Actions.FILTER) {
       this.setFilters(e);
     }
-    else if (action === Actions.SORT){
+    else if (action === Actions.SORT) {
       this.setSort(e);
+    }
+    else if (action === Actions.UPDATE_RANGE) {
+      this.updateRange(e);
     }
     this.model.filterAndSortProducts();
   }
@@ -80,8 +82,8 @@ class AppController {
   setSort(e: Event): void {
     const target = e.target as HTMLOptionElement;
     const value = target.value;
-    const [option, order] = value.split('-');   
-    Sort.setSort(option, order); 
+    const [option, order] = value.split('-');
+    Sort.setSort(option, order);
   }
 
   setFilters(e: Event): void {
@@ -90,6 +92,11 @@ class AppController {
     const name = target.name;
     const mode = target.checked ? 'on' : 'off';
     Filter.toggleFilter({ name, value, mode });
+  }
+
+  updateRange(e: Event | CustomEvent): void {
+    const { name, values, handle } = (e as CustomEvent).detail;
+    Filter.setRangeFilter({ name, values, handle });
   }
 }
 

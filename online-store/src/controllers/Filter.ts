@@ -1,4 +1,4 @@
-import { FilterItem, FilterName, IProduct, Mode } from "../types/types";
+import { FilterItem, FilterName, FilterRange, IProduct, Mode } from "../types/types";
 import { FilterGroup } from './../types/types';
 
 class Filter {
@@ -15,11 +15,15 @@ class Filter {
       }
     }
     else if (filter.mode === Mode.OFF) {
-
       if (this.filterGroups[filter.name]) {
         this.filterGroups[filter.name] = this.filterGroups[filter.name].filter(v => v != filter.value);
       }
     }
+  }
+
+  static setRangeFilter(range: FilterRange): void {
+    this.filterGroups[range.name] = range.values;
+    console.log(this.filterGroups);
   }
 
   static filterProducts(collection: IProduct[]): IProduct[] {
@@ -32,6 +36,7 @@ class Filter {
     let filteredCollection: IProduct[] = collection;
 
     groupsEntries.forEach(group => {
+      //console.log(group);
       if (group[1].length > 0)
         filteredCollection = this.applySameGroupFilters(group[0], group[1], filteredCollection);
     });
@@ -45,6 +50,8 @@ class Filter {
         return this.filterByCategory(values, collection);
       case FilterName.COLOR:
         return this.filterByColor(values, collection);
+      case FilterName.YEAR:
+        return this.filterByYear(values, collection);
       default:
         break;
     }
@@ -57,6 +64,11 @@ class Filter {
 
   private static filterByColor(values: string[], collection: IProduct[]): IProduct[] {
     return collection.filter(p => values.includes(p.color.toLowerCase()));
+  }
+
+  private static filterByYear(values: string[], collection: IProduct[]): IProduct[] {
+    const [start, end] = values.map(Number);
+    return collection.filter(p => Number(p.year) >= start && Number(p.year) <= end);
   }
 }
 
