@@ -23,7 +23,6 @@ class Filter {
 
   static setRangeFilter(range: FilterRange): void {
     this.FilterGroups[range.name] = range.values;
-    console.log(this.FilterGroups);
   }
 
   static filterProducts(collection: IProduct[]): IProduct[] {

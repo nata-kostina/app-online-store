@@ -1,18 +1,20 @@
-import { Actions, EventHandler,  } from "../types/types";
+import { Actions, EventHandler, FilterName, } from "../types/types";
 import Slider from './Slider';
+import Filter from './../models/Filter';
 
 class FilterView {
   onModelChanged: EventHandler;
-  filter: HTMLDivElement;
+  private filter: HTMLDivElement;
   sliderYear: Slider;
   sliderPrice: Slider;
+
   constructor(handler: EventHandler) {
     this.onModelChanged = handler;
+
     this.filter = document.createElement('div');
     this.filter.classList.add('filter');
 
     this.filter.addEventListener('change', (e) => {
-      console.log(e);
       handler(e, Actions.FILTER);
     });
 
@@ -20,7 +22,6 @@ class FilterView {
     const fieldsetColor = createFieldset('By color:', ['fieldset'], 3, 'color', ['Black', 'White', 'Grey', 'Red', 'Blue', 'Brown']);
     const fieldsetSize = createFieldset('By size:', ['fieldset'], 6, 'size', ['XS', 'S', 'M', 'L', 'XL', 'XXL']);
     const fieldsetBestsellers = createFieldset('Bestsellers:', ['fieldset'], 1, 'bestseller', ['Bestseller']);
-
 
     const sliderYearContainer = document.createElement('div');
     sliderYearContainer.classList.add('range', 'range-year');
@@ -57,19 +58,52 @@ class FilterView {
     btnReset.innerHTML = 'Reset';
     btnReset.addEventListener('click', (e) => handler(e, Actions.RESET_FILTERS));
 
+    this.applyFilters();
+
     this.filter.append(fieldsetCategory, fieldsetColor, fieldsetSize, fieldsetBestsellers, sliderYearContainer, btnReset);
-    document.querySelector('main')?.insertAdjacentElement('beforeend', this.filter);
   }
+
+  getFilterElement(): HTMLDivElement {
+    return this.filter;
+  }
+
   render(): void {
-return
+    return
   }
+
+  applyFilters(): void {
+    const filters = Filter.getFilters();
+    const filterNames = Object.keys(filters);
+
+    filterNames.forEach(filterName => {
+      if (filterName === FilterName.YEAR) {
+        this.sliderYear.applyFilters(0, Number.parseInt(filters[filterName][0]));
+        this.sliderYear.applyFilters(1, Number.parseInt(filters[filterName][1]));
+      }
+      else if (filterName === FilterName.PRICE) {
+        this.sliderPrice.applyFilters(0, Number.parseInt(filters[filterName][0]));
+        this.sliderPrice.applyFilters(1, Number.parseInt(filters[filterName][1]));
+      }
+      else {
+        const elements = this.filter.getElementsByTagName('input');
+        for (let i = 0; i < elements.length; i++) {
+          if (filterName === elements[i].name) {
+            if (filters[filterName].includes(elements[i].value.toLowerCase())) {
+              elements[i].checked = true;
+            }
+          }
+        }
+      }
+    });
+  }
+
   reset(): void {
-      const checkboxes: NodeListOf<HTMLInputElement> = this.filter.querySelectorAll('.filter-checkbox');
-      checkboxes.forEach(ch => ch.checked = false);
-      this.sliderYear.reset();
-      this.sliderPrice.reset();
+    const checkboxes: NodeListOf<HTMLInputElement> = this.filter.querySelectorAll('.filter-checkbox');
+    checkboxes.forEach(ch => ch.checked = false);
+    this.sliderYear.reset();
+    this.sliderPrice.reset();
   }
-  
+
 }
 
 function createFieldset(text: string, classes: string[], num: number, name: string, values: string[]): HTMLFieldSetElement {
@@ -84,7 +118,8 @@ function createFieldset(text: string, classes: string[], num: number, name: stri
 
   return fieldset;
 }
-function createCheckbox(classes: string[], name: string, value: string, id: string): [HTMLInputElement, HTMLLabelElement] {
+
+function createCheckbox(classes: string[], name: string, value: string, id: string, checked?: boolean): [HTMLInputElement, HTMLLabelElement] {
   const checkbox = document.createElement('input');
   checkbox.classList.add(...classes, 'filter-checkbox');
   checkbox.type = 'checkbox';

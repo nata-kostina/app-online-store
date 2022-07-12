@@ -20,10 +20,11 @@ class AppController {
     this.storeURL = "./data/store.json";
   }
 
-  start(): void {
-
-    this.applyStoredFilters();
-    // this.model.getProducts(this.dataURL);
+  async start(): Promise<void> {
+    this.processLocalStorage();   
+    this.view.render();
+    await this.model.getProducts(this.dataURL);
+    this.model.filterAndSortProducts();
   }
 
   handleUserActions(e: Event, action: Actions) {
@@ -127,18 +128,22 @@ class AppController {
     Modal.showModal(message);
   }
 
-  applyStoredFilters(): void {
+  processLocalStorage(): void {
     for (let i = 0; i < LocalStorage.getLength(); i++) {
       const key = LocalStorage.getKey(i);
       if (key === LocalStorageKeys.FILTER) {
-        console.log(LocalStorage.getItem(key));
+        const filters = LocalStorage.getItem(key) as FilterGroups;
+        const keys = Object.keys(filters);
+        debugger;
+        keys.forEach(filterName => {
+          const values = filters[filterName];
+          values.forEach(value => Filter.toggleFilter({ name: filterName, value, mode: 'on' }));
+        })
       }
-      //Filter.setFilters(LocalStorage.getItem(key));
       else if (key === LocalStorageKeys.SORT) {
-        this.view.renderSort(LocalStorage.getItem(key) as SortOptions);
-       // console.log(LocalStorage.getItem(key))
-      }
-      // Sort.setSort(LocalStorage.getItem(key));
+          const { option, order } = LocalStorage.getItem(key) as SortOptions;
+          Sort.setSort(option, order);
+        }
     }
   }
 }

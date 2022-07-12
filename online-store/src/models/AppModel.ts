@@ -94,7 +94,6 @@ class AppModel {
     this.onModelUpdated(Actions.RESET_FILTERS);
   }
   searchProducts(value: string): void {
-    //debugger
     const collection = this.getSortedFilteredCollection();
     const matched = collection.filter(product => {
       return product.title.toLowerCase().includes(value.toLowerCase());

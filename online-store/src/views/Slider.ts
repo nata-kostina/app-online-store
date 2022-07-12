@@ -26,6 +26,10 @@ class Slider {
    
   }
 
+  applyFilters(handle: number, value: number): void {
+    (this.dragSlider.noUiSlider as noUiSlider.API).setHandle(handle, value, true, true);
+  }
+
   reset(): void {
     (this.dragSlider.noUiSlider as noUiSlider.API).reset();
   }

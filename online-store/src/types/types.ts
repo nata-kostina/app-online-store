@@ -58,7 +58,8 @@ export interface SortOptions {
 export enum FilterName {
   CATEGORY = "category",
   COLOR = "color",
-  YEAR = "year"
+  YEAR = "year",
+  PRICE = "price",
 }
 
 export interface FilterOptions {

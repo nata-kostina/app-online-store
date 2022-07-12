@@ -16,8 +16,7 @@ class Search {
     search.autocomplete = 'false';
     search.focus();
     search.addEventListener('input', (e) => {
-      console.log(e);
-      handler(e, Actions.SEARCH);
+       handler(e, Actions.SEARCH);
     });
 
     const btnClear = document.createElement('button');
