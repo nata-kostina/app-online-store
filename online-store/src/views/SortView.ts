@@ -2,13 +2,13 @@ import { Actions, EventHandler, SortOption, SortOptions, SortOrder } from "../ty
 import Sort from './../models/Sort';
 
 class SortView {
-  handler: EventHandler;
-  sortOptions: HTMLOptionElement[];
-  sort: HTMLDivElement;
+  private handler: EventHandler;
+  private sortOptions: HTMLOptionElement[];
+  private sort: HTMLDivElement;
+
   constructor(handler: EventHandler) {
     this.handler = handler;
     this.sortOptions = [];
-
     
     this.sort = document.createElement('div');
     this.sort.classList.add('sort');
@@ -58,7 +58,7 @@ class SortView {
     }
   }
 
-  createOption(option: SortOptions, text: string, group: string): HTMLOptionElement {
+  private createOption(option: SortOptions, text: string, group: string): HTMLOptionElement {
     const opt = document.createElement('option');
     opt.classList.add('select-option');
     opt.value = `${option.option}-${option.order}`;
@@ -66,7 +66,8 @@ class SortView {
     opt.dataset['group'] = group;
     return opt;
   }
-  getSortElement() {
+  
+  getSortElement(): HTMLDivElement {
     return this.sort;
   }
 }

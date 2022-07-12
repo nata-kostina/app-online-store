@@ -1,17 +1,14 @@
 import { Actions, EventHandler, IProduct } from "../types/types";
 
 class ProductView {
-  private collection: HTMLDivElement;
   private handleToggleInCartClick: EventHandler;
-  constructor(handler: EventHandler) {
-    this.collection = document.querySelector('collection') as HTMLDivElement;
+  private item: HTMLDivElement;
+  constructor(handler: EventHandler, data: IProduct) {
     this.handleToggleInCartClick = handler;
-  }
 
-  render(data: IProduct) {
-    const item = document.createElement('div');
-    item.classList.add('item');
-    item.dataset.id = data.id;
+    this.item = document.createElement('div');
+    this.item.classList.add('item');
+    this.item.dataset.id = data.id;
 
     const inner = document.createElement('div');
     inner.classList.add('item__inner');
@@ -30,11 +27,11 @@ class ProductView {
 
     const content = document.createElement('div');
     content.classList.add('item__content');
-   
+
     const price = document.createElement('span');
     price.classList.add('item__price');
     price.innerHTML = data.price;
-         
+
     const year = document.createElement('span');
     year.classList.add('item__year');
     year.innerHTML = data.year;
@@ -43,7 +40,7 @@ class ProductView {
     color.classList.add('item__color');
     color.innerHTML = data.color;
 
-          
+
     const sizes = document.createElement('span');
     sizes.classList.add('item__sizes');
     sizes.innerHTML = data.sizes.toString();
@@ -53,7 +50,7 @@ class ProductView {
     btnToggleInCart.innerHTML = "Cart picture";
 
     btnToggleInCart.addEventListener('click', (event) => this.handleToggleInCartClick(event, Actions.TOGGLE_PRODUCT_IN_CART))
-    
+
     content.insertAdjacentElement('beforeend', id);
     content.insertAdjacentElement('beforeend', title);
     content.insertAdjacentElement('beforeend', price);
@@ -64,11 +61,12 @@ class ProductView {
 
     inner.insertAdjacentElement('beforeend', img);
     inner.insertAdjacentElement('beforeend', content);
-    
-    item.insertAdjacentElement('beforeend', inner);
 
-    const collection = document.querySelector('.collection') as HTMLDivElement;
-    collection.insertAdjacentElement('beforeend', item);
+    this.item.insertAdjacentElement('beforeend', inner);
+  }
+
+  getProductElement(): HTMLDivElement {
+    return this.item;
   }
 
 }

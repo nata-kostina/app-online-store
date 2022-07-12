@@ -3,10 +3,10 @@ import Slider from './Slider';
 import Filter from './../models/Filter';
 
 class FilterView {
-  onModelChanged: EventHandler;
+  private onModelChanged: EventHandler;
   private filter: HTMLDivElement;
-  sliderYear: Slider;
-  sliderPrice: Slider;
+  private sliderYear: Slider;
+  private sliderPrice: Slider;
 
   constructor(handler: EventHandler) {
     this.onModelChanged = handler;
@@ -67,10 +67,6 @@ class FilterView {
     return this.filter;
   }
 
-  render(): void {
-    return
-  }
-
   applyFilters(): void {
     const filters = Filter.getFilters();
     const filterNames = Object.keys(filters);
@@ -119,7 +115,7 @@ function createFieldset(text: string, classes: string[], num: number, name: stri
   return fieldset;
 }
 
-function createCheckbox(classes: string[], name: string, value: string, id: string, checked?: boolean): [HTMLInputElement, HTMLLabelElement] {
+function createCheckbox(classes: string[], name: string, value: string, id: string): [HTMLInputElement, HTMLLabelElement] {
   const checkbox = document.createElement('input');
   checkbox.classList.add(...classes, 'filter-checkbox');
   checkbox.type = 'checkbox';

@@ -1,5 +1,5 @@
 class CartView {
-  private cart: HTMLElement;
+  private cart: HTMLDivElement;
   constructor() {
     this.cart = document.createElement('div');
     this.cart.classList.add('cart');
@@ -9,7 +9,7 @@ class CartView {
     this.cart.append(quantity);
   }
 
-  getCart(): HTMLElement {
+  getCartElement(): HTMLDivElement {
     return this.cart;
   }
   

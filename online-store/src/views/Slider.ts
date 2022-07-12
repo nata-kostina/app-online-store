@@ -2,8 +2,8 @@ import { Actions, EventHandler, SliderOptions } from "../types/types";
 import * as noUiSlider from 'nouislider'
 
 class Slider {
-  handleUserActions: EventHandler;
-  dragSlider: noUiSlider.target;
+  private handleUserActions: EventHandler;
+  private dragSlider: noUiSlider.target;
   constructor(handler: EventHandler, container: HTMLDivElement, options: SliderOptions) {
     this.handleUserActions = handler;
     this.dragSlider = container;

@@ -30,7 +30,7 @@ class AppModel {
     this.defaultCollection.setCollection(data);
     this.currentCollection.setCollection(data);
     this.sortedFilteredCollection.setCollection(data);
-    this.onModelUpdated(Actions.INIT);
+    //this.onModelUpdated(Actions.INIT);
     return data;
   }
 

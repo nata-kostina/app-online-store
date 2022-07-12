@@ -2,11 +2,12 @@ import { Actions, EventHandler } from "../types/types";
 
 class Search {
   private handler: EventHandler;
+  private searchContainer: HTMLDivElement;
   constructor(handler: EventHandler) {
     this.handler = handler;
     
-    const container = document.createElement('div');
-    container.classList.add('search-container');
+    this.searchContainer = document.createElement('div');
+    this.searchContainer.classList.add('search-container');
 
     const search = document.createElement('input');
     search.classList.add('input', 'input-search');
@@ -24,13 +25,11 @@ class Search {
     btnClear.innerHTML = 'Clear';
     btnClear.addEventListener('click', (e) => this.handler(e, Actions.CLEAR_SEARCH));
     
-    container.append(search, btnClear);
-    document.querySelector('main')?.insertAdjacentElement('beforeend', container);
-
+    this.searchContainer.append(search, btnClear); 
   }
 
-  render(): void {
-    return
+  getSearchElement(): HTMLDivElement {
+    return this.searchContainer;
   }
 
 }

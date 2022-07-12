@@ -3,17 +3,27 @@ import ProductView from './ProductView';
 
 class ProductsCollectionView {
   private collection: HTMLDivElement;
-  private productView: ProductView;
+  private handler: EventHandler;
+
   constructor(handler: EventHandler) {
-    this.productView = new ProductView(handler);
-    this.collection = document.querySelector('.collection') as HTMLDivElement;   
-  }
-  
-  render(data: IProduct[]): void{
-    data.forEach( p => this.productView.render(p))
+    this.handler = handler;
+    this.collection = document.createElement('div');
+    this.collection.classList.add('collection');
   }
 
-  clear () {
+  getCollectionElement(): HTMLDivElement {
+    return this.collection;
+  }
+
+  render(data: IProduct[]): void {
+    data.forEach(p => {
+      const product = (new ProductView(this.handler, p).getProductElement());
+      this.collection.append(product);
+    })
+  }
+
+  clear(): void {
+    console.log(this.collection);
     this.collection.innerHTML = "";
   }
 

@@ -134,7 +134,7 @@ class AppController {
       if (key === LocalStorageKeys.FILTER) {
         const filters = LocalStorage.getItem(key) as FilterGroups;
         const keys = Object.keys(filters);
-        debugger;
+       //debugger;
         keys.forEach(filterName => {
           const values = filters[filterName];
           values.forEach(value => Filter.toggleFilter({ name: filterName, value, mode: 'on' }));
