@@ -6,6 +6,7 @@ import FilterView from './FilterView';
 import Search from './Search';
 import Header from './Header';
 import Settings from './Settings';
+import FavouriteView from './Favourite';
 
 class AppView {
   private handleUserActions: EventHandler;
@@ -17,6 +18,7 @@ class AppView {
   private search: Search;
   private wrapper: HTMLElement;
   private settings: Settings;
+  private favouriteView: FavouriteView;
 
   constructor(handler: EventHandler) {
     this.handleUserActions = handler;
@@ -30,6 +32,7 @@ class AppView {
     this.settings = new Settings(handler);
     this.collectionView = new CollectionView(handler);
     this.cartView = new CartView();
+    this.favouriteView = new FavouriteView();
     this.sortView = new SortView(handler);
     this.filterView = new FilterView(handler);
     this.search = new Search(handler);
@@ -78,6 +81,12 @@ class AppView {
     const cartElement = this.cartView.getCartElement();
     cartContainer.append(cartElement);
     /*===============================
+    *   FAVOURITE PRODUCTS
+    =================================*/
+    const favContainer = header.querySelector('.favourite-container') as HTMLDivElement;
+    const favElement = this.favouriteView.getFavElement();
+    favContainer.append(favElement);
+    /*===============================
     *   COLLECTION
     =================================*/
     const collectionElement = this.collectionView.getCollectionElement();
@@ -94,6 +103,10 @@ class AppView {
 
   renderCart(quantity: number): void {
     this.cartView.render(quantity);
+  }
+
+  renderFavouriteProducts(quantity: number): void {
+    this.favouriteView.render(quantity);
   }
 
   resetFilters(): void {

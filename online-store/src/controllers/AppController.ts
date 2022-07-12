@@ -34,6 +34,9 @@ class AppController {
       case Actions.TOGGLE_PRODUCT_IN_CART:
         this.toggleProductInCart(e);
         break;
+        case Actions.TOGGLE_PRODUCT_IN_FAVS:
+          this.toggleProductInFavourites(e);
+          break;
       case Actions.SORT:
       case Actions.FILTER:
       case Actions.UPDATE_RANGE:
@@ -61,6 +64,9 @@ class AppController {
       case Actions.TOGGLE_PRODUCT_IN_CART:
         this.view.renderCart(this.model.getQuantityInCart());
         break;
+      case Actions.TOGGLE_PRODUCT_IN_FAVS:
+        this.view.renderFavouriteProducts(this.model.getQuantityInFavourite());
+        break;
       case Actions.SHOW_MODAL:
         this.showModal(options as Messages);
         break;
@@ -74,10 +80,10 @@ class AppController {
       case Actions.RESET_FILTERS:
         this.view.resetFilters();
         break;
-        case Actions.RESET_SETTINGS:
-          this.view.resetFilters();
-          this.view.resetSort();
-          break;
+      case Actions.RESET_SETTINGS:
+        this.view.resetFilters();
+        this.view.resetSort();
+        break;
       default:
         break;
     }
@@ -89,7 +95,12 @@ class AppController {
     const productId = product.dataset.id as string;
     this.model.toggleProductInCart(productId);
   }
-
+  toggleProductInFavourites(e: Event): void {
+    const target = e.target as HTMLButtonElement;
+    const product = target.closest('.item') as HTMLDivElement;
+    const productId = product.dataset.id as string;
+    this.model.toggleProductInFavourites(productId);
+  }
   filterAndSortProducts(e: Event | CustomEvent, action: Actions): void {
     if (action === Actions.FILTER) {
       this.setFilters(e);
@@ -152,7 +163,6 @@ class AppController {
       if (key === LocalStorageKeys.FILTER) {
         const filters = LocalStorage.getItem(key) as FilterGroups;
         const keys = Object.keys(filters);
-        //debugger;
         keys.forEach(filterName => {
           const values = filters[filterName];
           values.forEach(value => Filter.toggleFilter({ name: filterName, value, mode: 'on' }));
@@ -160,14 +170,13 @@ class AppController {
       }
       else if (key === LocalStorageKeys.SORT) {
         const { option, order } = LocalStorage.getItem(key) as SortOptions;
-        if(option && order)
+        if (option && order)
           Sort.setSort(option, order);
       }
     }
   }
 
   resetSettings(): void {
-    //debugger;
     LocalStorage.clear();
     this.processLocalStorage();
     this.model.filterAndSortProducts();

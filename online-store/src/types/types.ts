@@ -27,7 +27,7 @@ export interface ICartProduct {
   title: string;
   quantity: number;
 }
-
+export type IFavouriteProduct = Pick<IProduct, 'id'> ;
 export enum Actions {
   INIT = "INIT",
   TOGGLE_PRODUCT_IN_CART = "TOGGLE_PRODUCT_IN_CART",
@@ -42,6 +42,7 @@ export enum Actions {
   CLEAR_SEARCH = "CLEAR_SEARCH",
   SEARCH = "SEARCH",
   RESET_SETTINGS = "RESET_SETTINGS",
+  TOGGLE_PRODUCT_IN_FAVS = "TOGGLE_PRODUCT_IN_FAVS",
 }
 export enum SortOption {
   DEFAULT = "default",

@@ -1,10 +1,10 @@
 import { Actions, EventHandler, IProduct } from "../types/types";
 
 class ProductView {
-  private handleToggleInCartClick: EventHandler;
+  private handler: EventHandler;
   private item: HTMLDivElement;
   constructor(handler: EventHandler, data: IProduct) {
-    this.handleToggleInCartClick = handler;
+    this.handler = handler;
 
     this.item = document.createElement('div');
     this.item.classList.add('item');
@@ -48,21 +48,16 @@ class ProductView {
     const btnToggleInCart = document.createElement('button');
     btnToggleInCart.classList.add('btn', 'btn-cart');
     btnToggleInCart.innerHTML = "Cart picture";
+    btnToggleInCart.addEventListener('click', (event) => this.handler(event, Actions.TOGGLE_PRODUCT_IN_CART))
 
-    btnToggleInCart.addEventListener('click', (event) => this.handleToggleInCartClick(event, Actions.TOGGLE_PRODUCT_IN_CART))
+    const btnToggleInFavs = document.createElement('button');
+    btnToggleInFavs.classList.add('btn', 'btn-favs');
+    btnToggleInFavs.innerHTML = "Heart picture";
+    btnToggleInFavs.addEventListener('click', (event) => this.handler(event, Actions.TOGGLE_PRODUCT_IN_FAVS))
 
-    content.insertAdjacentElement('beforeend', id);
-    content.insertAdjacentElement('beforeend', title);
-    content.insertAdjacentElement('beforeend', price);
-    content.insertAdjacentElement('beforeend', year);
-    content.insertAdjacentElement('beforeend', color);
-    content.insertAdjacentElement('beforeend', sizes);
-    content.insertAdjacentElement('beforeend', btnToggleInCart);
-
-    inner.insertAdjacentElement('beforeend', img);
-    inner.insertAdjacentElement('beforeend', content);
-
-    this.item.insertAdjacentElement('beforeend', inner);
+    content.append(id, title, price, year, color, sizes, btnToggleInCart, btnToggleInFavs);
+    inner.append(img, content);
+    this.item.append(inner);
   }
 
   getProductElement(): HTMLDivElement {

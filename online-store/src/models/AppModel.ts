@@ -5,6 +5,7 @@ import Cart from './Cart';
 import Sort from './Sort';
 import Filter from "./Filter";
 import LocalStorage from './../controllers/LocalStorage';
+import FavouriteProducts from './FavouriteProducts';
 
 
 class AppModel {
@@ -13,6 +14,7 @@ class AppModel {
   private currentCollection: Collection;
   private sortedFilteredCollection: Collection;
   private cart: Cart;
+  private favouriteProducts: FavouriteProducts;
 
   constructor(handler: Handler) {
     this.onModelUpdated = handler;
@@ -21,6 +23,7 @@ class AppModel {
     this.sortedFilteredCollection = new Collection();
 
     this.cart = new Cart(handler);
+    this.favouriteProducts = new FavouriteProducts(handler);
   }
 
   async getProducts(url: string): Promise<IProduct[]> {
@@ -56,9 +59,18 @@ class AppModel {
     this.cart.toggleProduct(id);
   }
 
+  toggleProductInFavourites(id: string): void {
+    this.favouriteProducts.toggleProduct(id);
+  }
+
   getQuantityInCart(): number {
     return this.cart.getQuantity();
   }
+
+  getQuantityInFavourite(): number {
+    return this.favouriteProducts.getQuantity();
+  }
+
 
   filterAndSortProducts(): void {
     this.filterProducts();

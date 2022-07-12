@@ -15,6 +15,10 @@ class Header {
     const cartContainer = document.createElement('div');
     cartContainer.classList.add('cart-container');
     inner.append(cartContainer);    
+
+    const favouriteContainer = document.createElement('div');
+    favouriteContainer.classList.add('favourite-container');
+    inner.append(favouriteContainer);   
   }
 
   getHeaderElement(): HTMLDivElement {
