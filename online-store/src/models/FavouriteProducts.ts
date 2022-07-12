@@ -1,5 +1,6 @@
-import { Actions, Handler } from '../types/types';
+import { Actions, Handler, LocalStorageKeys } from '../types/types';
 import { IFavouriteProduct } from './../types/types';
+import LocalStorage from './../controllers/LocalStorage';
 
 class FavouriteProducts {
   private onModelUpdated: Handler;
@@ -11,11 +12,15 @@ class FavouriteProducts {
 
   toggleProduct(productId: string): void {
     const product = this.favs.find(product => product.id === productId);
+    
     if (product) {
       this.deleteFromFavs(product);
     }
-    else
-      this.addToFavs({ id: productId });   
+    else{
+      this.addToFavs({ id: productId })
+    }
+    //const favourites = LocalStorage.getItem(LocalStorageKeys.FAVOURITES) as IFavouriteProduct[];
+    LocalStorage.setItem<IFavouriteProduct[]>(LocalStorageKeys.FAVOURITES, [...this.favs]);
   }
 
   private deleteFromFavs(product: IFavouriteProduct): void {
@@ -24,12 +29,21 @@ class FavouriteProducts {
   }
 
   private addToFavs(product: IFavouriteProduct): void {
-      this.favs.push(product);
-      this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_FAVS);    
+    this.favs.push(product);
+    this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_FAVS);
   }
 
   getQuantity(): number {
     return this.favs.length;
+  }
+  setFavourites(ids: IFavouriteProduct[]) {
+    this.favs = [...ids];
+  }
+  getFavouriteProducts(): IFavouriteProduct[] {
+    return this.favs;
+  }
+  reset(): void {
+    this.favs = [];
   }
 
 }

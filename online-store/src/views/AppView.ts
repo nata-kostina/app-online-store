@@ -1,4 +1,4 @@
-import { EventHandler, IProduct } from "../types/types";
+import { EventHandler, IFavouriteProduct, IProduct } from "../types/types";
 import CollectionView from './CollectionView';
 import CartView from './CartView';
 import SortView from './SortView';
@@ -75,13 +75,13 @@ class AppView {
     =================================*/
     const settings = this.settings.getSettingsElement();
     /*===============================
-    *   CART
+    *   CART ICON
     =================================*/
     const cartContainer = header.querySelector('.cart-container') as HTMLDivElement;
     const cartElement = this.cartView.getCartElement();
     cartContainer.append(cartElement);
     /*===============================
-    *   FAVOURITE PRODUCTS
+    *   FAVOURITE PRODUCTS ICON
     =================================*/
     const favContainer = header.querySelector('.favourite-container') as HTMLDivElement;
     const favElement = this.favouriteView.getFavElement();
@@ -91,7 +91,7 @@ class AppView {
     =================================*/
     const collectionElement = this.collectionView.getCollectionElement();
 
-    mainInner.append(collectionElement, sortElement, filterElement, searchElement, settings);
+    mainInner.append( collectionElement, sortElement, filterElement, searchElement, settings);
 
     this.wrapper.append(header, main);
   }
@@ -105,7 +105,7 @@ class AppView {
     this.cartView.render(quantity);
   }
 
-  renderFavouriteProducts(quantity: number): void {
+  renderFavouriteProductsIcon(quantity: number): void {
     this.favouriteView.render(quantity);
   }
 
@@ -115,6 +115,13 @@ class AppView {
 
   resetSort(): void {
     this.sortView.reset();
+  }
+  resetFavourites(): void {
+    this.favouriteView.reset();
+  }
+
+  applyFavourites(favourites: IFavouriteProduct[]): void {
+    this.collectionView.applyFavourites(favourites);
   }
 
 }

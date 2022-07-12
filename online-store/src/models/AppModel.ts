@@ -1,4 +1,4 @@
-import { Actions, FilterGroups, FilterItem, FilterOptions, Handler, Messages, SortOption, SortOptions } from "../types/types";
+import { Actions, FilterGroups, FilterItem, FilterOptions, Handler, IFavouriteProduct, Messages, SortOption, SortOptions } from "../types/types";
 import { IProduct } from './../types/types';
 import Collection from './Collection';
 import Cart from './Cart';
@@ -61,6 +61,7 @@ class AppModel {
 
   toggleProductInFavourites(id: string): void {
     this.favouriteProducts.toggleProduct(id);
+    this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_FAVS);
   }
 
   getQuantityInCart(): number {
@@ -70,8 +71,16 @@ class AppModel {
   getQuantityInFavourite(): number {
     return this.favouriteProducts.getQuantity();
   }
-
-
+  setFavourites(favourites: IFavouriteProduct[]) {
+    this.favouriteProducts.setFavourites(favourites);
+    this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_FAVS);
+  }
+  getFavouriteProducts(): IFavouriteProduct[] {
+    return this.favouriteProducts.getFavouriteProducts();
+  }
+  resetFavourites(): void {
+    this.favouriteProducts.reset();
+  }
   filterAndSortProducts(): void {
     this.filterProducts();
     this.sortProducts();

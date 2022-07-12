@@ -43,6 +43,7 @@ export enum Actions {
   SEARCH = "SEARCH",
   RESET_SETTINGS = "RESET_SETTINGS",
   TOGGLE_PRODUCT_IN_FAVS = "TOGGLE_PRODUCT_IN_FAVS",
+  SET_FAVOURITES = "SET_FAVOURITES"
 }
 export enum SortOption {
   DEFAULT = "default",
@@ -109,4 +110,5 @@ export enum Messages {
 export enum LocalStorageKeys {
   FILTER = 'filter',
   SORT = 'sort',
+  FAVOURITES = 'favourites'
 }

@@ -1,8 +1,9 @@
-import { Actions, EventHandler, IProduct } from "../types/types";
+import { Actions, EventHandler, IFavouriteProduct, IProduct } from "../types/types";
 
 class ProductView {
   private handler: EventHandler;
   private item: HTMLDivElement;
+
   constructor(handler: EventHandler, data: IProduct) {
     this.handler = handler;
 
@@ -55,13 +56,33 @@ class ProductView {
     btnToggleInFavs.innerHTML = "Heart picture";
     btnToggleInFavs.addEventListener('click', (event) => this.handler(event, Actions.TOGGLE_PRODUCT_IN_FAVS))
 
+    const heart = document.createElement('span');
+    heart.classList.add('heart');
+    heart.innerHTML = '';
+
     content.append(id, title, price, year, color, sizes, btnToggleInCart, btnToggleInFavs);
-    inner.append(img, content);
+    inner.append(img, content, heart);
     this.item.append(inner);
   }
 
   getProductElement(): HTMLDivElement {
     return this.item;
+  }
+
+  productApplyUserSetting(settings: { inCart: boolean, inFavourites: boolean }): void {
+    if (settings.inCart) {
+      // const span = document.createElement('span');
+      // span.innerHTML = 'In Cart';
+      // this.item.append(span);
+    }
+  }
+
+  applyFavourites(favourites: IFavouriteProduct[]): void {
+    if (favourites.find(fav => fav.id === this.item.dataset["id"])) {
+      (this.item.querySelector('.heart') as HTMLSpanElement).innerHTML = 'In Favourites';
+    }
+    else
+      (this.item.querySelector('.heart') as HTMLSpanElement).innerHTML = '';
   }
 
 }

@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-import { Actions, FilterGroups, FilterItem, IProduct, LocalStorageKeys, Messages, SortOption, SortOptions } from '../types/types';
+import { Actions, FilterGroups, FilterItem, IFavouriteProduct, IProduct, LocalStorageKeys, Messages, SortOption, SortOptions } from '../types/types';
 import AppView from '../views/AppView';
 import AppModel from './../models/AppModel';
 import Filter from '../models/Filter';
@@ -21,7 +21,7 @@ class AppController {
   }
 
   async start(): Promise<void> {
-    this.processLocalStorage();
+    this.processLocalStorage(); // prepare models
     this.view.render();
     const data = await this.model.getProducts(this.dataURL);
     this.model.setCurrentCollection(data);
@@ -34,9 +34,9 @@ class AppController {
       case Actions.TOGGLE_PRODUCT_IN_CART:
         this.toggleProductInCart(e);
         break;
-        case Actions.TOGGLE_PRODUCT_IN_FAVS:
-          this.toggleProductInFavourites(e);
-          break;
+      case Actions.TOGGLE_PRODUCT_IN_FAVS:
+        this.toggleProductInFavourites(e);
+        break;
       case Actions.SORT:
       case Actions.FILTER:
       case Actions.UPDATE_RANGE:
@@ -65,7 +65,11 @@ class AppController {
         this.view.renderCart(this.model.getQuantityInCart());
         break;
       case Actions.TOGGLE_PRODUCT_IN_FAVS:
-        this.view.renderFavouriteProducts(this.model.getQuantityInFavourite());
+        this.view.renderFavouriteProductsIcon(this.model.getQuantityInFavourite());
+        this.view.applyFavourites(this.model.getFavouriteProducts());
+        break;
+      case Actions.SET_FAVOURITES:
+       // this.view.applyFavourites(this.model.getFavouriteProducts());
         break;
       case Actions.SHOW_MODAL:
         this.showModal(options as Messages);
@@ -76,6 +80,9 @@ class AppController {
           this.showModal(Messages.EMPTY_COLLECTION);
         }
         this.view.renderCollection(collection);
+        if (this.model.getFavouriteProducts().length > 0) {
+          this.view.applyFavourites(this.model.getFavouriteProducts());
+        }
         break;
       case Actions.RESET_FILTERS:
         this.view.resetFilters();
@@ -83,6 +90,7 @@ class AppController {
       case Actions.RESET_SETTINGS:
         this.view.resetFilters();
         this.view.resetSort();
+        this.view.resetFavourites();
         break;
       default:
         break;
@@ -156,6 +164,7 @@ class AppController {
     if (LocalStorage.getLength() === 0) {
       Filter.resetFilters();
       Sort.resetSort();
+      this.model.resetFavourites();
       return;
     }
     for (let i = 0; i < LocalStorage.getLength(); i++) {
@@ -173,6 +182,10 @@ class AppController {
         if (option && order)
           Sort.setSort(option, order);
       }
+      else if (key === LocalStorageKeys.FAVOURITES) {
+        const favourites = LocalStorage.getItem(key) as IFavouriteProduct[];
+        this.model.setFavourites(favourites);
+      }
     }
   }
 
@@ -181,6 +194,10 @@ class AppController {
     this.processLocalStorage();
     this.model.filterAndSortProducts();
     this.onModelUpdated(Actions.RESET_SETTINGS);
+  }
+
+  getFavouriteProducts(): IFavouriteProduct[] {
+    return this.model.getFavouriteProducts();
   }
 }
 
