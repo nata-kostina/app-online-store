@@ -12,7 +12,7 @@ class FavouriteProducts {
 
   toggleProduct(productId: string): void {
     const product = this.favs.find(product => product.id === productId);
-    
+
     if (product) {
       this.deleteFromFavs(product);
     }
@@ -20,7 +20,7 @@ class FavouriteProducts {
       this.addToFavs({ id: productId })
     }
     //const favourites = LocalStorage.getItem(LocalStorageKeys.FAVOURITES) as IFavouriteProduct[];
-    LocalStorage.setItem<IFavouriteProduct[]>(LocalStorageKeys.FAVOURITES, [...this.favs]);
+    //LocalStorage.setItem<IFavouriteProduct[]>(LocalStorageKeys.FAVOURITES, [...this.favs]);
   }
 
   private deleteFromFavs(product: IFavouriteProduct): void {

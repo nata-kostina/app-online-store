@@ -7,6 +7,8 @@ import Search from './Search';
 import Header from './Header';
 import Settings from './Settings';
 import FavouriteView from './Favourite';
+import { ProductToDisplay, ICartProduct } from './../types/types';
+import FavouriteProducts from './../models/FavouriteProducts';
 
 class AppView {
   private handleUserActions: EventHandler;
@@ -91,14 +93,18 @@ class AppView {
     =================================*/
     const collectionElement = this.collectionView.getCollectionElement();
 
-    mainInner.append( collectionElement, sortElement, filterElement, searchElement, settings);
+    mainInner.append(collectionElement,sortElement, filterElement, searchElement, settings);
 
     this.wrapper.append(header, main);
   }
 
-  renderCollection(data: IProduct[]): void {
+  fillCollection(data: IProduct[]): void {
+    this.collectionView.reset();
+    this.collectionView.fill(data);
+  }
+  renderCollection(): void {
     this.collectionView.clear();
-    this.collectionView.render(data);
+    this.collectionView.render();
   }
 
   renderCart(quantity: number): void {
@@ -116,12 +122,19 @@ class AppView {
   resetSort(): void {
     this.sortView.reset();
   }
-  resetFavourites(): void {
+  resetFavouritesIcon(): void {
     this.favouriteView.reset();
   }
+  resetCartIcon(): void {
+    this.cartView.reset();
+  }
 
-  applyFavourites(favourites: IFavouriteProduct[]): void {
-    this.collectionView.applyFavourites(favourites);
+  highlightFavourites(favourites: IFavouriteProduct[]): void {
+    this.collectionView.highlightFavourites(favourites);
+  }
+
+  highlightProductsInCart(cart: ICartProduct[]): void {
+    this.collectionView.highlightProductsInCart(cart);
   }
 
 }

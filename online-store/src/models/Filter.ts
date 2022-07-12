@@ -28,58 +28,63 @@ class Filter {
   static filterProducts(collection: IProduct[]): IProduct[] {
 
     const groupsValues = Object.values(this.FilterGroups);
-    if (groupsValues.every(arr => arr.length === 0)) return collection;
+    if (!groupsValues || groupsValues.every(arr => arr.length === 0)) return collection;
 
-    const groupsEntries = Object.entries(this.FilterGroups);
+    //const groupsEntries = Object.entries(this.FilterGroups);
 
     let filteredCollection: IProduct[] = collection;
-
-    groupsEntries.forEach(group => {
-      if (group[1].length > 0)
-        filteredCollection = this.applySameGroupFilters(group[0], group[1], filteredCollection);
-    });
+    const groups = Object.keys(this.FilterGroups);
+    groups.forEach(group => {
+      if (this.FilterGroups[group].length > 0) {
+        filteredCollection = this.applySameGroupFilters(group, this.FilterGroups[group], filteredCollection);
+      }
+    })
+    // groupsEntries.forEach(group => {
+    //   if (group[1].length > 0)
+    //     filteredCollection = this.applySameGroupFilters(group[0], group[1], filteredCollection);
+    // });
 
     return filteredCollection;
   }
 
   private static applySameGroupFilters(name: string, values: string[], collection: IProduct[]): IProduct[] {
-    switch (name) {
-      case FilterName.CATEGORY:
-        return this.filterByCategory(values, collection);
-      case FilterName.COLOR:
-        return this.filterByColor(values, collection);
-      case FilterName.YEAR:
-        return this.filterByYear(values, collection);
-      default:
-        break;
-    }
-    return collection;
+  switch (name) {
+    case FilterName.CATEGORY:
+      return this.filterByCategory(values, collection);
+    case FilterName.COLOR:
+      return this.filterByColor(values, collection);
+    case FilterName.YEAR:
+      return this.filterByYear(values, collection);
+    default:
+      break;
   }
+  return collection;
+}
 
   private static filterByCategory(values: string[], collection: IProduct[]): IProduct[] {
-    return collection.filter(p => values.includes(p.category.toLowerCase()));
-  }
+  return collection.filter(p => values.includes(p.category.toLowerCase()));
+}
 
   private static filterByColor(values: string[], collection: IProduct[]): IProduct[] {
-    return collection.filter(p => values.includes(p.color.toLowerCase()));
-  }
+  return collection.filter(p => values.includes(p.color.toLowerCase()));
+}
 
   private static filterByYear(values: string[], collection: IProduct[]): IProduct[] {
-    const [start, end] = values.map(Number);
-    return collection.filter(p => Number(p.year) >= start && Number(p.year) <= end);
-  }
+  const [start, end] = values.map(Number);
+  return collection.filter(p => Number(p.year) >= start && Number(p.year) <= end);
+}
 
   static resetFilters(): void {
-    this.FilterGroups = {};
-  }
+  this.FilterGroups = {};
+}
 
   static getFilters(): FilterGroups {
-    return this.FilterGroups;
-  }
+  return this.FilterGroups;
+}
 
   static isEmpty(): boolean {
-    return (Object.keys(this.FilterGroups)).length === 0;  
-  }
+  return (Object.keys(this.FilterGroups)).length === 0;
+}
 }
 
 export default Filter;

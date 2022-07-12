@@ -14,7 +14,7 @@ class Cart {
       this.deleteFromToCart(product);
     }
     else
-      this.addToCart({ id: productId, title: "tets", quantity: 1 });   
+      this.addToCart({ id: productId, title: "tets", quantity: 1 });
   }
 
   private deleteFromToCart(product: ICartProduct): void {
@@ -23,10 +23,10 @@ class Cart {
   }
 
   private addToCart(product: ICartProduct): void {
-    if (this.cart.length >= 2) {    
-      Modal.showModal(Messages.FULL_CART);      
+    if (this.cart.length >= 2) {
+      Modal.showModal(Messages.FULL_CART);
     }
-    else{
+    else {
       this.cart.push(product);
       this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_CART);
     }
@@ -34,6 +34,18 @@ class Cart {
 
   getQuantity(): number {
     return this.cart.length;
+  }
+
+  getProducts(): ICartProduct[] {
+    return this.cart;
+  }
+
+  setProducts(products: ICartProduct[]): void {
+    this.cart.push(...products);
+  }
+
+  reset(): void {
+    this.cart = [];
   }
 
 }

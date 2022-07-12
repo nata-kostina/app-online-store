@@ -17,7 +17,9 @@ class CartView {
   render(quantity: number): void{
     (this.cart.querySelector('.cart__quantity') as HTMLSpanElement).innerHTML = quantity.toString();
   }
-
+  reset(): void {
+    (this.cart.querySelector('.cart__quantity') as HTMLSpanElement).innerHTML = '0';
+  }
 }
 
 export default CartView;

@@ -1,5 +1,5 @@
 import { Actions, FilterGroups, FilterItem, FilterOptions, Handler, IFavouriteProduct, Messages, SortOption, SortOptions } from "../types/types";
-import { IProduct } from './../types/types';
+import { IProduct, ICartProduct } from './../types/types';
 import Collection from './Collection';
 import Cart from './Cart';
 import Sort from './Sort';
@@ -34,7 +34,23 @@ class AppModel {
     //this.onModelUpdated(Actions.INIT);
     return data;
   }
+  applyUserSettingsToProducts(): void {
+    this.filterProducts();
+    this.sortProducts();
+    this.sortedFilteredCollection.setCollection(this.getCurrentCollection());
+    // applyFilters
+    // apllySort
+    //apply favs adn in cart
+    this.appplyFavouriteProducts();
+    this.onModelUpdated(Actions.UPDATE_COLLECTION);
+  }
 
+  appplyFavouriteProducts(): void {
+    const favouriteProducts = this.getFavouriteProducts();
+    const collection = this.getSortedFilteredCollection();
+    //const filtered = 
+    //if (favouriteProducts.find(fav => fav.id === this.item.dataset["id"]))
+  }
   getDefaultCollection(): IProduct[] {
     return this.defaultCollection.getCollection() as IProduct[];
   }
@@ -57,6 +73,7 @@ class AppModel {
 
   toggleProductInCart(id: string): void {
     this.cart.toggleProduct(id);
+    this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_CART);
   }
 
   toggleProductInFavourites(id: string): void {
@@ -81,16 +98,18 @@ class AppModel {
   resetFavourites(): void {
     this.favouriteProducts.reset();
   }
+  resetProductsInCart(): void {
+    this.cart.reset();
+  }
   filterAndSortProducts(): void {
     this.filterProducts();
     this.sortProducts();
     this.sortedFilteredCollection.setCollection(this.getCurrentCollection());
-    // LocalStorage.setItem<FilterGroups>( 'filter', Filter.getFilters());
-    // LocalStorage.setItem<SortOptions>( 'sort', Sort.getSort()); 
+
     this.onModelUpdated(Actions.UPDATE_COLLECTION);
 
-    if (this.currentCollection.getCollection().length === 0)
-      this.onModelUpdated(Actions.SHOW_MODAL, Messages.EMPTY_COLLECTION);
+    // if (this.currentCollection.getCollection().length === 0)
+    //   this.onModelUpdated(Actions.SHOW_MODAL, Messages.EMPTY_COLLECTION);
   }
 
   sortProducts(): void {
@@ -119,6 +138,12 @@ class AppModel {
     });
     this.setCurrentCollection(matched);
     this.onModelUpdated(Actions.UPDATE_COLLECTION);
+  }
+  getProductsInCart(): ICartProduct[] {
+    return this.cart.getProducts();
+  }
+  setProductsInCart(products: ICartProduct[]) {
+    this.cart.setProducts(products);
   }
 }
 

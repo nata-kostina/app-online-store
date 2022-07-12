@@ -1,5 +1,6 @@
 import { EventHandler, IFavouriteProduct, IProduct } from "../types/types";
 import ProductView from './ProductView';
+import { ICartProduct } from './../types/types';
 
 class CollectionView {
   private collection: HTMLDivElement;
@@ -16,27 +17,45 @@ class CollectionView {
   getCollectionElement(): HTMLDivElement {
     return this.collection;
   }
-
-  render(data: IProduct[]): void {
+  fill(data: IProduct[]): void {
     data.forEach(p => {
       const product = new ProductView(this.handler, p);
       this.items.push(product);
-      const productEl = product.getProductElement();
-      //product.productApplyUserSetting({ inCart: true, inFavourites: true });
-      this.collection.append(productEl);
     })
   }
 
+  render(): void {
+    this.items.forEach(product => {
+      const productEl = product.getProductElement();
+      this.collection.append(productEl);
+    })
+  }
+  reset(): void {
+    this.items = [];
+  }
   clear(): void {
-    console.log(this.collection);
     this.collection.innerHTML = "";
   }
 
-  applyFavourites(favourites: IFavouriteProduct[]): void {
+  highlightFavourites(favourites: IFavouriteProduct[]): void {
     this.items.forEach(i => {
-      i.applyFavourites(favourites);
+      i.highlightFavourites(favourites);
     });
   }
+
+
+  highlightProductsInCart(favourites: ICartProduct[]): void {
+    this.items.forEach(i => {
+      i.highlightProductsInCart(favourites);
+    });
+  }
+
+  // applyUserSettings(favourites: IFavouriteProduct[], cart: ICartProduct[]): void {
+  //   //this.collectionView.applyUserSettings(favourites, cart);
+  //   this.items.forEach(i => {
+  //     i.applyFavourites(favourites);
+  //   });
+  // }
 
 }
 

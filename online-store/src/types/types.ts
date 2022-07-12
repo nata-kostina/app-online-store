@@ -14,6 +14,11 @@ export interface IProduct {
   price: string;
 }
 
+export interface ProductToDisplay extends IProduct {
+  isFavourite: boolean;
+  isInCart: boolean;
+}
+
 export interface StoreItem {
   title: string;
   quantity: number;
@@ -110,5 +115,6 @@ export enum Messages {
 export enum LocalStorageKeys {
   FILTER = 'filter',
   SORT = 'sort',
-  FAVOURITES = 'favourites'
+  FAVOURITES = 'favourites',
+  CART = 'cart',
 }
