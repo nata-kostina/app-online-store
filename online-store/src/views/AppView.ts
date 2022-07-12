@@ -1,27 +1,31 @@
 import { EventHandler, IProduct } from "../types/types";
-import ProductsCollectionView from './ProductsCollectionView';
+import CollectionView from './CollectionView';
 import CartView from './CartView';
 import SortView from './SortView';
 import FilterView from './FilterView';
 import Search from './Search';
+import Header from './Header';
 
 class AppView {
   private handleUserActions: EventHandler;
-  private collectionView: ProductsCollectionView;
+  private collectionView: CollectionView;
+  private headerView: Header;
   private cartView: CartView;
   private sortView: SortView;
   private filterView: FilterView;
   private search: Search;
-  private main: HTMLElement;
+  private wrapper: HTMLElement;
 
   constructor(handler: EventHandler) {
     this.handleUserActions = handler;
 
-    this.main = document.createElement('main');
-    this.main.classList.add('main');
-    (document.querySelector('body') as HTMLBodyElement).append(this.main);
+    this.wrapper = document.createElement('wrapper');
+    this.wrapper.classList.add('wrapper');
 
-    this.collectionView = new ProductsCollectionView(handler);
+    (document.querySelector('body') as HTMLBodyElement).insertAdjacentElement('afterbegin', this.wrapper);
+
+    this.headerView = new Header();
+    this.collectionView = new CollectionView(handler);
     this.cartView = new CartView();
     this.sortView = new SortView(handler);
     this.filterView = new FilterView(handler);
@@ -29,27 +33,51 @@ class AppView {
   }
 
   render(): void {
+/*===============================
+*   HEADER
+=================================*/
+    const header = this.headerView.getHeaderElement();   
+/*===============================
+*   MAIN
+=================================*/
+    const main = document.createElement('main');
+    main.classList.add('main');
+
     const container = document.createElement('div');
     container.classList.add('container');
-    this.main.append(container);
+    main.append(container);
 
-    const inner = document.createElement('div');
-    inner.classList.add('main__inner');
-    container.append(inner);
-
+    const mainInner = document.createElement('div');
+    mainInner.classList.add('main__inner');
+    container.append(mainInner);
+/*===============================
+*   FILTER
+=================================*/
     this.filterView.applyFilters();
     const filterElement = this.filterView.getFilterElement();
-
+/*===============================
+*   SORT
+=================================*/
     this.sortView.applySort();
     const sortElement = this.sortView.getSortElement();
-
+/*===============================
+*   SEARCH
+=================================*/
     const searchElement = this.search.getSearchElement();
-
+/*===============================
+*   CART
+=================================*/
+    const cartContainer = header.querySelector('.cart-container') as HTMLDivElement;
     const cartElement = this.cartView.getCartElement();
-
+    cartContainer.append(cartElement);
+/*===============================
+*   COLLECTION
+=================================*/
     const collectionElement = this.collectionView.getCollectionElement();
-
-    this.main.append(cartElement, collectionElement, sortElement, filterElement, searchElement);
+    
+    mainInner.append(collectionElement, sortElement, filterElement, searchElement);
+    
+    this.wrapper.append(header, main);
   }
 
   renderCollection(data: IProduct[]): void {

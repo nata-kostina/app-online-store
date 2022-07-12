@@ -1,7 +1,7 @@
 import { EventHandler, IProduct } from "../types/types";
 import ProductView from './ProductView';
 
-class ProductsCollectionView {
+class CollectionView {
   private collection: HTMLDivElement;
   private handler: EventHandler;
 
@@ -29,4 +29,4 @@ class ProductsCollectionView {
 
 }
 
-export default ProductsCollectionView;
+export default CollectionView;
