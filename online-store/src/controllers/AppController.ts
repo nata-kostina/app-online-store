@@ -21,9 +21,11 @@ class AppController {
   }
 
   async start(): Promise<void> {
-    this.processLocalStorage();   
+    this.processLocalStorage();
     this.view.render();
-    await this.model.getProducts(this.dataURL);
+    const data = await this.model.getProducts(this.dataURL);
+    this.model.setCurrentCollection(data);
+    this.model.setSortedFilteredCollection(data);
     this.model.filterAndSortProducts();
   }
 
@@ -42,6 +44,9 @@ class AppController {
         break;
       case Actions.SEARCH:
         this.search(e);
+        break;
+      case Actions.RESET_SETTINGS:
+        this.resetSettings();
         break;
       default:
         break;
@@ -69,6 +74,10 @@ class AppController {
       case Actions.RESET_FILTERS:
         this.view.resetFilters();
         break;
+        case Actions.RESET_SETTINGS:
+          this.view.resetFilters();
+          this.view.resetSort();
+          break;
       default:
         break;
     }
@@ -99,6 +108,7 @@ class AppController {
     const value = target.value;
     const [option, order] = value.split('-');
     Sort.setSort(option, order);
+    LocalStorage.setItem<SortOptions>('sort', Sort.getSort());
   }
 
   setFilters(e: Event): void {
@@ -107,6 +117,9 @@ class AppController {
     const name = target.name;
     const mode = target.checked ? 'on' : 'off';
     Filter.toggleFilter({ name, value, mode });
+
+    if (!Filter.isEmpty())
+      LocalStorage.setItem<FilterGroups>('filter', Filter.getFilters());
   }
 
   updateRange(e: Event | CustomEvent): void {
@@ -129,22 +142,36 @@ class AppController {
   }
 
   processLocalStorage(): void {
+    if (LocalStorage.getLength() === 0) {
+      Filter.resetFilters();
+      Sort.resetSort();
+      return;
+    }
     for (let i = 0; i < LocalStorage.getLength(); i++) {
       const key = LocalStorage.getKey(i);
       if (key === LocalStorageKeys.FILTER) {
         const filters = LocalStorage.getItem(key) as FilterGroups;
         const keys = Object.keys(filters);
-       //debugger;
+        //debugger;
         keys.forEach(filterName => {
           const values = filters[filterName];
           values.forEach(value => Filter.toggleFilter({ name: filterName, value, mode: 'on' }));
         })
       }
       else if (key === LocalStorageKeys.SORT) {
-          const { option, order } = LocalStorage.getItem(key) as SortOptions;
+        const { option, order } = LocalStorage.getItem(key) as SortOptions;
+        if(option && order)
           Sort.setSort(option, order);
-        }
+      }
     }
+  }
+
+  resetSettings(): void {
+    //debugger;
+    LocalStorage.clear();
+    this.processLocalStorage();
+    this.model.filterAndSortProducts();
+    this.onModelUpdated(Actions.RESET_SETTINGS);
   }
 }
 

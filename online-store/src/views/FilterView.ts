@@ -67,6 +67,8 @@ class FilterView {
     return this.filter;
   }
 
+
+
   applyFilters(): void {
     const filters = Filter.getFilters();
     const filterNames = Object.keys(filters);

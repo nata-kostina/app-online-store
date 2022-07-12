@@ -41,6 +41,7 @@ export enum Actions {
   UPDATE_FILTERS = "UPDATE_FILTERS",
   CLEAR_SEARCH = "CLEAR_SEARCH",
   SEARCH = "SEARCH",
+  RESET_SETTINGS = "RESET_SETTINGS",
 }
 export enum SortOption {
   DEFAULT = "default",
@@ -75,7 +76,9 @@ export interface FilterItem {
   value: string;
   mode: string;
 }
-
+export type SortGroups = {
+  [key: string]: string[];
+}
 export type FilterGroups = {
   [key: string]: string[];
 }

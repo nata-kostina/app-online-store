@@ -76,6 +76,10 @@ class Filter {
   static getFilters(): FilterGroups {
     return this.FilterGroups;
   }
+
+  static isEmpty(): boolean {
+    return (Object.keys(this.FilterGroups)).length === 0;  
+  }
 }
 
 export default Filter;

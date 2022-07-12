@@ -28,8 +28,6 @@ class AppModel {
       .then(res => res.json())
       .then((data: IProduct[]) => data);
     this.defaultCollection.setCollection(data);
-    this.currentCollection.setCollection(data);
-    this.sortedFilteredCollection.setCollection(data);
     //this.onModelUpdated(Actions.INIT);
     return data;
   }
@@ -46,7 +44,7 @@ class AppModel {
     this.currentCollection.setCollection(value);
   }
 
-  getSortedFilteredCollection(): IProduct[]  {
+  getSortedFilteredCollection(): IProduct[] {
     return this.sortedFilteredCollection.getCollection();
   }
 
@@ -66,10 +64,10 @@ class AppModel {
     this.filterProducts();
     this.sortProducts();
     this.sortedFilteredCollection.setCollection(this.getCurrentCollection());
-    LocalStorage.setItem<FilterGroups>( 'filter', Filter.getFilters());
-    LocalStorage.setItem<SortOptions>( 'sort', Sort.getSort()); 
+    // LocalStorage.setItem<FilterGroups>( 'filter', Filter.getFilters());
+    // LocalStorage.setItem<SortOptions>( 'sort', Sort.getSort()); 
     this.onModelUpdated(Actions.UPDATE_COLLECTION);
-    
+
     if (this.currentCollection.getCollection().length === 0)
       this.onModelUpdated(Actions.SHOW_MODAL, Messages.EMPTY_COLLECTION);
   }
@@ -88,7 +86,7 @@ class AppModel {
     return Filter.getFilters();
   }
 
-  resetFilters():void {
+  resetFilters(): void {
     Filter.resetFilters();
     this.filterAndSortProducts();
     this.onModelUpdated(Actions.RESET_FILTERS);

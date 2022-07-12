@@ -5,6 +5,7 @@ import SortView from './SortView';
 import FilterView from './FilterView';
 import Search from './Search';
 import Header from './Header';
+import Settings from './Settings';
 
 class AppView {
   private handleUserActions: EventHandler;
@@ -15,6 +16,7 @@ class AppView {
   private filterView: FilterView;
   private search: Search;
   private wrapper: HTMLElement;
+  private settings: Settings;
 
   constructor(handler: EventHandler) {
     this.handleUserActions = handler;
@@ -25,6 +27,7 @@ class AppView {
     (document.querySelector('body') as HTMLBodyElement).insertAdjacentElement('afterbegin', this.wrapper);
 
     this.headerView = new Header();
+    this.settings = new Settings(handler);
     this.collectionView = new CollectionView(handler);
     this.cartView = new CartView();
     this.sortView = new SortView(handler);
@@ -33,13 +36,13 @@ class AppView {
   }
 
   render(): void {
-/*===============================
-*   HEADER
-=================================*/
-    const header = this.headerView.getHeaderElement();   
-/*===============================
-*   MAIN
-=================================*/
+    /*===============================
+    *   HEADER
+    =================================*/
+    const header = this.headerView.getHeaderElement();
+    /*===============================
+    *   MAIN
+    =================================*/
     const main = document.createElement('main');
     main.classList.add('main');
 
@@ -50,33 +53,37 @@ class AppView {
     const mainInner = document.createElement('div');
     mainInner.classList.add('main__inner');
     container.append(mainInner);
-/*===============================
-*   FILTER
-=================================*/
+    /*===============================
+    *   FILTER
+    =================================*/
     this.filterView.applyFilters();
     const filterElement = this.filterView.getFilterElement();
-/*===============================
-*   SORT
-=================================*/
+    /*===============================
+    *   SORT
+    =================================*/
     this.sortView.applySort();
     const sortElement = this.sortView.getSortElement();
-/*===============================
-*   SEARCH
-=================================*/
+    /*===============================
+    *   SEARCH
+    =================================*/
     const searchElement = this.search.getSearchElement();
-/*===============================
-*   CART
-=================================*/
+    /*===============================
+    *   SETTINGS
+    =================================*/
+    const settings = this.settings.getSettingsElement();
+    /*===============================
+    *   CART
+    =================================*/
     const cartContainer = header.querySelector('.cart-container') as HTMLDivElement;
     const cartElement = this.cartView.getCartElement();
     cartContainer.append(cartElement);
-/*===============================
-*   COLLECTION
-=================================*/
+    /*===============================
+    *   COLLECTION
+    =================================*/
     const collectionElement = this.collectionView.getCollectionElement();
-    
-    mainInner.append(collectionElement, sortElement, filterElement, searchElement);
-    
+
+    mainInner.append(collectionElement, sortElement, filterElement, searchElement, settings);
+
     this.wrapper.append(header, main);
   }
 
@@ -91,6 +98,10 @@ class AppView {
 
   resetFilters(): void {
     this.filterView.reset();
+  }
+
+  resetSort(): void {
+    this.sortView.reset();
   }
 
 }

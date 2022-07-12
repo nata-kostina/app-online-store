@@ -9,7 +9,7 @@ class SortView {
   constructor(handler: EventHandler) {
     this.handler = handler;
     this.sortOptions = [];
-    
+
     this.sort = document.createElement('div');
     this.sort.classList.add('sort');
 
@@ -49,7 +49,7 @@ class SortView {
 
     this.sort.append(select);
   }
-  
+
   applySort(): void {
     const sort = Sort.getSort();
     const option = this.sortOptions.find(opt => opt.value === `${sort.option}-${sort.order}`);
@@ -66,9 +66,19 @@ class SortView {
     opt.dataset['group'] = group;
     return opt;
   }
-  
+
   getSortElement(): HTMLDivElement {
     return this.sort;
+  }
+
+  reset(): void {
+    const options = this.sort.querySelectorAll(".select-option") as NodeListOf<HTMLOptionElement>;
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].value === 'default-ascending') {
+        options[i].selected = true;
+        break;
+      }
+    }
   }
 }
 
