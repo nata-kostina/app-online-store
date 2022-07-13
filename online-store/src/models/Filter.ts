@@ -48,43 +48,49 @@ class Filter {
   }
 
   private static applySameGroupFilters(name: string, values: string[], collection: IProduct[]): IProduct[] {
-  switch (name) {
-    case FilterName.CATEGORY:
-      return this.filterByCategory(values, collection);
-    case FilterName.COLOR:
-      return this.filterByColor(values, collection);
-    case FilterName.YEAR:
-      return this.filterByYear(values, collection);
-    default:
-      break;
+    switch (name) {
+      case FilterName.CATEGORY:
+        return this.filterByCategory(values, collection);
+      case FilterName.COLOR:
+        return this.filterByColor(values, collection);
+      case FilterName.YEAR:
+        return this.filterByYear(values, collection);
+      case FilterName.SIZE:
+        return this.filterBySize(values, collection);
+      default:
+        break;
+    }
+    return collection;
   }
-  return collection;
-}
 
   private static filterByCategory(values: string[], collection: IProduct[]): IProduct[] {
-  return collection.filter(p => values.includes(p.category.toLowerCase()));
-}
+    return collection.filter(p => values.includes(p.category.toLowerCase()));
+  }
 
   private static filterByColor(values: string[], collection: IProduct[]): IProduct[] {
-  return collection.filter(p => values.includes(p.color.toLowerCase()));
-}
+    return collection.filter(p => values.includes(p.color.toLowerCase()));
+  }
 
   private static filterByYear(values: string[], collection: IProduct[]): IProduct[] {
-  const [start, end] = values.map(Number);
-  return collection.filter(p => Number(p.year) >= start && Number(p.year) <= end);
-}
+    const [start, end] = values.map(Number);
+    return collection.filter(p => Number(p.year) >= start && Number(p.year) <= end);
+  }
+
+  private static filterBySize(values: string[], collection: IProduct[]): IProduct[] {
+    return collection.filter (product => values.every(v => product.sizes.map(el => el.toLowerCase()).includes(v)));
+  }
 
   static resetFilters(): void {
-  this.FilterGroups = {};
-}
+    this.FilterGroups = {};
+  }
 
   static getFilters(): FilterGroups {
-  return this.FilterGroups;
-}
+    return this.FilterGroups;
+  }
 
   static isEmpty(): boolean {
-  return (Object.keys(this.FilterGroups)).length === 0;
-}
+    return (Object.keys(this.FilterGroups)).length === 0;
+  }
 }
 
 export default Filter;

@@ -68,6 +68,7 @@ export enum FilterName {
   COLOR = "color",
   YEAR = "year",
   PRICE = "price",
+  SIZE = "size",
 }
 
 export interface FilterOptions {
