@@ -49,6 +49,18 @@ class AppView {
     =================================*/
     const header = this.headerView.getHeaderElement();
     /*===============================
+    *   CART ICON
+    =================================*/
+    const cartContainer = header.querySelector('.cart-container') as HTMLLinkElement;
+    const cartElement = this.cartView.getCartElement();
+    cartContainer.append(cartElement);
+    /*===============================
+    *   FAVOURITE PRODUCTS ICON
+    =================================*/
+    const favContainer = header.querySelector('.wishlist-container') as HTMLLinkElement;
+    const favElement = this.favouriteView.getFavElement();
+    favContainer.append(favElement);
+    /*===============================
     *   MAIN
     =================================*/
     const main = document.createElement('main');
@@ -64,14 +76,28 @@ class AppView {
     /*===============================
     *   INTRO
     =================================*/
-    const intro = this.intro.getElement();
-    mainInner.append(intro);
+    const intro = this.intro.getElement();   
+    /*===============================
+    *   MAIN LAYOUT
+    =================================*/
+    const layout = document.createElement('div');
+    layout.classList.add('layout-cols-2');
+    mainInner.append(layout);
+
+    const col_s = document.createElement('div');
+    col_s.classList.add('col', 'col-s');
+    layout.append(col_s);
+
+    const col_l = document.createElement('div');
+    col_l.classList.add('col', 'col-l');
+    layout.append(col_l);
 
     /*===============================
     *   FILTER
     =================================*/
     this.filterView.applyFilters();
     const filterElement = this.filterView.getFilterElement();
+    
     /*===============================
     *   SORT
     =================================*/
@@ -85,26 +111,15 @@ class AppView {
     *   SETTINGS
     =================================*/
     const settings = this.settings.getSettingsElement();
-    /*===============================
-    *   CART ICON
-    =================================*/
-    const cartContainer = header.querySelector('.cart-container') as HTMLLinkElement;
-    const cartElement = this.cartView.getCartElement();
-    cartContainer.append(cartElement);
-    /*===============================
-    *   FAVOURITE PRODUCTS ICON
-    =================================*/
-    const favContainer = header.querySelector('.wishlist-container') as HTMLLinkElement;
-    const favElement = this.favouriteView.getFavElement();
-    favContainer.append(favElement);
+
     /*===============================
     *   COLLECTION
     =================================*/
     const collectionElement = this.collectionView.getCollectionElement();
+    col_s.append(filterElement, settings);
+    col_l.append(searchElement, sortElement, collectionElement);
 
-    mainInner.append(collectionElement, sortElement, filterElement, searchElement, settings);
-
-    this.wrapper.append(header, main);
+    this.wrapper.append(header,intro,  main);
   }
 
   fillCollection(data: IProduct[]): void {

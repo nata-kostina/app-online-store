@@ -14,16 +14,16 @@ class Header {
 
     const logo = document.createElement('h1');
     const logoLink = document.createElement('a');
-    logo.classList.add('logo');
+    logo.classList.add('logo', 'col');
     logoLink.innerHTML = 'Rathnett';
     logoLink.href = '#';
     logo.append(logoLink);
     inner.append(logo);
 
-    const menu = createMenu(['list', 'nav', 'nav-centre'], ['Home', 'Shop', 'Blog', 'Contact']);
+    const menu = createMenu(['list', 'nav', 'nav-centre', 'col'], ['Home', 'Shop', 'Blog', 'Contact']);
     inner.append(menu);
 
-    const menuRight = createMenu(['list', 'nav', 'nav-right'], []);
+    const menuRight = createMenu(['list', 'nav', 'nav-right', 'col'], []);
 
     const listItemCart = document.createElement('li');
     listItemCart.classList.add('nav__link');
