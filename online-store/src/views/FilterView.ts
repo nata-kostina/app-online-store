@@ -21,7 +21,7 @@ class FilterView {
     const fieldsetCategory = createFieldset('By category:', ['fieldset'], 3, 'category', ['Football', 'Baseball', 'Cycling']);
     const fieldsetColor = createFieldset('By color:', ['fieldset'], 3, 'color', ['Black', 'White', 'Grey', 'Red', 'Blue', 'Brown']);
     const fieldsetSize = createFieldset('By size:', ['fieldset'], 6, 'size', ['XS', 'S', 'M', 'L', 'XL', 'XXL']);
-    const fieldsetBestsellers = createFieldset('Bestsellers:', ['fieldset'], 1, 'bestseller', ['Bestseller']);
+    const fieldsetBestsellers = createFieldset('Bestsellers:', ['fieldset'], 1, 'popularity', ['Bestseller']);
 
     const sliderYearContainer = document.createElement('div');
     sliderYearContainer.classList.add('range', 'range-year');

@@ -57,6 +57,8 @@ class Filter {
         return this.filterByYear(values, collection);
       case FilterName.SIZE:
         return this.filterBySize(values, collection);
+      case FilterName.POPULARITY:
+        return this.filterByPopularity(values, collection);
       default:
         break;
     }
@@ -77,7 +79,11 @@ class Filter {
   }
 
   private static filterBySize(values: string[], collection: IProduct[]): IProduct[] {
-    return collection.filter (product => values.every(v => product.sizes.map(el => el.toLowerCase()).includes(v)));
+    return collection.filter(product => values.every(v => product.sizes.map(el => el.toLowerCase()).includes(v)));
+  }
+
+  private static filterByPopularity(values: string[], collection: IProduct[]): IProduct[] {
+    return collection.filter(product => product.isBestseller);
   }
 
   static resetFilters(): void {
