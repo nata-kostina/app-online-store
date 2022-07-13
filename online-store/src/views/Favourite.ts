@@ -1,27 +1,22 @@
 class FavouriteView {
-  private fav: HTMLDivElement;
+  private wishlist: HTMLSpanElement;
   
   constructor() {
-    this.fav = document.createElement('div');
-    this.fav.classList.add('favourite');
-    this.fav.innerHTML = 'Favorite: ';
-
-    const quantity = document.createElement('span');
-    quantity.classList.add('favourite__quantity');
-    quantity.innerHTML = '0';
-    this.fav.append(quantity);
+    this.wishlist = document.createElement('span');
+    this.wishlist.classList.add('quantity-icon','wishlist-quantity');
+    this.wishlist.innerHTML = '0 ';
   }
 
-  getFavElement(): HTMLDivElement {
-    return this.fav;
+  getFavElement(): HTMLSpanElement {
+    return this.wishlist;
   }
   
   render(quantity: number): void{
-    (this.fav.querySelector('.favourite__quantity') as HTMLSpanElement).innerHTML = quantity.toString();
+    this.wishlist.innerHTML = quantity.toString();
   }
 
   reset(): void {
-    (this.fav.querySelector('.favourite__quantity') as HTMLSpanElement).innerHTML = '0';
+    this.wishlist.innerHTML = '0';
   }
 
 }

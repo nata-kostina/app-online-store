@@ -1,0 +1,81 @@
+.nav {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.nav__link {
+  position: relative;
+
+}
+
+.nav li:first-child {
+  margin-left: 0;
+}
+.nav li:last-child {
+  margin-right: 0;
+}
+.nav-centre {
+  .nav__link {
+   
+    margin: 0 20px;
+    //padding: 0 20px;
+
+    font-family: "ArquitectaHeavy", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #000000;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+    letter-spacing: 1px;
+
+    -webkit-transition: all 0.2s ease 0s;
+    transition: all 0.2s ease 0s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 1px;
+
+      -webkit-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+      background: #000000;
+
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  .nav__link:hover {
+
+    &::before {
+      opacity: 1;
+      visibility: visible;
+      left: 0;
+      width: 100%;
+    }
+  }
+}
+
+.nav-right {
+  //margin-right: 17px;
+  .nav__link {
+    position: relative;
+
+    margin-right: 15px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+
+    &:last-child {
+      
+    }
+
+    &:hover {
+      top: -2px;
+    }
+  }
+}

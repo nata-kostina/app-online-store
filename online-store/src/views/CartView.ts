@@ -1,24 +1,21 @@
 class CartView {
-  private cart: HTMLDivElement;
+  private cart: HTMLSpanElement;
   
   constructor() {
-    this.cart = document.createElement('div');
-    this.cart.classList.add('cart');
-    
-    const quantity = document.createElement('span');
-    quantity.classList.add('cart__quantity');
-    this.cart.append(quantity);
+    this.cart = document.createElement('span');
+    this.cart.classList.add('quantity-icon','cart__quantity-quantity');
+    this.cart.innerHTML = '0 ';
   }
 
-  getCartElement(): HTMLDivElement {
+  getCartElement(): HTMLSpanElement {
     return this.cart;
   }
   
   render(quantity: number): void{
-    (this.cart.querySelector('.cart__quantity') as HTMLSpanElement).innerHTML = quantity.toString();
+    this.cart.innerHTML = quantity.toString();
   }
   reset(): void {
-    (this.cart.querySelector('.cart__quantity') as HTMLSpanElement).innerHTML = '0';
+    this.cart.innerHTML = '0';
   }
 }
 

@@ -79,13 +79,13 @@ class AppView {
     /*===============================
     *   CART ICON
     =================================*/
-    const cartContainer = header.querySelector('.cart-container') as HTMLDivElement;
+    const cartContainer = header.querySelector('.cart-container') as HTMLLinkElement;
     const cartElement = this.cartView.getCartElement();
     cartContainer.append(cartElement);
     /*===============================
     *   FAVOURITE PRODUCTS ICON
     =================================*/
-    const favContainer = header.querySelector('.favourite-container') as HTMLDivElement;
+    const favContainer = header.querySelector('.wishlist-container') as HTMLLinkElement;
     const favElement = this.favouriteView.getFavElement();
     favContainer.append(favElement);
     /*===============================

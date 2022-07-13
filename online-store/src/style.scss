@@ -1,29 +1,14 @@
-@import "./styles/layouts/collection";
-@import "./styles/components/button";
-@import "./styles/components/product";
+@import "./styles/base/normalize";
+@import "./styles/base/fonts";
+@import "./styles/base/base";
+@import "./styles/base/containers";
 
-body {
-  
-  font-size: 20px;
-}
+@import "./styles/components/header";
+@import "./styles/components/navigation";
+@import "./styles/components/logo";
 
-.select {
-  font-size: 20px;
-}
+// @import "./styles/layouts/collection";
 
+// @import "./styles/components/button";
+// @import "./styles/components/product";
 
-.filter-value {
-  font-size: 24px;
-
-}
-
-.input {
-  font-size: 24px;
-
-}
-
-
-label {
-  font-size: 44px;
-
-}
