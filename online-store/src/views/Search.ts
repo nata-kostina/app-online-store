@@ -31,7 +31,10 @@ class Search {
   getSearchElement(): HTMLDivElement {
     return this.searchContainer;
   }
-
+  reset():void {
+    const input = this.searchContainer.querySelector('.input-search') as HTMLInputElement;
+    input.value = '';
+  }
 }
 
 export default Search;

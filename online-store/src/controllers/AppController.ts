@@ -1,12 +1,12 @@
 /* eslint-disable no-case-declarations */
-import { Actions, FilterGroups, IFavouriteProduct, IProduct, LocalStorageKeys, Messages, SortOptions } from '../types/types';
+import { Actions, FilterGroups, IFavouriteProduct, ICartProduct, LocalStorageKeys, Messages, SortOptions } from '../types/types';
 import AppView from '../views/AppView';
 import AppModel from './../models/AppModel';
 import Filter from '../models/Filter';
 import Sort from '../models/Sort';
 import Modal from './../models/Modal';
 import LocalStorage from './LocalStorage';
-import { ICartProduct } from './../types/types';
+import Search from './../models/Search';
 
 class AppController {
   view: AppView;
@@ -27,7 +27,6 @@ class AppController {
 
     const data = await this.model.getProducts(this.dataURL); // get source data
     this.model.setCurrentCollection(data); // set them to current collection
-    this.model.setSortedFilteredCollection(data); // set them to sort and filtered collection
 
     if (!Filter.isEmpty()) {
       this.model.filterProducts(); // filter and sort products according to filters and sort if they exist
@@ -37,12 +36,12 @@ class AppController {
       this.model.sortProducts();
     }
 
-    this.model.setSortedFilteredCollection(this.model.getCurrentCollection());
+
     this.updateCollection();
   }
 
   private updateCollection(): void {
-    const collection = this.model.getSortedFilteredCollection();
+    const collection = this.model.getCurrentCollection();
     this.view.fillCollection(collection);
 
     if (this.model.getFavouriteProducts().length > 0) {
@@ -58,8 +57,7 @@ class AppController {
     this.view.renderCollection();
   }
 
-
-  handleUserActions(e: Event, action: Actions) {
+  private handleUserActions(e: Event, action: Actions) {
     switch (action) {
       case Actions.TOGGLE_PRODUCT_IN_CART:
         this.toggleProductInCart(e);
@@ -82,24 +80,23 @@ class AppController {
       case Actions.RESET_SETTINGS:
         this.resetSettings();
         break;
+      case Actions.CLEAR_SEARCH:
+        this.clearSearch();
+        break;
       default:
         break;
     }
   }
 
-  onModelUpdated(action: Actions, options?: string): void {
+  private onModelUpdated(action: Actions, options?: string): void {
     switch (action) {
       case Actions.TOGGLE_PRODUCT_IN_CART:
         this.view.renderCart(this.model.getQuantityInCart());
-        if (this.model.getProductsInCart().length > 0) {
-          this.view.highlightProductsInCart(this.model.getProductsInCart());
-        }
+        this.view.highlightProductsInCart(this.model.getProductsInCart());
         break;
       case Actions.TOGGLE_PRODUCT_IN_FAVS:
         this.view.renderFavouriteProductsIcon(this.model.getQuantityInFavourite());
-        if (this.model.getFavouriteProducts().length > 0) {
-          this.view.highlightFavourites(this.model.getFavouriteProducts());
-        }
+        this.view.highlightFavourites(this.model.getFavouriteProducts());
         break;
       case Actions.SHOW_MODAL:
         this.showModal(options as Messages);
@@ -132,7 +129,7 @@ class AppController {
     }
   }
 
-  toggleProductInCart(e: Event): void {
+  private toggleProductInCart(e: Event): void {
     const target = e.target as HTMLButtonElement;
     const product = target.closest('.item') as HTMLDivElement;
     const productId = product.dataset.id as string;
@@ -141,7 +138,7 @@ class AppController {
     LocalStorage.setItem<IFavouriteProduct[]>(LocalStorageKeys.CART, [...cart]);
   }
 
-  toggleProductInFavourites(e: Event): void {
+  private toggleProductInFavourites(e: Event): void {
     const target = e.target as HTMLButtonElement;
     const product = target.closest('.item') as HTMLDivElement;
     const productId = product.dataset.id as string;
@@ -149,7 +146,8 @@ class AppController {
     const favourites = this.model.getFavouriteProducts();
     LocalStorage.setItem<IFavouriteProduct[]>(LocalStorageKeys.FAVOURITES, [...favourites]);
   }
-  filterAndSortProducts(e: Event | CustomEvent, action: Actions): void {
+
+  private filterAndSortProducts(e: Event | CustomEvent, action: Actions): void {
     if (action === Actions.FILTER) {
       this.setFilters(e);
     }
@@ -159,7 +157,7 @@ class AppController {
     else if (action === Actions.UPDATE_RANGE) {
       this.updateRange(e);
     }
-    this.model.filterAndSortProducts();
+    this.model.updateCollection();
   }
 
   private setSort(e: Event): void {
@@ -188,20 +186,14 @@ class AppController {
       LocalStorage.setItem<FilterGroups>('filter', Filter.getFilters());
   }
 
-  search(e: Event): void {
+  private search(e: Event): void {
     const target = e.target as HTMLInputElement;
     const value = target.value;
-    this.model.searchProducts(value);
+    Search.setSearch(value);
+    this.model.updateCollection();
   }
 
-  isCollectionEmpty(collection: IProduct[]): boolean {
-    return collection.length <= 0;
-  }
-
-  showModal(message: Messages): void {
-    Modal.showModal(message);
-  }
-  setFiltersFromLocalStorage(): void {
+  private setFiltersFromLocalStorage(): void {
     const filters = LocalStorage.getItem(LocalStorageKeys.FILTER) as FilterGroups;
     const keys = Object.keys(filters);
     if (keys) {
@@ -212,23 +204,14 @@ class AppController {
     }
   }
 
-  setSortFromLocalStorage(): void {
+  private setSortFromLocalStorage(): void {
     const { option, order } = LocalStorage.getItem(LocalStorageKeys.SORT) as SortOptions;
     if (option && order)
       Sort.setSort(option, order);
   }
 
-  // resetUsersSettings(): void {
-  //   Filter.resetFilters();
-  //   Sort.resetSort();
-  //   this.model.resetFavourites();
-  //   this.model.rese
-  // }
-  processLocalStorage(): void {
-    if (LocalStorage.getLength() === 0) {
-      //this.resetUsersSettings();
-    }
-    else {
+  private processLocalStorage(): void {
+    if (LocalStorage.getLength() != 0) {
       for (let i = 0; i < LocalStorage.getLength(); i++) {
         const key = LocalStorage.getKey(i);
         if (key === LocalStorageKeys.FILTER) {
@@ -249,20 +232,25 @@ class AppController {
     }
   }
 
-  resetSettings(): void {
+  private resetSettings(): void {
     LocalStorage.clear();
-    //this.processLocalStorage();
     Filter.resetFilters();
     Sort.resetSort();
+    Search.resetSearch();
     this.model.resetProductsInCart();
     this.model.resetFavourites();
-
-    this.model.filterAndSortProducts();
-    this.onModelUpdated(Actions.RESET_SETTINGS);    
+    this.model.updateCollection();
+    this.onModelUpdated(Actions.RESET_SETTINGS);
   }
 
-  getFavouriteProducts(): IFavouriteProduct[] {
-    return this.model.getFavouriteProducts();
+  private clearSearch() {
+    Search.resetSearch();
+    this.model.updateCollection();
+    this.view.clearSearch();
+  }
+
+  private showModal(message: Messages): void {
+    Modal.showModal(message);
   }
 }
 

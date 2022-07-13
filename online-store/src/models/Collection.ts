@@ -11,6 +11,10 @@ class Collection {
   getCollection(): IProduct[] {
     return this.collection;
   }
+
+  isEmpty(): boolean {
+    return this.collection.length === 0;
+  }
 }
 
 export default Collection;

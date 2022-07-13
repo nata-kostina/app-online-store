@@ -129,6 +129,10 @@ class AppView {
     this.cartView.reset();
   }
 
+  clearSearch():void {
+    this.search.reset();
+  }
+
   highlightFavourites(favourites: IFavouriteProduct[]): void {
     this.collectionView.highlightFavourites(favourites);
   }

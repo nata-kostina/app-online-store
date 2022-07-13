@@ -6,21 +6,21 @@ import Sort from './Sort';
 import Filter from "./Filter";
 import LocalStorage from './../controllers/LocalStorage';
 import FavouriteProducts from './FavouriteProducts';
+import Search from './Search';
 
 
 class AppModel {
   private onModelUpdated: Handler;
   private readonly defaultCollection: Collection;
   private currentCollection: Collection;
-  private sortedFilteredCollection: Collection;
-  private cart: Cart;
+
+ private cart: Cart;
   private favouriteProducts: FavouriteProducts;
 
   constructor(handler: Handler) {
     this.onModelUpdated = handler;
     this.defaultCollection = new Collection();
     this.currentCollection = new Collection();
-    this.sortedFilteredCollection = new Collection();
 
     this.cart = new Cart(handler);
     this.favouriteProducts = new FavouriteProducts(handler);
@@ -37,7 +37,7 @@ class AppModel {
   applyUserSettingsToProducts(): void {
     this.filterProducts();
     this.sortProducts();
-    this.sortedFilteredCollection.setCollection(this.getCurrentCollection());
+
     // applyFilters
     // apllySort
     //apply favs adn in cart
@@ -47,7 +47,7 @@ class AppModel {
 
   appplyFavouriteProducts(): void {
     const favouriteProducts = this.getFavouriteProducts();
-    const collection = this.getSortedFilteredCollection();
+
     //const filtered = 
     //if (favouriteProducts.find(fav => fav.id === this.item.dataset["id"]))
   }
@@ -63,13 +63,7 @@ class AppModel {
     this.currentCollection.setCollection(value);
   }
 
-  getSortedFilteredCollection(): IProduct[] {
-    return this.sortedFilteredCollection.getCollection();
-  }
 
-  setSortedFilteredCollection(value: IProduct[]): void {
-    this.sortedFilteredCollection.setCollection(value);
-  }
 
   toggleProductInCart(id: string): void {
     this.cart.toggleProduct(id);
@@ -101,16 +95,6 @@ class AppModel {
   resetProductsInCart(): void {
     this.cart.reset();
   }
-  filterAndSortProducts(): void {
-    this.filterProducts();
-    this.sortProducts();
-    this.sortedFilteredCollection.setCollection(this.getCurrentCollection());
-
-    this.onModelUpdated(Actions.UPDATE_COLLECTION);
-
-    // if (this.currentCollection.getCollection().length === 0)
-    //   this.onModelUpdated(Actions.SHOW_MODAL, Messages.EMPTY_COLLECTION);
-  }
 
   sortProducts(): void {
     const sortedCollection = Sort.sortProducts(this.currentCollection.getCollection());
@@ -118,7 +102,12 @@ class AppModel {
   }
 
   filterProducts(): void {
-    const filteredCollection = Filter.filterProducts(this.defaultCollection.getCollection());
+    let filteredCollection: IProduct[];
+    if (this.currentCollection.getCollection().length > 0) {
+      filteredCollection = Filter.filterProducts(this.currentCollection.getCollection());
+    }
+    else
+      filteredCollection = Filter.filterProducts(this.defaultCollection.getCollection());
     this.currentCollection.setCollection(filteredCollection);
   }
 
@@ -128,16 +117,27 @@ class AppModel {
 
   resetFilters(): void {
     Filter.resetFilters();
-    this.filterAndSortProducts();
+    this.updateCollection();
     this.onModelUpdated(Actions.RESET_FILTERS);
   }
-  searchProducts(value: string): void {
-    const collection = this.getSortedFilteredCollection();
-    const matched = collection.filter(product => {
-      return product.title.toLowerCase().includes(value.toLowerCase());
-    });
-    this.setCurrentCollection(matched);
+  updateCollection(): void {
+    this.searchProducts();
+    this.filterProducts();
+    this.sortProducts();
     this.onModelUpdated(Actions.UPDATE_COLLECTION);
+  }
+  searchProducts(): void {  
+    const collection = this.getDefaultCollection();
+    const input = Search.getSearch();
+    if (!input) {    
+      this.currentCollection.setCollection(this.getDefaultCollection());
+    }
+    else {
+      const matched = collection.filter(product => {
+        return product.title.toLowerCase().includes(input.toLowerCase());
+      });    
+      this.currentCollection.setCollection(matched);
+    }
   }
   getProductsInCart(): ICartProduct[] {
     return this.cart.getProducts();
