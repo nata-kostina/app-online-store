@@ -9,6 +9,7 @@ import Settings from './Settings';
 import FavouriteView from './Favourite';
 import { ProductToDisplay, ICartProduct } from './../types/types';
 import FavouriteProducts from './../models/FavouriteProducts';
+import Intro from './Intro';
 
 class AppView {
   private handleUserActions: EventHandler;
@@ -21,6 +22,7 @@ class AppView {
   private wrapper: HTMLElement;
   private settings: Settings;
   private favouriteView: FavouriteView;
+  private intro: Intro;
 
   constructor(handler: EventHandler) {
     this.handleUserActions = handler;
@@ -38,6 +40,7 @@ class AppView {
     this.sortView = new SortView(handler);
     this.filterView = new FilterView(handler);
     this.search = new Search(handler);
+    this.intro = new Intro();
   }
 
   render(): void {
@@ -58,6 +61,12 @@ class AppView {
     const mainInner = document.createElement('div');
     mainInner.classList.add('main__inner');
     container.append(mainInner);
+    /*===============================
+    *   INTRO
+    =================================*/
+    const intro = this.intro.getElement();
+    mainInner.append(intro);
+
     /*===============================
     *   FILTER
     =================================*/
@@ -93,7 +102,7 @@ class AppView {
     =================================*/
     const collectionElement = this.collectionView.getCollectionElement();
 
-    mainInner.append(collectionElement,sortElement, filterElement, searchElement, settings);
+    mainInner.append(collectionElement, sortElement, filterElement, searchElement, settings);
 
     this.wrapper.append(header, main);
   }
@@ -129,7 +138,7 @@ class AppView {
     this.cartView.reset();
   }
 
-  clearSearch():void {
+  clearSearch(): void {
     this.search.reset();
   }
 
