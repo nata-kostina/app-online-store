@@ -10,6 +10,7 @@ import FavouriteView from './Favourite';
 import { ProductToDisplay, ICartProduct } from './../types/types';
 import FavouriteProducts from './../models/FavouriteProducts';
 import Intro from './Intro';
+import Footer from './Footer';
 
 class AppView {
   private handleUserActions: EventHandler;
@@ -23,6 +24,7 @@ class AppView {
   private resetBtn: ResetBtn;
   private favouriteView: FavouriteView;
   private intro: Intro;
+  private footer: Footer;
 
   constructor(handler: EventHandler) {
     this.handleUserActions = handler;
@@ -41,6 +43,7 @@ class AppView {
     this.filterView = new FilterView(handler);
     this.search = new Search(handler);
     this.intro = new Intro();
+    this.footer = new Footer();
   }
 
   render(): void {
@@ -124,10 +127,14 @@ class AppView {
     *   COLLECTION
     =================================*/
     const collectionElement = this.collectionView.getCollectionElement();
+        /*===============================
+    *   FOOTER
+    =================================*/
+    const footer = this.footer.getElement();
     col_s.append(filterElement);
     col_l.append(bar, collectionElement);
 
-    this.wrapper.append(header,intro, main);
+    this.wrapper.append(header,intro, main, footer);
   }
 
   fillCollection(data: IProduct[]): void {
