@@ -73,7 +73,7 @@ class FilterView {
           return Number(formattedValue);
         },
         to: function (numericValue: number) {
-          return `${numericValue.toFixed(2)} €`;
+          return `€${numericValue.toFixed(2)}`;
         }
       },
     });

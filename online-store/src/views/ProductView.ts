@@ -15,58 +15,98 @@ class ProductView {
     const inner = document.createElement('div');
     inner.classList.add('item__inner');
 
-    const id = document.createElement('h2');
-    id.classList.add('item__id');
-    id.innerHTML = data.id;
+    // const id = document.createElement('h2');
+    // id.classList.add('item__id');
+    // id.innerHTML = data.id;
 
-    const title = document.createElement('h3');
-    title.classList.add('item__title');
-    title.innerHTML = data.title;
+    const thumb = document.createElement('div');
+    thumb.classList.add('item__thumb');
+
+    const imgContainer = document.createElement('div');
+    imgContainer.classList.add('img-container');
 
     const img = document.createElement('img');
     img.classList.add('item__img');
     img.src = data.imgUrl;
 
+    imgContainer.append(img);
+
+    const buttons = document.createElement('div');
+    buttons.classList.add('item__buttons');
+
+
     const content = document.createElement('div');
     content.classList.add('item__content');
 
+    const title = document.createElement('h3');
+    title.classList.add('item__title');
+    title.innerHTML = data.title;
+
     const price = document.createElement('span');
     price.classList.add('item__price');
-    price.innerHTML = data.price;
+    price.innerHTML = `€${data.price}`;
 
     const year = document.createElement('span');
     year.classList.add('item__year');
     year.innerHTML = data.year;
 
+    const variants = document.createElement('div');
+    variants.classList.add('item__variants');
+
     const color = document.createElement('span');
-    color.classList.add('item__color');
-    color.innerHTML = data.color;
+    color.classList.add('item__color', 'color-icon');
+
+    switch (data.color.toLowerCase()) {
+      case 'black':
+        color.dataset['code'] = '#000000'
+        break;
+      case 'white':
+        color.dataset['code'] = '#ffffff'
+        break;
+      case 'red':
+        color.dataset['code'] = '#DC282E'
+        break;
+      case 'blue':
+        color.dataset['code'] = '#05CAE3';
+        break;
+        case 'orange':
+          color.dataset['code'] = '#F66D50';
+          break;
+      default:
+        color.dataset['code'] = '#ffffff'
+        break;
+    }
+    color.style.background = color.dataset['code'] as string;
 
 
     const sizes = document.createElement('span');
     sizes.classList.add('item__sizes');
     sizes.innerHTML = data.sizes.toString();
 
+    variants.append(color, sizes);
+
     const btnToggleInCart = document.createElement('button');
     btnToggleInCart.classList.add('btn', 'btn-cart');
-    btnToggleInCart.innerHTML = "Cart picture";
+    btnToggleInCart.innerHTML = "<i class='fa-light fa-cart-shopping'></i>";
     btnToggleInCart.addEventListener('click', (event) => this.handler(event, Actions.TOGGLE_PRODUCT_IN_CART))
 
     const btnToggleInFavs = document.createElement('button');
-    btnToggleInFavs.classList.add('btn', 'btn-favs');
-    btnToggleInFavs.innerHTML = "Heart picture";
+    btnToggleInFavs.classList.add('btn', 'btn-wishlist');
+    btnToggleInFavs.innerHTML = "<i class='fa-light fa-heart'></i>";
     btnToggleInFavs.addEventListener('click', (event) => this.handler(event, Actions.TOGGLE_PRODUCT_IN_FAVS))
 
-    const heart = document.createElement('span');
-    heart.classList.add('heart');
-    heart.innerHTML = '';
-    
-    const cart = document.createElement('span');
-    cart.classList.add('cart');
-    cart.innerHTML = '';
 
-    content.append(id, title, price, year, color, sizes, btnToggleInCart, btnToggleInFavs);
-    inner.append(img, content, heart, cart);
+    if (data.isBestseller) {
+      const bestsellerIcon = document.createElement('span');
+      bestsellerIcon.classList.add('bestseller-icon');
+      bestsellerIcon.innerHTML = '<i class="fa-regular fa-fire"></i>';
+      thumb.append(bestsellerIcon);
+    }
+
+    buttons.append(btnToggleInCart, btnToggleInFavs);
+    thumb.append(imgContainer, buttons);
+    content.append(title, price, variants, year);
+    inner.append(thumb, content);
     this.item.append(inner);
   }
 
@@ -84,19 +124,19 @@ class ProductView {
 
   highlightFavourites(favourites: IFavouriteProduct[]): void {
     if (favourites.find(fav => fav.id === this.item.dataset["id"])) {
-      (this.item.querySelector('.heart') as HTMLSpanElement).innerHTML = 'In Favourites';
+      (this.item.querySelector('.btn-wishlist') as HTMLSpanElement).classList.add('active');
     }
     else
-      (this.item.querySelector('.heart') as HTMLSpanElement).innerHTML = '';
+      (this.item.querySelector('.btn-wishlist') as HTMLSpanElement).classList.remove('active');
   }
 
   highlightProductsInCart(cart: ICartProduct[]): void {
     //debugger
     if (cart.find(product => product.id === this.item.dataset["id"])) {
-      (this.item.querySelector('.cart') as HTMLSpanElement).innerHTML = 'In Cart';
+      (this.item.querySelector('.btn-cart') as HTMLSpanElement).classList.add('active');
     }
     else
-      (this.item.querySelector('.cart') as HTMLSpanElement).innerHTML = '';
+      (this.item.querySelector('.btn-cart') as HTMLSpanElement).classList.remove('active');
   }
 
 }

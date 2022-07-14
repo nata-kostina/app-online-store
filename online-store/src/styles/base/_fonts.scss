@@ -21,7 +21,8 @@
 
 @font-face {
   font-family: 'fa-regular-400';
-  src: url('./assets/fontawesome/webfonts/fa-regular-400.ttf');
+  src: url('./assets/fontawesome/webfonts/fa-regular-400.woff2') format('woff2'),
+  url('./assets/fontawesome/webfonts/fa-regular-400.ttf')  format('truetype');
 }
 
 @font-face {
