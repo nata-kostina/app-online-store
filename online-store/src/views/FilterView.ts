@@ -86,7 +86,7 @@ class FilterView {
 
     this.applyFilters();
 
-    this.filter.append(fieldsetCategory, fieldsetPrice, fieldsetColor, fieldsetSize, fieldsetBestsellers, fieldsetYear, btnReset);
+    this.filter.append(fieldsetBestsellers, fieldsetCategory, fieldsetPrice, fieldsetColor, fieldsetSize, fieldsetYear, btnReset);
   }
 
   getFilterElement(): HTMLDivElement {

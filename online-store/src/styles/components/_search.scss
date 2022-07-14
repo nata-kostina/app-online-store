@@ -1,0 +1,42 @@
+input {
+  outline: none;
+}
+
+.search-container {
+  position: relative;
+}
+.input-search {
+
+
+  display: inline-block;
+  height: 34px;
+  width: 250px;
+  padding: 0px 8px;
+  
+  font-family: 'DMSans-Regular', sans-serif;
+  font-size: 1rem;   
+  
+  border: 1px solid #000;
+}
+
+.fa-xmark {
+  font-family: "fa-solid-900", sans-serif;
+
+}
+
+.btn-clear-search {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+
+  height: auto;
+
+
+  margin: 0;
+  padding: 0;
+
+  background: none;
+  color: #000000;
+
+  transform: translateY(-50%);
+}

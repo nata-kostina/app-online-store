@@ -11,10 +11,11 @@ class Search {
 
     const search = document.createElement('input');
     search.classList.add('input', 'input-search');
-    search.type = 'search';
+    search.type = 'text';
     search.placeholder = 'Search a product...';
     search.maxLength = 30;
     search.autocomplete = 'false';
+    search.autofocus = true;
     search.focus();
     search.addEventListener('input', (e) => {
        handler(e, Actions.SEARCH);
@@ -22,7 +23,7 @@ class Search {
 
     const btnClear = document.createElement('button');
     btnClear.classList.add('btn', 'btn-clear-search');
-    btnClear.innerHTML = 'Clear';
+    btnClear.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     btnClear.addEventListener('click', (e) => this.handler(e, Actions.CLEAR_SEARCH));
     
     this.searchContainer.append(search, btnClear); 

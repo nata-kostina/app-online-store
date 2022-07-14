@@ -5,7 +5,7 @@ import SortView from './SortView';
 import FilterView from './FilterView';
 import Search from './Search';
 import Header from './Header';
-import Settings from './Settings';
+import ResetBtn from './ResetBtn';
 import FavouriteView from './Favourite';
 import { ProductToDisplay, ICartProduct } from './../types/types';
 import FavouriteProducts from './../models/FavouriteProducts';
@@ -20,7 +20,7 @@ class AppView {
   private filterView: FilterView;
   private search: Search;
   private wrapper: HTMLElement;
-  private settings: Settings;
+  private resetBtn: ResetBtn;
   private favouriteView: FavouriteView;
   private intro: Intro;
 
@@ -33,7 +33,7 @@ class AppView {
     (document.querySelector('body') as HTMLBodyElement).insertAdjacentElement('afterbegin', this.wrapper);
 
     this.headerView = new Header();
-    this.settings = new Settings(handler);
+    this.resetBtn = new ResetBtn(handler);
     this.collectionView = new CollectionView(handler);
     this.cartView = new CartView();
     this.favouriteView = new FavouriteView();
@@ -108,18 +108,26 @@ class AppView {
     =================================*/
     const searchElement = this.search.getSearchElement();
     /*===============================
+    *   SETTING BAR
+    =================================*/
+    const bar = document.createElement('div');
+    bar.classList.add('settings-bar');
+    const barInner = document.createElement('div');
+    barInner.classList.add('settings-bar__inner');
+    bar.append(barInner);
+    /*===============================
     *   SETTINGS
     =================================*/
-    const settings = this.settings.getSettingsElement();
-
+    const resetBtn = this.resetBtn.getSettingsElement();
+    barInner.append(searchElement, sortElement, resetBtn);
     /*===============================
     *   COLLECTION
     =================================*/
     const collectionElement = this.collectionView.getCollectionElement();
     col_s.append(filterElement);
-    col_l.append(searchElement, sortElement, collectionElement);
+    col_l.append(bar, collectionElement);
 
-    this.wrapper.append(header,intro,  main);
+    this.wrapper.append(header,intro, main);
   }
 
   fillCollection(data: IProduct[]): void {
