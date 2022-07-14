@@ -24,7 +24,7 @@ class FilterView {
     const fieldsetYear = createFieldset('Year:', ['fieldset', 'fieldset-year'], 0, 'year', []);
     const fieldsetColor = createFieldset('Color:', ['fieldset'], 3, 'color', ['Black', 'White', 'Grey', 'Red', 'Blue', 'Brown']);
     const fieldsetSize = createFieldset('Size:', ['fieldset'], 6, 'size', ['XS', 'S', 'M', 'L', 'XL', 'XXL']);
-    const fieldsetBestsellers = createFieldset('Bestsellers:', ['fieldset'], 1, 'popularity', ['Bestseller']);
+    const fieldsetBestsellers = createFieldset('', ['fieldset'], 1, 'popularity', ['Bestsellers']);
     /*================================
     * YEAR
     =====================================*/
@@ -191,6 +191,14 @@ function createCheckbox(classes: string[], name: string, value: string, id: stri
     }
     colorIcon.style.background = colorIcon.dataset['code'] as string;
     label.insertAdjacentElement('afterbegin', colorIcon);
+  }
+
+  if (name === 'popularity') {
+    const icon = document.createElement('span');
+    icon.classList.add('checkbox' , 'bestseller-icon');
+    icon.innerHTML = '<i class="fa-solid fa-fire"></i>';
+    label.classList.add('label-besteller');
+    label.insertAdjacentElement('afterbegin', icon);
   }
   return label;
 }
