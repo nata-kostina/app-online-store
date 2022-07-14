@@ -116,7 +116,7 @@ class AppView {
     *   COLLECTION
     =================================*/
     const collectionElement = this.collectionView.getCollectionElement();
-    col_s.append(filterElement, settings);
+    col_s.append(filterElement);
     col_l.append(searchElement, sortElement, collectionElement);
 
     this.wrapper.append(header,intro,  main);

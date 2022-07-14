@@ -7,17 +7,7 @@ class Slider {
   constructor(handler: EventHandler, container: HTMLDivElement, options: SliderOptions) {
     this.handleUserActions = handler;
     this.dragSlider = container;
-    const mergedOptions = {
-      ...options, format: {
-        from: function (formattedValue: string) {
-          return Number(formattedValue);
-        },
-        to: function (numericValue: number) {
-          return Math.round(numericValue).toString();
-        }
-      },
-    }
-    noUiSlider.create(this.dragSlider, mergedOptions);
+    noUiSlider.create(this.dragSlider, options);
 
     (this.dragSlider.noUiSlider as noUiSlider.API).on('slide', (values, handle) => {
       const event = new CustomEvent('change', { detail: { name: 'year', values, handle } });

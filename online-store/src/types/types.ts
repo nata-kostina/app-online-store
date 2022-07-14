@@ -106,6 +106,10 @@ export type SliderOptions = {
   range: {
     'min': number;
     'max': number
+  };
+  format: {
+    from: (formattedValue: string) => number,
+    to: (numericValue: number) => string,
   }
 }
 
@@ -119,4 +123,9 @@ export enum LocalStorageKeys {
   SORT = 'sort',
   FAVOURITES = 'favourites',
   CART = 'cart',
+}
+
+export enum Colors {
+  BLACK = '#000000',
+  WHITE = 'ffffff'
 }

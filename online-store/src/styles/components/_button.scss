@@ -1,15 +1,21 @@
 .btn {
   margin: 0 auto;
+  padding: 0 40px;
+  
   position: relative;
   height: 45px;
-  line-height: 45px;
-  padding: 0 40px;
+  
   background: #000;
+  
+  font-family: 'DMSans-Regular', sans-serif;
+  line-height: 45px;
   color: #fff;
-  font-size: 11px;
+  font-size: 1rem;
   font-weight: 400;
   letter-spacing: 2px;
-  text-transform: uppercase;
+  
+  text-transform: capitalize;
+  
   border-radius: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -18,5 +24,10 @@
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
   border: 0;
+  
   cursor: pointer;
+}
+
+.btn-reset {
+  margin-top: 40px;
 }

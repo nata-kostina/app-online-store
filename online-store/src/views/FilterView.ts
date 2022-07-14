@@ -1,6 +1,7 @@
 import { Actions, EventHandler, FilterName, } from "../types/types";
 import Slider from './Slider';
 import Filter from './../models/Filter';
+//import * as wn from 'wnumb/wNumb' ;
 
 class FilterView {
   private onModelChanged: EventHandler;
@@ -18,11 +19,15 @@ class FilterView {
       handler(e, Actions.FILTER);
     });
 
-    const fieldsetCategory = createFieldset('By category:', ['fieldset'], 3, 'category', ['Football', 'Baseball', 'Cycling']);
-    const fieldsetColor = createFieldset('By color:', ['fieldset'], 3, 'color', ['Black', 'White', 'Grey', 'Red', 'Blue', 'Brown']);
-    const fieldsetSize = createFieldset('By size:', ['fieldset'], 6, 'size', ['XS', 'S', 'M', 'L', 'XL', 'XXL']);
+    const fieldsetCategory = createFieldset('Categories:', ['fieldset'], 3, 'category', ['Football', 'Baseball', 'Cycling']);
+    const fieldsetPrice = createFieldset('Price:', ['fieldset', 'fieldset-price'], 0, 'price', []);
+    const fieldsetYear = createFieldset('Year:', ['fieldset', 'fieldset-year'], 0, 'year', []);
+    const fieldsetColor = createFieldset('Color:', ['fieldset'], 3, 'color', ['Black', 'White', 'Grey', 'Red', 'Blue', 'Brown']);
+    const fieldsetSize = createFieldset('Size:', ['fieldset'], 6, 'size', ['XS', 'S', 'M', 'L', 'XL', 'XXL']);
     const fieldsetBestsellers = createFieldset('Bestsellers:', ['fieldset'], 1, 'popularity', ['Bestseller']);
-
+    /*================================
+    * YEAR
+    =====================================*/
     const sliderYearContainer = document.createElement('div');
     sliderYearContainer.classList.add('range', 'range-year');
     sliderYearContainer.id = 'range-year';
@@ -36,22 +41,43 @@ class FilterView {
         'min': 2015,
         'max': 2022
       },
-    });
-
-    const sliderPriceContainer = document.createElement('div');
-    sliderYearContainer.classList.add('range', 'range-price');
-    sliderYearContainer.id = 'range-price';
-
-    this.sliderPrice = new Slider(handler, sliderPriceContainer, {
-      start: [50, 150],
-      connect: true,
-      step: 1,
-      tooltips: true,
-      range: {
-        'min': 50,
-        'max': 150
+      format: {
+        from: function (formattedValue: string) {
+          return Number(formattedValue);
+        },
+        to: function (numericValue: number) {
+          return `${Math.round(numericValue).toString()}`;
+        }
       },
     });
+
+    (fieldsetYear.querySelector('.fieldset__content') as HTMLDivElement).append(sliderYearContainer);
+    /*================================
+    * PRICE
+    =====================================*/
+    const sliderPriceContainer = document.createElement('div');
+    sliderPriceContainer.classList.add('range', 'range-price');
+    sliderPriceContainer.id = 'range-price';
+
+    this.sliderPrice = new Slider(handler, sliderPriceContainer, {
+      start: [50.00, 150.00],
+      connect: true,
+      step: 0.01,
+      tooltips: true,      
+      range: {
+        'min': 50.00,
+        'max': 100.00
+      },
+      format: {
+        from: function (formattedValue: string) {
+          return Number(formattedValue);
+        },
+        to: function (numericValue: number) {
+          return `${numericValue.toFixed(2)} €`;
+        }
+      },
+    });
+    (fieldsetPrice.querySelector('.fieldset__content') as HTMLDivElement).append(sliderPriceContainer);
 
     const btnReset = document.createElement('button');
     btnReset.classList.add('btn', 'btn-reset');
@@ -60,7 +86,7 @@ class FilterView {
 
     this.applyFilters();
 
-    this.filter.append(fieldsetCategory, fieldsetColor, fieldsetSize, fieldsetBestsellers, sliderYearContainer, btnReset);
+    this.filter.append(fieldsetCategory, fieldsetPrice, fieldsetColor, fieldsetSize, fieldsetBestsellers, fieldsetYear, btnReset);
   }
 
   getFilterElement(): HTMLDivElement {
@@ -107,17 +133,26 @@ class FilterView {
 function createFieldset(text: string, classes: string[], num: number, name: string, values: string[]): HTMLFieldSetElement {
   const fieldset = document.createElement('fieldset');
   fieldset.classList.add(...classes);
-  fieldset.innerHTML = text;
+
+  const title = document.createElement('h2');
+  title.classList.add('fieldset__title');
+  title.innerHTML = text;
+
+  const content = document.createElement('div');
+  content.classList.add('fieldset__content');
+
+  fieldset.append(title, content);
 
   for (let i = 0; i < num; i++) {
-    const [ch, l] = createCheckbox(['filter-value'], name, values[i], `${name}_${i + 1}`);
-    fieldset.append(ch, l);
+    const label = createCheckbox(['filter-value'], name, values[i], `${name}_${i + 1}`);
+
+    content.append(label);
   }
 
   return fieldset;
 }
 
-function createCheckbox(classes: string[], name: string, value: string, id: string): [HTMLInputElement, HTMLLabelElement] {
+function createCheckbox(classes: string[], name: string, value: string, id: string): HTMLLabelElement {
   const checkbox = document.createElement('input');
   checkbox.classList.add(...classes, 'filter-checkbox');
   checkbox.type = 'checkbox';
@@ -126,11 +161,38 @@ function createCheckbox(classes: string[], name: string, value: string, id: stri
   checkbox.id = id;
 
   const label = document.createElement('label');
-  label.classList.add('label');
+  label.classList.add('filter-label');
   label.htmlFor = id;
-  label.innerHTML = value;
+  label.innerHTML = `${value}`;
 
-  return [checkbox, label];
+  const icon = document.createElement('div');
+  icon.classList.add('checkbox-icon');
+  icon.innerHTML = '<i class="fa-solid fa-check"></i>';
+
+  label.append(checkbox, icon);
+
+  if (name === 'color') {
+    const colorIcon = document.createElement('span');
+    colorIcon.classList.add('color-icon');
+    switch (value.toLowerCase()) {
+      case 'black':
+        colorIcon.dataset['code'] = '#000000'
+        break;
+      case 'white':
+        colorIcon.dataset['code'] = '#ffffff'
+        break;
+      case 'red':
+        colorIcon.dataset['code'] = '#DC282E'
+        break;
+      default:
+        colorIcon.dataset['code'] = '#ffffff'
+        break;
+
+    }
+    colorIcon.style.background = colorIcon.dataset['code'] as string;
+    label.insertAdjacentElement('afterbegin', colorIcon);
+  }
+  return label;
 }
 
 export default FilterView;
