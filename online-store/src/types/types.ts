@@ -115,7 +115,7 @@ export type SliderOptions = {
 
 export enum Messages {
   EMPTY_COLLECTION = "Ooops! No products are found.",
-  FULL_CART = "Ooops! Cart is full.",
+  FULL_CART = "Ooops! Your cart is full.",
 }
 
 export enum LocalStorageKeys {

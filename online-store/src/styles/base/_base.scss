@@ -17,18 +17,13 @@ a {
   font-family: 'ArquitectaMedium', sans-serif;
 }
 
-.list {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-}
-
-.img-container {
-
-}
-
 h1 {
   margin: 0;
   padding: 0;
+}
+
+.fixed {
+  height: 100%;
+  overflow-y: hidden;
 }
 

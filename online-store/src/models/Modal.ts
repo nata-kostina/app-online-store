@@ -3,6 +3,9 @@ import { Messages } from "../types/types";
 class Modal {
 
   static showModal(message: Messages): void {
+    const container = document.createElement('div');
+    container.classList.add('modal-container');
+
     const modal = document.createElement('div');
     modal.classList.add('modal');
 
@@ -15,20 +18,23 @@ class Modal {
 
     const btnClose = document.createElement('button');
     btnClose.classList.add('btn', 'btn-close', 'btn-close_modal');
+    btnClose.innerHTML = 'x';
+    inner.append(text, btnClose);
+    modal.append(inner);
+    container.append(modal);
 
-    inner.insertAdjacentElement('beforeend', text);
-    inner.insertAdjacentElement('beforeend', btnClose);
-    modal.insertAdjacentElement('beforeend', inner);
+    btnClose.addEventListener('click', () => this.closeModal());
 
-    btnClose.addEventListener('click', (event) => this.closeModal());
-
-    (document.querySelector('body') as HTMLBodyElement).insertAdjacentElement('beforeend', modal);
+    (document.querySelector('body') as HTMLBodyElement).insertAdjacentElement('afterbegin', container);
+    (document.querySelector('body') as HTMLBodyElement).classList.add('fixed');
 
   }
   
   static closeModal(): void {
-    const modal = document.querySelector('.modal') as HTMLDivElement;
-    (document.querySelector('body') as HTMLBodyElement).removeChild(modal);
+    const container = document.querySelector('.modal-container') as HTMLDivElement;
+    (document.querySelector('body') as HTMLBodyElement).removeChild(container);
+    (document.querySelector('body') as HTMLBodyElement).classList.remove('fixed');
+
   }
 }
 

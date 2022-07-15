@@ -153,7 +153,9 @@ class AppView {
   renderFavouriteProductsIcon(quantity: number): void {
     this.favouriteView.render(quantity);
   }
-
+  resetCollection(): void {
+    this.collectionView.clear();
+  }
   resetFilters(): void {
     this.filterView.reset();
   }

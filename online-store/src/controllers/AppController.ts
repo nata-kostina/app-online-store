@@ -42,19 +42,25 @@ class AppController {
 
   private updateCollection(): void {
     const collection = this.model.getCurrentCollection();
-    this.view.fillCollection(collection);
 
-    if (this.model.getFavouriteProducts().length > 0) {
-      this.view.renderFavouriteProductsIcon(this.model.getFavouriteProducts().length);
-      this.view.highlightFavourites(this.model.getFavouriteProducts());
+    if (collection.length === 0) {
+      this.view.resetCollection();
+      this.showModal(Messages.EMPTY_COLLECTION);
+    } else {
+      this.view.fillCollection(collection);
+
+      if (this.model.getFavouriteProducts().length > 0) {
+        this.view.renderFavouriteProductsIcon(this.model.getFavouriteProducts().length);
+        this.view.highlightFavourites(this.model.getFavouriteProducts());
+      }
+
+      if (this.model.getProductsInCart().length > 0) {
+        this.view.renderCart(this.model.getProductsInCart().length);
+        this.view.highlightProductsInCart(this.model.getProductsInCart());
+      }
+      this.view.renderCollection();
     }
 
-    if (this.model.getProductsInCart().length > 0) {
-      this.view.renderCart(this.model.getProductsInCart().length);
-      this.view.highlightProductsInCart(this.model.getProductsInCart());
-    }
-
-    this.view.renderCollection();
   }
 
   private handleUserActions(e: Event, action: Actions) {
