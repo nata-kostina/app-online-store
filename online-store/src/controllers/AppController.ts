@@ -1,4 +1,4 @@
-import { Actions, FilterName, FilterGroups, IFavouriteProduct, ICartProduct, LocalStorageKeys, Messages, SortOptions } from '../types/types';
+import { Actions, FilterName, FilterGroups, IFavouriteProduct, ICartProduct, LocalStorageKeys, Messages, SortOptions, Mode } from '../types/types';
 import AppView from '../views/AppView';
 import AppModel from '../models/AppModel';
 import Filter from '../models/Filter';
@@ -67,7 +67,7 @@ class AppController {
         this.toggleProductInCart(e);
         break;
         
-      case Actions.TOGGLE_PRODUCT_IN_FAVS:
+      case Actions.TOGGLE_PRODUCT_IN_WISHLIST:
         this.toggleProductInFavourites(e);
         break;
       case Actions.SORT:
@@ -99,7 +99,7 @@ class AppController {
         this.view.renderCart(this.model.getQuantityInCart());
         this.view.highlightProductsInCart(this.model.getProductsInCart());
         break;
-      case Actions.TOGGLE_PRODUCT_IN_FAVS:
+      case Actions.TOGGLE_PRODUCT_IN_WISHLIST:
         this.view.renderFavouriteProductsIcon(this.model.getQuantityInFavourite());
         this.view.highlightFavourites(this.model.getFavouriteProducts());
         break;
@@ -166,7 +166,7 @@ class AppController {
     const target = e.target as HTMLInputElement;
     const value = target.value;
     const name = target.name;
-    const mode = target.checked ? 'on' : 'off';
+    const mode = target.checked ? Mode.ON : Mode.OFF;
     Filter.toggleFilter({ name, value, mode });
 
     if (!Filter.isEmpty())
@@ -196,7 +196,7 @@ class AppController {
     if (keys) {
       keys.forEach(filterName => {
         const values = filters[filterName];
-        values.forEach(value => Filter.toggleFilter({ name: filterName, value, mode: 'on' }));
+        values.forEach(value => Filter.toggleFilter({ name: filterName, value, mode: Mode.ON }));
       })
     }
   }

@@ -71,7 +71,7 @@ class AppModel {
 
   toggleProductInFavourites(id: string): void {
     this.favouriteProducts.toggleProduct(id);
-    this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_FAVS);
+    this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_WISHLIST);
   }
 
   getQuantityInCart(): number {
@@ -83,7 +83,7 @@ class AppModel {
   }
   setFavourites(favourites: IFavouriteProduct[]) {
     this.favouriteProducts.setFavourites(favourites);
-    this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_FAVS);
+    this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_WISHLIST);
   }
   getFavouriteProducts(): IFavouriteProduct[] {
     return this.favouriteProducts.getFavouriteProducts();

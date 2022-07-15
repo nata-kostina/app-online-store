@@ -24,12 +24,12 @@ class FavouriteProducts {
 
   private deleteFromFavs(product: IFavouriteProduct): void {
     this.favs = this.favs.filter(p => p.id != product.id);
-    this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_FAVS);
+    this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_WISHLIST);
   }
 
   private addToFavs(product: IFavouriteProduct): void {
     this.favs.push(product);
-    this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_FAVS);
+    this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_WISHLIST);
   }
 
   getQuantity(): number {

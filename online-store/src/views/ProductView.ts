@@ -102,7 +102,7 @@ class ProductView {
     const btnToggleInFavs = document.createElement('button');
     btnToggleInFavs.classList.add('btn', 'btn-wishlist');
     btnToggleInFavs.innerHTML = "<i class='fa-light fa-heart'></i>";
-    btnToggleInFavs.addEventListener('click', (event) => this.handler(event, Actions.TOGGLE_PRODUCT_IN_FAVS))
+    btnToggleInFavs.addEventListener('click', (event) => this.handler(event, Actions.TOGGLE_PRODUCT_IN_WISHLIST))
 
 
     if (data.isBestseller) {

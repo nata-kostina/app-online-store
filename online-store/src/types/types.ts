@@ -1,6 +1,4 @@
 
-export type CallbackVoid<T> = (data: T) => void;
-
 export interface IProduct {
   id: string;
   title: string;
@@ -15,16 +13,6 @@ export interface IProduct {
   quantity: string;
 }
 
-export interface ProductToDisplay extends IProduct {
-  isFavourite: boolean;
-  isInCart: boolean;
-}
-
-export interface StoreItem {
-  title: string;
-  quantity: number;
-}
-
 export type Handler = (action: Actions, options?: string) => void;
 export type EventHandler = (e: Event, action: Actions) => void;
 
@@ -33,7 +21,7 @@ export interface ICartProduct {
   title: string;
   quantity: number;
 }
-export type IFavouriteProduct = Pick<IProduct, 'id'> ;
+export type IFavouriteProduct = Pick<IProduct, 'id'>;
 export enum Actions {
   INIT = "INIT",
   TOGGLE_PRODUCT_IN_CART = "TOGGLE_PRODUCT_IN_CART",
@@ -48,8 +36,7 @@ export enum Actions {
   CLEAR_SEARCH = "CLEAR_SEARCH",
   SEARCH = "SEARCH",
   RESET_SETTINGS = "RESET_SETTINGS",
-  TOGGLE_PRODUCT_IN_FAVS = "TOGGLE_PRODUCT_IN_FAVS",
-  SET_FAVOURITES = "SET_FAVOURITES"
+  TOGGLE_PRODUCT_IN_WISHLIST = "TOGGLE_PRODUCT_IN_WISHLIST",
 }
 export enum SortOption {
   DEFAULT = "default",
@@ -84,11 +71,9 @@ export enum Mode {
 export interface FilterItem {
   name: string;
   value: string;
-  mode: string;
+  mode: Mode;
 }
-export type SortGroups = {
-  [key: string]: string[];
-}
+
 export type FilterGroups = {
   [key: string]: string[];
 }
@@ -100,7 +85,7 @@ export type FilterRange = {
 }
 
 export type SliderOptions = {
-  start: string[] | number [];
+  start: string[] | number[];
   step: number;
   tooltips: boolean;
   connect: boolean;
@@ -124,9 +109,4 @@ export enum LocalStorageKeys {
   SORT = 'sort',
   FAVOURITES = 'favourites',
   CART = 'cart',
-}
-
-export enum Colors {
-  BLACK = '#000000',
-  WHITE = 'ffffff'
 }
