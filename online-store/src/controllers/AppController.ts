@@ -61,14 +61,14 @@ class AppController {
 
   }
 
-  private handleUserActions(e: Event, action: Actions) {
+  private handleUserActions(e: Event, action: Actions): void {
     switch (action) {
       case Actions.TOGGLE_PRODUCT_IN_CART:
         this.toggleProductInCart(e);
         break;
         
       case Actions.TOGGLE_PRODUCT_IN_WISHLIST:
-        this.toggleProductInFavourites(e);
+        this.toggleProductInWishlist(e);
         break;
       case Actions.SORT:
       case Actions.FILTER:
@@ -132,7 +132,7 @@ class AppController {
     LocalStorage.setItem<IFavouriteProduct[]>(LocalStorageKeys.CART, [...cart]);
   }
 
-  private toggleProductInFavourites(e: Event): void {
+  private toggleProductInWishlist(e: Event): void {
     const target = e.target as HTMLButtonElement;
     const product = target.closest('.item') as HTMLDivElement;
     const productId = product.dataset.id as string;

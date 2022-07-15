@@ -3,14 +3,14 @@ import { IFavouriteProduct } from '../types/types';
 
 class FavouriteProducts {
   private onModelUpdated: Handler;
-  private favs: IFavouriteProduct[];
+  private wishlist: IFavouriteProduct[];
   constructor(handler: Handler) {
-    this.favs = [];
+    this.wishlist = [];
     this.onModelUpdated = handler;
   }
 
   toggleProduct(productId: string): void {
-    const product = this.favs.find(product => product.id === productId);
+    const product = this.wishlist.find(product => product.id === productId);
 
     if (product) {
       this.deleteFromFavs(product);
@@ -23,26 +23,26 @@ class FavouriteProducts {
   }
 
   private deleteFromFavs(product: IFavouriteProduct): void {
-    this.favs = this.favs.filter(p => p.id != product.id);
+    this.wishlist = this.wishlist.filter(p => p.id != product.id);
     this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_WISHLIST);
   }
 
   private addToFavs(product: IFavouriteProduct): void {
-    this.favs.push(product);
+    this.wishlist.push(product);
     this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_WISHLIST);
   }
 
   getQuantity(): number {
-    return this.favs.length;
+    return this.wishlist.length;
   }
   setFavourites(ids: IFavouriteProduct[]) {
-    this.favs = [...ids];
+    this.wishlist = [...ids];
   }
   getFavouriteProducts(): IFavouriteProduct[] {
-    return this.favs;
+    return this.wishlist;
   }
   reset(): void {
-    this.favs = [];
+    this.wishlist = [];
   }
 
 }
