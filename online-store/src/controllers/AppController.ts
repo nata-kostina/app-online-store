@@ -67,6 +67,7 @@ class AppController {
       case Actions.TOGGLE_PRODUCT_IN_CART:
         this.toggleProductInCart(e);
         break;
+        
       case Actions.TOGGLE_PRODUCT_IN_FAVS:
         this.toggleProductInFavourites(e);
         break;
