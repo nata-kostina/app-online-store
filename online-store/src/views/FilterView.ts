@@ -49,7 +49,7 @@ class FilterView {
           return `${Math.round(numericValue).toString()}`;
         }
       },
-    });
+    }, FilterName.YEAR);
 
     (fieldsetYear.querySelector('.fieldset__content') as HTMLDivElement).append(sliderYearContainer);
     /*================================
@@ -60,13 +60,13 @@ class FilterView {
     sliderPriceContainer.id = 'range-price';
 
     this.sliderPrice = new Slider(handler, sliderPriceContainer, {
-      start: [50.00, 150.00],
+      start: [0.00, 50.00],
       connect: true,
-      step: 0.01,
+      step: 0.1,
       tooltips: true,
       range: {
-        'min': 50.00,
-        'max': 100.00
+        'min': 0.00,
+        'max': 50.00
       },
       format: {
         from: function (formattedValue: string) {
@@ -76,7 +76,7 @@ class FilterView {
           return `€${numericValue.toFixed(2)}`;
         }
       },
-    });
+    }, FilterName.PRICE);
     (fieldsetPrice.querySelector('.fieldset__content') as HTMLDivElement).append(sliderPriceContainer);
 
     const btnReset = document.createElement('button');
@@ -93,8 +93,6 @@ class FilterView {
     return this.filter;
   }
 
-
-
   applyFilters(): void {
     const filters = Filter.getFilters();
     const filterNames = Object.keys(filters);
@@ -105,8 +103,8 @@ class FilterView {
         this.sliderYear.applyFilters(1, Number.parseInt(filters[filterName][1]));
       }
       else if (filterName === FilterName.PRICE) {
-        this.sliderPrice.applyFilters(0, Number.parseInt(filters[filterName][0]));
-        this.sliderPrice.applyFilters(1, Number.parseInt(filters[filterName][1]));
+        this.sliderPrice.applyFilters(0, Number(filters[filterName][0]));
+        this.sliderPrice.applyFilters(1, Number(filters[filterName][1]));
       }
       else {
         const elements = this.filter.getElementsByTagName('input');
@@ -175,7 +173,6 @@ function createCheckbox(classes: string[], name: string, value: string, id: stri
     const colorIcon = document.createElement('span');
     colorIcon.classList.add('color-icon');
     switch (value.toLowerCase()) {
-
       case 'black':
         colorIcon.dataset['code'] = '#000000'
         break;

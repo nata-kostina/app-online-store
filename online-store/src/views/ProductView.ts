@@ -140,7 +140,6 @@ class ProductView {
   }
 
   highlightProductsInCart(cart: ICartProduct[]): void {
-    //debugger
     if (cart.find(product => product.id === this.item.dataset["id"])) {
       (this.item.querySelector('.btn-cart') as HTMLSpanElement).classList.add('active');
     }

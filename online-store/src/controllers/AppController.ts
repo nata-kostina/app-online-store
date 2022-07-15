@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-import { Actions, FilterGroups, IFavouriteProduct, ICartProduct, LocalStorageKeys, Messages, SortOptions } from '../types/types';
+import { Actions, FilterName, FilterGroups, IFavouriteProduct, ICartProduct, LocalStorageKeys, Messages, SortOptions } from '../types/types';
 import AppView from '../views/AppView';
 import AppModel from './../models/AppModel';
 import Filter from '../models/Filter';
@@ -22,20 +22,19 @@ class AppController {
   }
 
   async start(): Promise<void> {
-    this.processLocalStorage(); // prepare models, set Filters, sort, favs and products in cart 
-    this.view.render(); // render basic layout, everything except collection, quantity in cart and q
+    this.processLocalStorage();
+    this.view.render();
 
-    const data = await this.model.getProducts(this.dataURL); // get source data
-    this.model.setCurrentCollection(data); // set them to current collection
+    const data = await this.model.getProducts(this.dataURL);
+    this.model.setCurrentCollection(data);
 
     if (!Filter.isEmpty()) {
-      this.model.filterProducts(); // filter and sort products according to filters and sort if they exist
+      this.model.filterProducts();
     }
 
     if (!Sort.isEmpty()) {
       this.model.sortProducts();
     }
-
 
     this.updateCollection();
   }
@@ -108,18 +107,7 @@ class AppController {
         this.showModal(options as Messages);
         break;
       case Actions.UPDATE_COLLECTION:
-        //debugger;
         this.updateCollection();
-        // if (this.isCollectionEmpty(collection)) {
-        //   this.showModal(Messages.EMPTY_COLLECTION);
-        //   this.view.renderCollection(collection);
-        // }
-        // else {
-        //   this.view.renderCollection(collection);
-        //   if (this.model.getFavouriteProducts().length > 0) {
-        //     this.view.applyFavourites(this.model.getFavouriteProducts());
-        //   }
-        // }
         break;
       case Actions.RESET_FILTERS:
         this.view.resetFilters();
@@ -186,8 +174,11 @@ class AppController {
   }
 
   private updateRange(e: Event | CustomEvent): void {
-    const { name, values, handle } = (e as CustomEvent).detail;
-    Filter.setRangeFilter({ name, values, handle });
+    const details = (e as CustomEvent).detail;
+    if (details.name === FilterName.PRICE) {
+      details.values = details.values.map((v: string) => (v.match(/^€(.+)/m) as string[])[1]);
+    }
+    Filter.setRangeFilter(details);
     if (!Filter.isEmpty())
       LocalStorage.setItem<FilterGroups>('filter', Filter.getFilters());
   }

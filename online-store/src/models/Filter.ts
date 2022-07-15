@@ -30,8 +30,6 @@ class Filter {
     const groupsValues = Object.values(this.FilterGroups);
     if (!groupsValues || groupsValues.every(arr => arr.length === 0)) return collection;
 
-    //const groupsEntries = Object.entries(this.FilterGroups);
-
     let filteredCollection: IProduct[] = collection;
     const groups = Object.keys(this.FilterGroups);
     groups.forEach(group => {
@@ -39,11 +37,6 @@ class Filter {
         filteredCollection = this.applySameGroupFilters(group, this.FilterGroups[group], filteredCollection);
       }
     })
-    // groupsEntries.forEach(group => {
-    //   if (group[1].length > 0)
-    //     filteredCollection = this.applySameGroupFilters(group[0], group[1], filteredCollection);
-    // });
-
     return filteredCollection;
   }
 
@@ -59,6 +52,8 @@ class Filter {
         return this.filterBySize(values, collection);
       case FilterName.POPULARITY:
         return this.filterByPopularity(values, collection);
+      case FilterName.PRICE:
+        return this.filterByPrice(values, collection);
       default:
         break;
     }
@@ -76,6 +71,11 @@ class Filter {
   private static filterByYear(values: string[], collection: IProduct[]): IProduct[] {
     const [start, end] = values.map(Number);
     return collection.filter(p => Number(p.year) >= start && Number(p.year) <= end);
+  }
+
+  private static filterByPrice(values: string[], collection: IProduct[]): IProduct[] {
+    const [start, end] = values.map(Number);
+    return collection.filter(p => Number(p.price) >= start && Number(p.price) <= end);
   }
 
   private static filterBySize(values: string[], collection: IProduct[]): IProduct[] {
