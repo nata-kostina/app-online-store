@@ -125,6 +125,12 @@ class FilterView {
     this.sliderPrice.reset();
   }
 
+  removeSliderEvents(): void {
+    this.sliderYear.removeSliderEvents();
+    this.sliderPrice.removeSliderEvents();
+    
+  }
+
 }
 
 function createFieldset(text: string, classes: string[], name: string, values: string[]): HTMLFieldSetElement {

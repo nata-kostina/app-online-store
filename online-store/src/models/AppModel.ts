@@ -23,6 +23,7 @@ class AppModel {
 
     this.cart = new Cart(handler);
     this.wishlist = new FavouriteProducts(handler);
+   // this.modal = 
   }
 
   async getProducts(url: string): Promise<IProduct[]> {

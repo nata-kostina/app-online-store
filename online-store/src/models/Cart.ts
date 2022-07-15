@@ -25,7 +25,7 @@ class Cart {
 
   private addToCart(product: ICartProduct): void {
     if (this.cart.length >= this.cartLimit) {
-      Modal.showModal(Messages.FULL_CART);
+      Modal.getInstance().showModal(Messages.FULL_CART);
     }
     else {
       this.cart.push(product);

@@ -24,7 +24,7 @@ class Slider {
     const event = new CustomEvent('change', { detail: { name: this.name, values, handle } });
     this.handleUserActions(event, Actions.UPDATE_RANGE);
   }
-  
+
   applyFilters(handle: number, value: number): void {   
     (this.dragSlider.noUiSlider as noUiSlider.API).setHandle(handle, value, true, true);
   }
@@ -32,12 +32,16 @@ class Slider {
   reset(): void {
     (this.dragSlider.noUiSlider as noUiSlider.API).reset();
   }
+  removeSliderEvents(): void {
+    console.log('remove');
+    (this.dragSlider.noUiSlider as noUiSlider.API).off('change');
+  }
 
 }
 
 export default Slider;
 
-function debounce(func: (values: (string|number)[], handle: number) => void, timeout = 300): (values: (string|number)[], handle: number) => void{
+function debounce(func: (values: (string|number)[], handle: number) => void, timeout = 500): (values: (string|number)[], handle: number) => void{
   let timer: NodeJS.Timeout;
   return (values: (string|number)[], handle: number) => {
     clearTimeout(timer);

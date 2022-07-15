@@ -1,8 +1,22 @@
 import { Messages } from "../types/types";
 
 class Modal {
+  private static instance: Modal;
+  private isShown: boolean;
+  private constructor() {
+    this.isShown = false;
+  }
 
-  static showModal(message: Messages): void {
+  public static getInstance(): Modal {
+    if (!Modal.instance) {
+      Modal.instance = new Modal();
+    }
+    return Modal.instance;
+  }
+
+  public showModal(message: Messages): void {
+    if (this.isShown) return;
+    this.isShown = true;
     const container = document.createElement('div');
     container.classList.add('modal-container');
 
@@ -29,8 +43,10 @@ class Modal {
     (document.querySelector('body') as HTMLBodyElement).classList.add('fixed');
 
   }
-  
-  static closeModal(): void {
+
+  public closeModal(): void {
+    if (!this.isShown) return;
+    this.isShown = false;
     const container = document.querySelector('.modal-container') as HTMLDivElement;
     (document.querySelector('body') as HTMLBodyElement).removeChild(container);
     (document.querySelector('body') as HTMLBodyElement).classList.remove('fixed');

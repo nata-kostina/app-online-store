@@ -179,7 +179,9 @@ class AppView {
   highlightProductsInCart(cart: ICartProduct[]): void {
     this.collectionView.highlightProductsInCart(cart);
   }
-
+  removeSliderEvents(): void {
+    this.filterView.removeSliderEvents();
+  }
 }
 
 export default AppView;

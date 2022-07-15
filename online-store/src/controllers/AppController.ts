@@ -247,7 +247,9 @@ class AppController {
   }
 
   private showModal(message: Messages): void {
-    Modal.showModal(message);
+   // this.view.removeSliderEvents();
+   new Event('mouseout', {"bubbles":true, "cancelable":false, "composed" : true});
+    Modal.getInstance().showModal(message);
   }
 }
 
