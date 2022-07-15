@@ -1,5 +1,5 @@
 import { Actions, EventHandler, SortOption, SortOptions, SortOrder } from "../types/types";
-import Sort from './../models/Sort';
+import Sort from '../models/Sort';
 
 class SortView {
   private handler: EventHandler;

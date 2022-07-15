@@ -1,4 +1,4 @@
-import { EventHandler, IFavouriteProduct, IProduct } from "../types/types";
+import { EventHandler, IFavouriteProduct, IProduct, ICartProduct } from "../types/types";
 import CollectionView from './CollectionView';
 import CartView from './CartView';
 import SortView from './SortView';
@@ -7,8 +7,6 @@ import Search from './Search';
 import Header from './Header';
 import ResetBtn from './ResetBtn';
 import FavouriteView from './Favourite';
-import { ProductToDisplay, ICartProduct } from './../types/types';
-import FavouriteProducts from './../models/FavouriteProducts';
 import Intro from './Intro';
 import Footer from './Footer';
 

@@ -1,6 +1,5 @@
-import { Actions, Handler, LocalStorageKeys } from '../types/types';
-import { IFavouriteProduct } from './../types/types';
-import LocalStorage from './../controllers/LocalStorage';
+import { Actions, Handler } from '../types/types';
+import { IFavouriteProduct } from '../types/types';
 
 class FavouriteProducts {
   private onModelUpdated: Handler;

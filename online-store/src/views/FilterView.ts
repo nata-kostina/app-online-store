@@ -1,7 +1,6 @@
 import { Actions, EventHandler, FilterName, } from "../types/types";
 import Slider from './Slider';
-import Filter from './../models/Filter';
-//import * as wn from 'wnumb/wNumb' ;
+import Filter from '../models/Filter';
 
 class FilterView {
   private onModelChanged: EventHandler;

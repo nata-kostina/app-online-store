@@ -1,5 +1,5 @@
 import { Actions, EventHandler, IFavouriteProduct, IProduct } from "../types/types";
-import { ICartProduct } from './../types/types';
+import { ICartProduct } from '../types/types';
 
 class ProductView {
   private handler: EventHandler;

@@ -1,10 +1,9 @@
-import { Actions, FilterGroups, FilterItem, FilterOptions, Handler, IFavouriteProduct, Messages, SortOption, SortOptions } from "../types/types";
-import { IProduct, ICartProduct } from './../types/types';
+import { Actions, FilterGroups, Handler, IFavouriteProduct } from "../types/types";
+import { IProduct, ICartProduct } from '../types/types';
 import Collection from './Collection';
 import Cart from './Cart';
 import Sort from './Sort';
 import Filter from "./Filter";
-import LocalStorage from './../controllers/LocalStorage';
 import FavouriteProducts from './FavouriteProducts';
 import Search from './Search';
 

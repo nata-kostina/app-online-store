@@ -1,12 +1,11 @@
-/* eslint-disable no-case-declarations */
 import { Actions, FilterName, FilterGroups, IFavouriteProduct, ICartProduct, LocalStorageKeys, Messages, SortOptions } from '../types/types';
 import AppView from '../views/AppView';
-import AppModel from './../models/AppModel';
+import AppModel from '../models/AppModel';
 import Filter from '../models/Filter';
 import Sort from '../models/Sort';
-import Modal from './../models/Modal';
+import Modal from '../models/Modal';
 import LocalStorage from './LocalStorage';
-import Search from './../models/Search';
+import Search from '../models/Search';
 
 class AppController {
   view: AppView;
@@ -185,7 +184,6 @@ class AppController {
   }
 
   private search(e: Event): void {
-   // debugger
     const target = e.target as HTMLInputElement;
     const value = target.value;
     Search.setSearch(value);

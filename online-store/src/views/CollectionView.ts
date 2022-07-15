@@ -1,6 +1,6 @@
 import { EventHandler, IFavouriteProduct, IProduct } from "../types/types";
 import ProductView from './ProductView';
-import { ICartProduct } from './../types/types';
+import { ICartProduct } from '../types/types';
 
 class CollectionView {
   private collection: HTMLDivElement;
