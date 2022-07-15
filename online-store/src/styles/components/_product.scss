@@ -1,9 +1,10 @@
 .item {
+  margin: 0 10px;
   margin-bottom: 25px;
-  padding: 0 7.5px;
-  flex: 0 0 30%;
-  max-width: 30%;
-  min-width: 300px;
+  padding: 0 15px;
+  flex: 0 0 25%;
+  max-width: 25%;
+  min-width: 270px;
 
   text-align: center;
 
@@ -130,4 +131,11 @@
   position: absolute;
   right: 10%;
   top: 2%;
+}
+
+.item__quantity {
+  align-self: flex-end;
+
+  padding-top: 10px;
+  color: #a0a0a0;
 }

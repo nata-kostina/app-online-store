@@ -59,6 +59,15 @@
       width: 100%;
     }
   }
+
+  .nav__link_active {
+    &::before {
+      opacity: 1;
+      visibility: visible;
+      left: 0;
+      width: 100%;
+    }
+  }
 }
 
 .nav-right {

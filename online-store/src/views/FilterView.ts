@@ -19,12 +19,12 @@ class FilterView {
       handler(e, Actions.FILTER);
     });
 
-    const fieldsetCategory = createFieldset('Categories:', ['fieldset'], 3, 'category', ['Football', 'Baseball', 'Cycling']);
-    const fieldsetPrice = createFieldset('Price:', ['fieldset', 'fieldset-price'], 0, 'price', []);
-    const fieldsetYear = createFieldset('Year:', ['fieldset', 'fieldset-year'], 0, 'year', []);
-    const fieldsetColor = createFieldset('Color:', ['fieldset'], 3, 'color', ['Black', 'White', 'Grey', 'Red', 'Blue', 'Brown']);
-    const fieldsetSize = createFieldset('Size:', ['fieldset'], 6, 'size', ['XS', 'S', 'M', 'L', 'XL', 'XXL']);
-    const fieldsetBestsellers = createFieldset('', ['fieldset'], 1, 'popularity', ['Bestsellers']);
+    const fieldsetCategory = createFieldset('Categories:', ['fieldset'], 'category', ['Football', 'Baseball', 'Cycling']);
+    const fieldsetPrice = createFieldset('Price:', ['fieldset', 'fieldset-price'], 'price', []);
+    const fieldsetYear = createFieldset('Year:', ['fieldset', 'fieldset-year'], 'year', []);
+    const fieldsetColor = createFieldset('Color:', ['fieldset'], 'color', ['Black', 'White', 'Blue', 'Yellow', 'Orange', 'Red', 'Pink', 'Green']);
+    const fieldsetSize = createFieldset('Size:', ['fieldset'], 'size', ['XS', 'S', 'M', 'L', 'XL', 'XXL']);
+    const fieldsetBestsellers = createFieldset('', ['fieldset'], 'popularity', ['Bestsellers']);
     /*================================
     * YEAR
     =====================================*/
@@ -63,7 +63,7 @@ class FilterView {
       start: [50.00, 150.00],
       connect: true,
       step: 0.01,
-      tooltips: true,      
+      tooltips: true,
       range: {
         'min': 50.00,
         'max': 100.00
@@ -130,7 +130,7 @@ class FilterView {
 
 }
 
-function createFieldset(text: string, classes: string[], num: number, name: string, values: string[]): HTMLFieldSetElement {
+function createFieldset(text: string, classes: string[], name: string, values: string[]): HTMLFieldSetElement {
   const fieldset = document.createElement('fieldset');
   fieldset.classList.add(...classes);
 
@@ -143,7 +143,7 @@ function createFieldset(text: string, classes: string[], num: number, name: stri
 
   fieldset.append(title, content);
 
-  for (let i = 0; i < num; i++) {
+  for (let i = 0; i < values.length; i++) {
     const label = createCheckbox(['filter-value'], name, values[i], `${name}_${i + 1}`);
 
     content.append(label);
@@ -175,6 +175,7 @@ function createCheckbox(classes: string[], name: string, value: string, id: stri
     const colorIcon = document.createElement('span');
     colorIcon.classList.add('color-icon');
     switch (value.toLowerCase()) {
+
       case 'black':
         colorIcon.dataset['code'] = '#000000'
         break;
@@ -183,6 +184,21 @@ function createCheckbox(classes: string[], name: string, value: string, id: stri
         break;
       case 'red':
         colorIcon.dataset['code'] = '#DC282E'
+        break;
+      case 'orange':
+        colorIcon.dataset['code'] = '#F66D50';
+        break;        
+      case 'green':
+        colorIcon.dataset['code'] = '#67DD7E';
+        break;
+      case 'blue':
+        colorIcon.dataset['code'] = '#4DBEF8';
+        break;
+      case 'yellow':
+        colorIcon.dataset['code'] = '#F1ED0D';
+        break;
+      case 'pink':
+        colorIcon.dataset['code'] = '#E26AA5';
         break;
       default:
         colorIcon.dataset['code'] = '#ffffff'
@@ -195,7 +211,7 @@ function createCheckbox(classes: string[], name: string, value: string, id: stri
 
   if (name === 'popularity') {
     const icon = document.createElement('span');
-    icon.classList.add('checkbox' , 'bestseller-icon');
+    icon.classList.add('checkbox', 'bestseller-icon');
     icon.innerHTML = '<i class="fa-solid fa-fire"></i>';
     label.classList.add('label-besteller');
     label.insertAdjacentElement('afterbegin', icon);

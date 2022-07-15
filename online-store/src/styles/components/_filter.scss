@@ -107,6 +107,10 @@
     border: 2px solid #000;
     top: -6px;
     background: #fff;
+
+    &:hover {
+      cursor: pointer;
+    }
 }
 .range .noUi-connect {
   background: #00FFB0;
@@ -120,7 +124,6 @@
 }
 
 .range.noUi-horizontal .noUi-tooltip {
-
   border: none;
   border-radius: none;
   background: #fff;
@@ -136,12 +139,11 @@
   top: 150%;
 }
 
-
 .color-icon {
   width: 26px;
     height: 26px;
     overflow: visible;
-    border: 1px solid #414141;
+    border: 1px solid #414141b7;
     position: relative;
     -webkit-transition: transform .1s ease;
     transition: transform .1s ease;

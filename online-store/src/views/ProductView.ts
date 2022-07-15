@@ -15,10 +15,6 @@ class ProductView {
     const inner = document.createElement('div');
     inner.classList.add('item__inner');
 
-    // const id = document.createElement('h2');
-    // id.classList.add('item__id');
-    // id.innerHTML = data.id;
-
     const thumb = document.createElement('div');
     thumb.classList.add('item__thumb');
 
@@ -50,6 +46,10 @@ class ProductView {
     year.classList.add('item__year');
     year.innerHTML = data.year;
 
+    const quantity = document.createElement('span');
+    quantity.classList.add('item__quantity');
+    quantity.innerHTML = `Quantity: ${data.quantity}`;
+
     const variants = document.createElement('div');
     variants.classList.add('item__variants');
 
@@ -66,12 +66,21 @@ class ProductView {
       case 'red':
         color.dataset['code'] = '#DC282E'
         break;
-      case 'blue':
-        color.dataset['code'] = '#05CAE3';
+      case 'orange':
+        color.dataset['code'] = '#F66D50';
         break;
-        case 'orange':
-          color.dataset['code'] = '#F66D50';
-          break;
+      case 'green':
+        color.dataset['code'] = '#67DD7E';
+        break;
+      case 'blue':
+        color.dataset['code'] = '#4DBEF8';
+        break;
+      case 'yellow':
+        color.dataset['code'] = '#F1ED0D';
+        break;
+      case 'pink':
+        color.dataset['code'] = '#E26AA5';
+        break;
       default:
         color.dataset['code'] = '#ffffff'
         break;
@@ -105,7 +114,7 @@ class ProductView {
 
     buttons.append(btnToggleInCart, btnToggleInFavs);
     thumb.append(imgContainer, buttons);
-    content.append(title, price, variants, year);
+    content.append(title, price, variants, year, quantity);
     inner.append(thumb, content);
     this.item.append(inner);
   }

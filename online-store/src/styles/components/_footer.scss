@@ -24,6 +24,7 @@
   }
   & .list__item a {
     color: #868686;
+    transition: all .2s ease-in-out;
 
     &:hover {
       color: #00FFB0;
@@ -39,6 +40,7 @@
 .link-rssschool {
   display: block;
   color: #868686;
+  transition: all .2s ease-in-out;
   &:hover {
     color: #00FFB0;
     cursor: pointer;
@@ -48,6 +50,7 @@
   font-family: "fa-brands-400", sans-serif;
   color: #ffffff;
   font-size: 3rem;
+  transition: all .2s ease-in-out;
 
   &:hover {
     color: #00FFB0;

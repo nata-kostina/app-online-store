@@ -12,6 +12,7 @@ export interface IProduct {
   isBestseller: boolean;
   imgUrl: string;
   price: string;
+  quantity: string;
 }
 
 export interface ProductToDisplay extends IProduct {

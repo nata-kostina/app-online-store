@@ -1,8 +1,9 @@
-import { Actions, Handler, ICartProduct, Messages } from '../types/types';
+import { Actions,  Handler, ICartProduct, Messages } from '../types/types';
 import Modal from './Modal';
 class Cart {
   private onModelUpdated: Handler;
   private cart: ICartProduct[];
+  private cartLimit = 20;
   constructor(handler: Handler) {
     this.cart = [];
     this.onModelUpdated = handler;
@@ -23,7 +24,7 @@ class Cart {
   }
 
   private addToCart(product: ICartProduct): void {
-    if (this.cart.length >= 2) {
+    if (this.cart.length >= this.cartLimit) {
       Modal.showModal(Messages.FULL_CART);
     }
     else {

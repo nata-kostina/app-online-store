@@ -72,6 +72,7 @@ function createNavLinks(text: string): HTMLAnchorElement {
   link.classList.add('nav__link');
   link.href = '#';
   link.innerHTML = text;
+  if (text === "Shop") link.classList.add('nav__link_active');
   return link;
 }
 
