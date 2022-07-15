@@ -102,12 +102,12 @@ class AppModel {
   }
 
   filterProducts(): void {
-    let filteredCollection: IProduct[];
+    let filteredCollection: IProduct[] = [];
     if (this.currentCollection.getCollection().length > 0) {
       filteredCollection = Filter.filterProducts(this.currentCollection.getCollection());
     }
-    else
-      filteredCollection = Filter.filterProducts(this.defaultCollection.getCollection());
+   // else
+//filteredCollection = Filter.filterProducts(this.defaultCollection.getCollection());
     this.currentCollection.setCollection(filteredCollection);
   }
 

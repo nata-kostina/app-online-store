@@ -185,6 +185,7 @@ class AppController {
   }
 
   private search(e: Event): void {
+   // debugger
     const target = e.target as HTMLInputElement;
     const value = target.value;
     Search.setSearch(value);
