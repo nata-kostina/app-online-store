@@ -44,9 +44,11 @@ class Sort {
         break;
     }
   }
+  
   static isEmpty(): boolean {
     return (Object.keys(this.sort)).length === 0;  
   }
+
   static sortByTitle(collection: IProduct[]): IProduct[] {
     if (this.sort.order === SortOrder.ASC) {
       return collection.sort((a, b) => {

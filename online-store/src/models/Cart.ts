@@ -9,13 +9,13 @@ class Cart {
     this.onModelUpdated = handler;
   }
 
-  toggleProduct(productId: string): void {
+  public toggleProduct(productId: string): void {
     const product = this.cart.find(product => product.id === productId);
     if (product) {
       this.deleteFromToCart(product);
     }
     else
-      this.addToCart({ id: productId, title: "tets", quantity: 1 });
+      this.addToCart({ id: productId });
   }
 
   private deleteFromToCart(product: ICartProduct): void {
@@ -23,7 +23,7 @@ class Cart {
     this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_CART);
   }
 
-  private addToCart(product: ICartProduct): void {
+  public addToCart(product: ICartProduct): void {
     if (this.cart.length >= this.cartLimit) {
       Modal.getInstance().showModal(Messages.FULL_CART);
     }
@@ -33,19 +33,19 @@ class Cart {
     }
   }
 
-  getQuantity(): number {
+  public getQuantity(): number {
     return this.cart.length;
   }
 
-  getProducts(): ICartProduct[] {
+  public getProducts(): ICartProduct[] {
     return this.cart;
   }
 
-  setProducts(products: ICartProduct[]): void {
+  public setProducts(products: ICartProduct[]): void {
     this.cart.push(...products);
   }
 
-  reset(): void {
+  public reset(): void {
     this.cart = [];
   }
 

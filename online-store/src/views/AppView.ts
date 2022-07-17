@@ -139,6 +139,7 @@ class AppView {
     this.collectionView.reset();
     this.collectionView.fill(data);
   }
+
   renderCollection(): void {
     this.collectionView.clear();
     this.collectionView.render();
@@ -151,9 +152,11 @@ class AppView {
   renderFavouriteProductsIcon(quantity: number): void {
     this.favouriteView.render(quantity);
   }
+
   resetCollection(): void {
     this.collectionView.clear();
   }
+
   resetFilters(): void {
     this.filterView.reset();
   }
@@ -161,9 +164,11 @@ class AppView {
   resetSort(): void {
     this.sortView.reset();
   }
+
   resetFavouritesIcon(): void {
     this.favouriteView.reset();
   }
+
   resetCartIcon(): void {
     this.cartView.reset();
   }
@@ -178,9 +183,6 @@ class AppView {
 
   highlightProductsInCart(cart: ICartProduct[]): void {
     this.collectionView.highlightProductsInCart(cart);
-  }
-  removeSliderEvents(): void {
-    this.filterView.removeSliderEvents();
   }
 }
 

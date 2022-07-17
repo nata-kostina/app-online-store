@@ -18,8 +18,6 @@ export type EventHandler = (e: Event, action: Actions) => void;
 
 export interface ICartProduct {
   id: string;
-  title: string;
-  quantity: number;
 }
 export type IFavouriteProduct = Pick<IProduct, 'id'>;
 export enum Actions {

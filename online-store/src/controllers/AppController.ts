@@ -11,13 +11,11 @@ class AppController {
   view: AppView;
   model: AppModel;
   dataURL: string;
-  storeURL: string;
 
   constructor() {
     this.model = new AppModel(this.onModelUpdated.bind(this));
     this.view = new AppView(this.handleUserActions.bind(this));
     this.dataURL = "./data/data.json";
-    this.storeURL = "./data/store.json";
   }
 
   async start(): Promise<void> {
@@ -247,8 +245,6 @@ class AppController {
   }
 
   private showModal(message: Messages): void {
-   // this.view.removeSliderEvents();
-   new Event('mouseout', {"bubbles":true, "cancelable":false, "composed" : true});
     Modal.getInstance().showModal(message);
   }
 }

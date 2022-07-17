@@ -50,7 +50,6 @@ class Modal {
     const container = document.querySelector('.modal-container') as HTMLDivElement;
     (document.querySelector('body') as HTMLBodyElement).removeChild(container);
     (document.querySelector('body') as HTMLBodyElement).classList.remove('fixed');
-
   }
 }
 

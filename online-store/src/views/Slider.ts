@@ -1,7 +1,6 @@
 import { Actions, EventHandler, FilterName, SliderOptions } from "../types/types";
 import * as noUiSlider from 'nouislider'
 
-
 class Slider {
   private handleUserActions: EventHandler;
   private dragSlider: noUiSlider.target;
@@ -41,7 +40,7 @@ class Slider {
 
 export default Slider;
 
-function debounce(func: (values: (string|number)[], handle: number) => void, timeout = 500): (values: (string|number)[], handle: number) => void{
+export function debounce(func: (values: (string|number)[], handle: number) => void, timeout = 500): (values: (string|number)[], handle: number) => void{
   let timer: NodeJS.Timeout;
   return (values: (string|number)[], handle: number) => {
     clearTimeout(timer);

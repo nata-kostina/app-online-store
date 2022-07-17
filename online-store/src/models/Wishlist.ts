@@ -18,8 +18,6 @@ class FavouriteProducts {
     else{
       this.addToFavs({ id: productId })
     }
-    //const favourites = LocalStorage.getItem(LocalStorageKeys.FAVOURITES) as IFavouriteProduct[];
-    //LocalStorage.setItem<IFavouriteProduct[]>(LocalStorageKeys.FAVOURITES, [...this.favs]);
   }
 
   private deleteFromFavs(product: IFavouriteProduct): void {
@@ -35,12 +33,15 @@ class FavouriteProducts {
   getQuantity(): number {
     return this.wishlist.length;
   }
+  
   setFavourites(ids: IFavouriteProduct[]) {
     this.wishlist = [...ids];
   }
+
   getFavouriteProducts(): IFavouriteProduct[] {
     return this.wishlist;
   }
+
   reset(): void {
     this.wishlist = [];
   }

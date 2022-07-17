@@ -18,7 +18,7 @@ class FilterView {
       handler(e, Actions.FILTER);
     });
 
-    const fieldsetCategory = createFieldset('Categories:', ['fieldset'], 'category', ['Football', 'Baseball', 'Cycling']);
+    const fieldsetCategory = createFieldset('Categories:', ['fieldset'], 'category', ['Football', 'Baseball', 'Cycling', 'Skiing']);
     const fieldsetPrice = createFieldset('Price:', ['fieldset', 'fieldset-price'], 'price', []);
     const fieldsetYear = createFieldset('Year:', ['fieldset', 'fieldset-year'], 'year', []);
     const fieldsetColor = createFieldset('Color:', ['fieldset'], 'color', ['Black', 'White', 'Blue', 'Yellow', 'Orange', 'Red', 'Pink', 'Green']);

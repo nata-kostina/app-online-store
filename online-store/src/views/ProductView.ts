@@ -87,7 +87,6 @@ class ProductView {
     }
     color.style.background = color.dataset['code'] as string;
 
-
     const sizes = document.createElement('span');
     sizes.classList.add('item__sizes');
     sizes.innerHTML = data.sizes.toString();
@@ -121,14 +120,6 @@ class ProductView {
 
   getProductElement(): HTMLDivElement {
     return this.item;
-  }
-
-  productApplyUserSetting(settings: { inCart: boolean, inFavourites: boolean }): void {
-    if (settings.inCart) {
-      // const span = document.createElement('span');
-      // span.innerHTML = 'In Cart';
-      // this.item.append(span);
-    }
   }
 
   highlightFavourites(favourites: IFavouriteProduct[]): void {

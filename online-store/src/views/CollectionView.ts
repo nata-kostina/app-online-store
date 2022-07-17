@@ -17,6 +17,7 @@ class CollectionView {
   getCollectionElement(): HTMLDivElement {
     return this.collection;
   }
+  
   fill(data: IProduct[]): void {
     data.forEach(p => {
       const product = new ProductView(this.handler, p);
@@ -30,9 +31,11 @@ class CollectionView {
       this.collection.append(productEl);
     })
   }
+
   reset(): void {
     this.items = [];
   }
+
   clear(): void {
     this.collection.innerHTML = "";
   }
@@ -43,20 +46,11 @@ class CollectionView {
     });
   }
 
-
   highlightProductsInCart(favourites: ICartProduct[]): void {
     this.items.forEach(i => {
       i.highlightProductsInCart(favourites);
     });
   }
-
-  // applyUserSettings(favourites: IFavouriteProduct[], cart: ICartProduct[]): void {
-  //   //this.collectionView.applyUserSettings(favourites, cart);
-  //   this.items.forEach(i => {
-  //     i.applyFavourites(favourites);
-  //   });
-  // }
-
 }
 
 export default CollectionView;

@@ -23,73 +23,71 @@ class AppModel {
 
     this.cart = new Cart(handler);
     this.wishlist = new FavouriteProducts(handler);
-   // this.modal = 
   }
 
-  async getProducts(url: string): Promise<IProduct[]> {
+  public async getProducts(url: string): Promise<IProduct[]> {
     const data = await fetch(url)
       .then(res => res.json())
       .then((data: IProduct[]) => data);
     this.defaultCollection.setCollection(data);
-    //this.onModelUpdated(Actions.INIT);
     return data;
   }
 
-
-  getDefaultCollection(): IProduct[] {
+  public getDefaultCollection(): IProduct[] {
     return this.defaultCollection.getCollection() as IProduct[];
   }
 
-  getCurrentCollection(): IProduct[] {
+  public getCurrentCollection(): IProduct[] {
     return this.currentCollection.getCollection() as IProduct[];
   }
 
-  setCurrentCollection(value: IProduct[]): void {
+  public setCurrentCollection(value: IProduct[]): void {
     this.currentCollection.setCollection(value);
   }
 
-  toggleProductInCart(id: string): void {
+  public toggleProductInCart(id: string): void {
     this.cart.toggleProduct(id);
     this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_CART);
   }
 
-  toggleProductInFavourites(id: string): void {
+  public toggleProductInFavourites(id: string): void {
     this.wishlist.toggleProduct(id);
     this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_WISHLIST);
   }
 
-  getQuantityInCart(): number {
+  public getQuantityInCart(): number {
     return this.cart.getQuantity();
   }
 
-  getQuantityInFavourite(): number {
+  public getQuantityInFavourite(): number {
     return this.wishlist.getQuantity();
   }
-  setFavourites(favourites: IFavouriteProduct[]) {
+  public setFavourites(favourites: IFavouriteProduct[]) {
     this.wishlist.setFavourites(favourites);
     this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_WISHLIST);
   }
-  getFavouriteProducts(): IFavouriteProduct[] {
+  public getFavouriteProducts(): IFavouriteProduct[] {
     return this.wishlist.getFavouriteProducts();
   }
-  getProductsInCart(): ICartProduct[] {
+  public getProductsInCart(): ICartProduct[] {
     return this.cart.getProducts();
   }
-  setProductsInCart(products: ICartProduct[]) {
+  public setProductsInCart(products: ICartProduct[]) {
     this.cart.setProducts(products);
   }
-  resetFavourites(): void {
+  public resetFavourites(): void {
     this.wishlist.reset();
   }
-  resetProductsInCart(): void {
+  public resetProductsInCart(): void {
     this.cart.reset();
   }
-  sortProducts(): void {
+
+  public sortProducts(): void {
     const sortedCollection = Sort.sortProducts(this.currentCollection.getCollection());
     this.currentCollection.setCollection(sortedCollection);
   }
 
-  filterProducts(): void {
+  public filterProducts(): void {
     let filteredCollection: IProduct[] = [];
     if (this.currentCollection.getCollection().length > 0) {
       filteredCollection = Filter.filterProducts(this.currentCollection.getCollection());
@@ -97,23 +95,23 @@ class AppModel {
     this.currentCollection.setCollection(filteredCollection);
   }
 
-  getFilters(): FilterGroups {
+  public getFilters(): FilterGroups {
     return Filter.getFilters();
   }
 
-  resetFilters(): void {
+  public resetFilters(): void {
     Filter.resetFilters();
     this.updateCollection();
     this.onModelUpdated(Actions.RESET_FILTERS);
   }
-  updateCollection(): void {
+  public updateCollection(): void {
     this.searchProducts();
     this.filterProducts();
     this.sortProducts();
     this.onModelUpdated(Actions.UPDATE_COLLECTION);
   }
 
-  searchProducts(): void {
+  public searchProducts(): void {
     const collection = this.getDefaultCollection();
     const input = Search.getSearch();
     if (!input) {
