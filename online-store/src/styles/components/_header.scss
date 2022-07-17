@@ -28,7 +28,7 @@
   cursor: pointer;
 
   &:hover {
-    color: #00ffb0;
+    color: $color-main-theme;
   }
 }
 .cart-container {
@@ -37,7 +37,7 @@
   cursor: pointer;
   
   &:hover {
-    color: #00ffb0;
+    color: $color-main-theme;
   }
 }
 
@@ -56,11 +56,11 @@
   width: 17px;
   height: 17px;
 
-  color: #000;
+  color: $color-dark-l;
   text-align: center;
-  background: #00ffb0;
+  background: $color-main-theme;
   border-radius: 50%;
-  /* -webkit-border-radius: 50%; */
+
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;

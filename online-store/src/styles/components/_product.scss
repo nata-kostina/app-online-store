@@ -60,7 +60,7 @@
 .item__thumb {
   position: relative;
   height: 300px;
-    background: #ffffff;
+    background: $color-light-xs;
     overflow: hidden;
     margin-bottom: 30px;
 }
@@ -80,10 +80,10 @@
 .item__buttons .btn {
   margin: 5px 0;
 
-  background: #00000069;
+  background: $color-dark-l69;
   width: 40px;
   height: 40px;
-  color: #ffffff;
+  color: $color-light-xs;
 
   font-size: 1.5rem;
 
@@ -102,15 +102,14 @@
 .item:hover {
   .item__buttons .btn {
     opacity: 1;
-    //color: #00ffb0;
     &:hover {
-      background: #00ffb0;
+      background: $color-main-theme;
     }
   }
 }
 
 .item__buttons .btn.active {
-  background: #00ffb0;
+  background: $color-main-theme;
 }
 
 .item__variants {

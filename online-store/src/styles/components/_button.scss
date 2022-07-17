@@ -5,10 +5,10 @@
   position: relative;
   height: 45px;
   
-  background: #000;
+  background: $color-dark-l;
   
   font-family: 'DMSans-Regular', sans-serif;
-  color: #fff;
+  color: $color-light-xs;
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 2px;
@@ -45,6 +45,6 @@
   padding: 0;
   background: none;
   font-family: "fa-solid-900", sans-serif;
-  color: #000000;
+  color: $color-dark-l;
 }
 

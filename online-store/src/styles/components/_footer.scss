@@ -1,5 +1,5 @@
 .footer {
-  background-color: #0E0E0E;
+  background-color: $color-dark-m;
 }
 
 .footer__inner {
@@ -15,7 +15,7 @@
   & .list__title {
     margin: 0;
     padding: 0;
-    color: #ffffff;
+    color: $color-light-xs;
     font-size: 1rem;
     text-transform: uppercase;
   }
@@ -23,37 +23,37 @@
     padding: 5px 0;
   }
   & .list__item a {
-    color: #868686;
+    color: $color-light-m;
     transition: all .2s ease-in-out;
 
     &:hover {
-      color: #00FFB0;
+      color: $color-main-theme;
     }
   }
 }
 
 .footer .img-container {
-  background-color: #ffffff;
+  background-color: $color-light-xs;
   height: auto;
 }
 
 .link-rssschool {
   display: block;
-  color: #868686;
+  color: $color-light-m;
   transition: all .2s ease-in-out;
   &:hover {
-    color: #00FFB0;
+    color: $color-main-theme;
     cursor: pointer;
   }
 }
 .fa-github {
   font-family: "fa-brands-400", sans-serif;
-  color: #ffffff;
+  color: $color-light-xs;
   font-size: 3rem;
   transition: all .2s ease-in-out;
 
   &:hover {
-    color: #00FFB0;
+    color: $color-main-theme;
     cursor: pointer;
   }
 }

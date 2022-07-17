@@ -19,7 +19,7 @@
   
 }
 .filter__title {
-  color: #000;
+  color: $color-dark-l;
   padding: 0 0 10px;
   margin-bottom: 25px;
   background: transparent;
@@ -56,7 +56,7 @@
   width: 23px;
   height: 23px;
   display: inline-block;
-  border: 2px solid #868686;
+  border: 2px solid $color-light-m;
   text-align: center;
   line-height: 20px;
   margin-right: 6px;
@@ -98,22 +98,22 @@
 .range .noUi-connects {
   height: 2px;
     position: absolute;
-    background: rgb(221, 221, 221);
-    border-color: rgb(221, 221, 221);
+    background: $color-light-s;
+    border-color: $color-light-s;
 }
 
 .range.noUi-horizontal .noUi-handle {
     height: 12px;
-    border: 2px solid #000;
+    border: 2px solid $color-dark-l;
     top: -6px;
-    background: #fff;
+    background: $color-light-xs;
 
     &:hover {
       cursor: pointer;
     }
 }
 .range .noUi-connect {
-  background: #00FFB0;
+  background: $color-main-theme;
 }
 .range.noUi-horizontal .noUi-handle:before {
   display: none;
@@ -126,10 +126,10 @@
 .range.noUi-horizontal .noUi-tooltip {
   border: none;
   border-radius: none;
-  background: #fff;
+  background: $color-light-xs;
 
   font-family: 'DMSans-Regular', sans-serif;
-  color: #000;
+  color: $color-dark-l;
   font-size: 0.8rem;
   padding: 5px;
   text-align: center;

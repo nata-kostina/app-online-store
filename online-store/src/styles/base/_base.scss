@@ -5,15 +5,15 @@ html {
 
 body {
   box-sizing: border-box;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: $color-light-xs;
+  color: $color-dark-l;
   font-family: 'ArquitectaHeavy', sans-serif;
 }
 
 
 a {
   text-decoration: none;
-  color: #000000;
+  color: $color-dark-l;
   font-family: 'ArquitectaMedium', sans-serif;
 }
 

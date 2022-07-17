@@ -1,5 +1,5 @@
 .select {
-  border: 1px solid #000;
+  border: 1px solid $color-dark-l;
     display: inline-block;
     height: 36px;   
     margin-left: 10px;
@@ -17,6 +17,6 @@
 
 .select-option {
   text-transform: capitalize;
-  color: #868686;
+  color: $color-light-m;
 }
 

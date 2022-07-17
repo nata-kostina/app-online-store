@@ -5,9 +5,8 @@ input {
 .search-container {
   position: relative;
 }
+
 .input-search {
-
-
   display: inline-block;
   height: 34px;
   width: 250px;
@@ -16,12 +15,11 @@ input {
   font-family: 'DMSans-Regular', sans-serif;
   font-size: 1rem;   
   
-  border: 1px solid #000;
+  border: 1px solid $color-dark-l;
 }
 
 .fa-xmark {
   font-family: "fa-solid-900", sans-serif;
-
 }
 
 .btn-clear-search {
@@ -31,12 +29,11 @@ input {
 
   height: auto;
 
-
   margin: 0;
   padding: 0;
 
   background: none;
-  color: #000000;
+  color: $color-dark-l;
 
   transform: translateY(-50%);
 }
