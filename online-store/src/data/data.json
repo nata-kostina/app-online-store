@@ -1,0 +1,364 @@
+[
+  {
+    "id": "00000",
+    "title": "NBG-18 Gloves for cycling",
+    "shortDescription": "These gloves have been designed for cycling. Their texture allows a perfect evacuation of perspiration. The inside of the glove is padded and reduces the friction associated with the sport.",
+    "category": "Cycling",
+    "color": "Blue",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "year": "2019",
+    "isBestseller": true,
+    "imgUrl": "./assets/images/products/nbg-18-blue.jpg",
+    "price": "19.90",
+    "quantity": 74
+  },
+  {
+    "id": "00001",
+    "title": "NBG-01 cross-country ski winter gloves -5° to -10°",
+    "shortDescription": "Warm and comfortable gloves for optimal ease of movement. These gloves protect from the cold and the wind. The lower part of the glove has been designed to cover the beginning of the wrist in order to stay warm and not to move. The cut is asymmetrical in order to improve ergonomics.",
+    "category": "Skiing",
+    "color": "Black",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "year": "2018",
+    "isBestseller": false,
+    "imgUrl": "./assets/images/products/nbg-01.jpg",
+    "price": "20.00",
+    "quantity": 23
+  },
+  {
+    "id": "00002",
+    "title": "BBG-03 Professional batting baseball gloves",
+    "shortDescription": "BBG-03 are comfortable gloves. High quality leather gives a great touch, nice fit and good resistance to abrasion. Manufactured from excellent raw materials.",
+    "category": "Baseball",
+    "color": "White",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "year": "2020",
+    "isBestseller": false,
+    "imgUrl": "./assets/images/products/bbg-03-white.jpg",
+    "price": "25.00",
+    "quantity": 98
+  },
+  {
+    "id": "00003",
+    "title": "BG-07 Fingerless bike gloves for competitions",
+    "shortDescription": "Very comfortable mittens gloves. Ideal for highway cycling: long and short rides. Honeycomb upper for better breathability. Padded palm to support the steering wheel. Original and aesthetic design and colors. Velcro closure. Nylon stitching",
+    "category": "Cycling",
+    "color": "Orange",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "year": "2019",
+    "isBestseller": false,
+    "imgUrl": "./assets/images/products/bg-07-orange.jpg",
+    "price": "19.00",
+    "quantity": 3
+  },
+  {
+    "id": "00004",
+    "title": "FLG-03 Green Professional Linemen Football Gloves, OL, DL",
+    "shortDescription": "Very comfortable mittens gloves. Ideal for highway cycling: long and short rides. Honeycomb upper for better breathability. Padded palm to support the steering wheel. Original and aesthetic design and colors. Velcro closure. Nylon stitching",
+    "category": "Football",
+    "color": "Green",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "year": "2019",
+    "isBestseller": true,
+    "imgUrl": "./assets/images/products/flg-03-green.jpg",
+    "price": "32.00",
+    "quantity": 85
+  },
+  {
+    "id": "00005",
+    "title": "NBG-02 Cross-country and Ski mittens barnett",
+    "shortDescription": "Cross-country and ski mittens. Mittens with removable fingertips for different kinds of weather. Gloves for professional cross country skiers. Very durable material and adapted to the weather conditions 23°F/-4°F (-5° to - 20°C). Mittens are the best choice for maximum warmth.",
+    "category": "Skiing",
+    "color": "Pink",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "year": "2022",
+    "isBestseller": false,
+    "imgUrl": "./assets/images/products/nbg-02-pink.jpg",
+    "price": "19.90",
+    "quantity": 184
+  },
+  {
+    "id": "00006",
+    "title": "NBG-11 Cross country and Ski winter gloves 23°F/14°F (-5°/-10°)",
+    "shortDescription": "Very thin but warm gloves for cross country or roller skiing, can be used when it's extremely cold. Fine and comfortable glove with lycra on the upper part and clariono material on the inside.",
+    "category": "Skiing",
+    "color": "white",
+    "sizes": [
+      "XS",
+      "S"
+    ],
+    "year": "2021",
+    "isBestseller": true,
+    "imgUrl": "./assets/images/products/nbg-11-white.jpg",
+    "price": "25.00",
+    "quantity": 23
+  },
+  {
+    "id": "00007",
+    "title": "NBG-19  Gloves for cycling",
+    "shortDescription": "These gloves have been designed for the practice of several sports including wheel skiing, running and road cycling, biathlon and cross-country skiing. These thin gloves are perfect for providing protection for different sports. Their textures allow perfect evacuation of perspiration. The inside of the glove is fleece and reduces friction associated with playing sports. You can also use them in cross-country skiing and biathlon when the temperatures are mild.",
+    "category": "Cycling",
+    "color": "Yellow",
+    "sizes": [
+      "M",
+      "XL"
+    ],
+    "year": "2018",
+    "isBestseller": false,
+    "imgUrl": "./assets/images/products/nbg-19-yellow.jpg",
+    "price": "21.00",
+    "quantity": 4
+  },
+  {
+    "id": "00008",
+    "title": "NBG-19 Batting baseball gloves, Red",
+    "shortDescription": "Batting gloves, perfect for match and training. Polyurethane, leather and nylon, Velcro wrist fastening system, fits to the hand. Great touch feeling.",
+    "category": "Baseball",
+    "color": "Red",
+    "sizes": [
+      "S",
+      "M",
+      "XL"
+    ],
+    "year": "2020",
+    "isBestseller": true,
+    "imgUrl": "./assets/images/products/nbg-19-red.jpg",
+    "price": "29.00",
+    "quantity": 99
+  },
+  {
+    "id": "00009",
+    "title": "B-7 competition hockey glove",
+    "shortDescription": "Performance gloves for regular and professional players. Reinforced outer foam to protect the hand from external impacts. The interior fabric and its layout provides a natural fit of the fingers and comfort of the wrist.",
+    "category": "Hockey",
+    "color": "Black",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "year": "2021",
+    "isBestseller": false,
+    "imgUrl": "./assets/images/products/b-7-black.jpg",
+    "price": "89.00",
+    "quantity": 73
+  },
+  {
+    "id": "00010",
+    "title": "FKG-03 High level linebacker football gloves, LB,RB,TE, Yellow",
+    "shortDescription": "Pittard leather grip for a palm cover exterior in high density polyurethane. Resistant and flexible, this kind of gloves offers an ideal compromise between security and performance thanks to the mix of Cabretta Pittards® and CLARINO®.",
+    "category": "Football",
+    "color": "Yellow",
+    "sizes": [    
+      "M",
+      "L",
+      "XL"
+    ],
+    "year": "2020",
+    "isBestseller": false,
+    "imgUrl": "./assets/images/products/fkg-03-yellow.jpg",
+    "price": "32.00",
+    "quantity": 12
+  },
+  {
+    "id": "00011",
+    "title": "NBG-12 winter ski glove -10 ° to -20 °",
+    "shortDescription": "",
+    "category": "Skiing",
+    "color": "Blue",
+    "sizes": [    
+      "M",
+      "L",
+      "XL"
+    ],
+    "year": "2022",
+    "isBestseller": false,
+    "imgUrl": "./assets/images/products/nbg-12-blue.jpg",
+    "price": "20.00",
+    "quantity": 92
+  },
+  {
+    "id": "00012",
+    "title": "FKG-02 Football goalkeeper gloves, green",
+    "shortDescription": "Our designers, who are also football players, designed these gloves for goalkeepers learning to dive and catch the ball.",
+    "category": "Football",
+    "color": "Green",
+    "sizes": [
+      "M",
+      "L"
+    ],
+    "year": "2019",
+    "isBestseller": true,
+    "imgUrl": "./assets/images/products/fkg-02-green.jpg",
+    "price": "19.90",
+    "quantity": 3
+  },
+  {
+    "id": "00013",
+    "title": "FLG-03 Football goalkeeper gloves, orange",
+    "shortDescription": "Our designers, who are also football players, designed these gloves for goalkeepers learning to dive and catch the ball.",
+    "category": "Football",
+    "color": "Orange",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "year": "2018",
+    "isBestseller": false,
+    "imgUrl": "./assets/images/products/flg-03-orange.jpg",
+    "price": "39.90",
+    "quantity": 87
+  },
+  {
+    "id": "00014",
+    "title": "NBG-03 Professional ski gloves, pink",
+    "shortDescription": "Quality girls alpine skiing product,100% Polyester",
+    "category": "Skiing",
+    "color": "Pink",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "year": "2020",
+    "isBestseller": true,
+    "imgUrl": "./assets/images/products/nbg-03-pink.jpg",
+    "price": "29.90",
+    "quantity": 11
+  },
+  {
+    "id": "00015",
+    "title": "BG-05 Cycling gloves, ectra comfort",
+    "shortDescription": "",
+    "category": "Cycling",
+    "color": "Blue",
+    "sizes": [
+      "XS",
+      "S",
+      "L"
+    ],
+    "year": "2021",
+    "isBestseller": false,
+    "imgUrl": "./assets/images/products/bg-05-blue.jpg",
+    "price": "33.00",
+    "quantity": 3
+  },
+  {
+    "id": "00016",
+    "title": "BG-08 Gloves for cycling, long fingers, extra soft",
+    "shortDescription": "",
+    "category": "Cycling",
+    "color": "Black",
+    "sizes": [
+      "M",
+      "L"
+    ],
+    "year": "2022",
+    "isBestseller": true,
+    "imgUrl": "./assets/images/products/bg-08-black.jpg",
+    "price": "22.00",
+    "quantity": 75
+  },
+  {
+    "id": "00017",
+    "title": "BG-06 Gloves for cycling, short fingers, extra soft",
+    "shortDescription": "",
+    "category": "Cycling",
+    "color": "Orange",
+    "sizes": [
+      "S",
+      "M",
+      "XL",
+      "XXL"
+    ],
+    "year": "2021",
+    "isBestseller": true,
+    "imgUrl": "./assets/images/products/bg-06-orange.jpg",
+    "price": "25.00",
+    "quantity": 184
+  },
+  {
+    "id": "00018",
+    "title": "NBG-04 Cross country and Ski winter gloves  (0°/+5°)",
+    "shortDescription": "",
+    "category": "Skiing",
+    "color": "Blue",
+    "sizes": [
+      "XS",
+      "S",
+      "XXL"
+    ],
+    "year": "2020",
+    "isBestseller": false,
+    "imgUrl": "./assets/images/products/nbg-04-blue.jpg",
+    "price": "25.00",
+    "quantity": 55
+  },
+  {
+    "id": "00019",
+    "title": "BBG-02 Batting glove, white",
+    "shortDescription": "High density foam, medium density foam, raw cotton and fibre all combine to provide protection for this great value calf leather palmed glove.",
+    "category": "Baseball",
+    "color": "White",
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "year": "2018",
+    "isBestseller": false,
+    "imgUrl": "./assets/images/products/bbg-02-white.jpg",
+    "price": "21.00",
+    "quantity": 4
+  },
+  {
+    "id": "00020",
+    "title": "BBG-04 Batting baseball gloves, Blue",
+    "shortDescription": "Batting gloves, perfect for match and training. Polyurethane, leather and nylon, Velcro wrist fastening system, fits to the hand. Great touch feeling.",
+    "category": "Baseball",
+    "color": "Blue",
+    "sizes": [
+      "M",
+      "XL"
+    ],
+    "year": "2018",
+    "isBestseller": false,
+    "imgUrl": "./assets/images/products/bbg-04-blue.jpg",
+    "price": "39.90",
+    "quantity": 27
+  }
+]
