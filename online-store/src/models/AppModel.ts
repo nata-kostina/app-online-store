@@ -62,22 +62,28 @@ class AppModel {
   public getQuantityInFavourite(): number {
     return this.wishlist.getQuantity();
   }
+
   public setFavourites(favourites: IFavouriteProduct[]) {
     this.wishlist.setFavourites(favourites);
     this.onModelUpdated(Actions.TOGGLE_PRODUCT_IN_WISHLIST);
   }
+
   public getFavouriteProducts(): IFavouriteProduct[] {
     return this.wishlist.getFavouriteProducts();
   }
+
   public getProductsInCart(): ICartProduct[] {
     return this.cart.getProducts();
   }
+
   public setProductsInCart(products: ICartProduct[]) {
     this.cart.setProducts(products);
   }
+
   public resetFavourites(): void {
     this.wishlist.reset();
   }
+
   public resetProductsInCart(): void {
     this.cart.reset();
   }
@@ -104,6 +110,7 @@ class AppModel {
     this.updateCollection();
     this.onModelUpdated(Actions.RESET_FILTERS);
   }
+  
   public updateCollection(): void {
     this.searchProducts();
     this.filterProducts();

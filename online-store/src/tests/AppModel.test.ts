@@ -1,6 +1,6 @@
 import Sort from '../models/Sort';
-import AppModel from './../models/AppModel';
-import { IProduct } from './../types/types';
+import AppModel from '../models/AppModel';
+import { IProduct } from '../types/types';
 
 const model = new AppModel(() => { return });
 describe('getProducts method', () => {

@@ -11,7 +11,6 @@ class FavouriteProducts {
 
   toggleProduct(productId: string): void {
     const product = this.wishlist.find(product => product.id === productId);
-
     if (product) {
       this.deleteFromFavs(product);
     }

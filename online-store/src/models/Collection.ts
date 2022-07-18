@@ -4,6 +4,7 @@ class Collection {
   constructor() {
     this.collection = [];
   }
+  
   setCollection(products: IProduct[]): void{
     this.collection = products;
   }

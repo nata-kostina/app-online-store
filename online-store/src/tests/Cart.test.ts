@@ -1,6 +1,6 @@
 import Cart from "../models/Cart";
 import { ICartProduct } from "../types/types"
-import Modal from './../models/Modal';
+import Modal from '../models/Modal';
 
 describe ('getQuantity method', () => {
   const cart = new Cart(()=> {return});

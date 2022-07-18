@@ -63,8 +63,7 @@ class AppController {
     switch (action) {
       case Actions.TOGGLE_PRODUCT_IN_CART:
         this.toggleProductInCart(e);
-        break;
-        
+        break;        
       case Actions.TOGGLE_PRODUCT_IN_WISHLIST:
         this.toggleProductInWishlist(e);
         break;

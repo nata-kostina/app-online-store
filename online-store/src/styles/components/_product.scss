@@ -80,7 +80,7 @@
 .item__buttons .btn {
   margin: 5px 0;
 
-  background: $color-dark-l69;
+  background: $color-dark-l;
   width: 40px;
   height: 40px;
   color: $color-light-xs;
@@ -104,6 +104,7 @@
     opacity: 1;
     &:hover {
       background: $color-main-theme;
+      cursor: pointer;
     }
   }
 }

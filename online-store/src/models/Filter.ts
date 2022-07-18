@@ -1,5 +1,4 @@
-import { FilterItem, FilterName, FilterRange, IProduct, Mode } from "../types/types";
-import { FilterGroups } from '../types/types';
+import { FilterItem, FilterGroups, FilterName, FilterRange, IProduct, Mode } from "../types/types";
 
 class Filter {
 

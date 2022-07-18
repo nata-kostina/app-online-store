@@ -1,5 +1,5 @@
-import ProductView from './../views/ProductView';
-import { ICartProduct, IProduct } from './../types/types';
+import ProductView from '../views/ProductView';
+import { ICartProduct, IProduct } from '../types/types';
 
 describe('highlightProductsInCart', () => {
   const mockProduct: IProduct = {
